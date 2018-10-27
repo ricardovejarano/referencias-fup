@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { loginRoute } from './components/login/login.routing';
 import { homeRoute } from './components/home/home.routing';
 import { icontecRoutes } from './components/icontec/icontec.routing';
+import { apaRoutes } from './components/apa/apa.routing';
+import { ieeeRoutes } from './components/ieee/ieee.routing';
+import { rankingRoute } from './components/ranking/ranking.routing';
 
 
 const appRoutes: Routes = [
     ...loginRoute,
     ...homeRoute,
-    ...icontecRoutes
+    ...icontecRoutes,
+    ...apaRoutes,
+    ...ieeeRoutes,
+    ...rankingRoute
 ];
 
 @NgModule({

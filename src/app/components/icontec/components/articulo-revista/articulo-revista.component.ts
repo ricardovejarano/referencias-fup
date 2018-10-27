@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './articulo-revista.component.html',
   styleUrls: ['./articulo-revista.component.css']
 })
-export class ArticuloRevistaComponent implements OnInit {
+export class ArticuloRevistaIcontecComponent implements OnInit {
   autor = '';
 
   constructor() { }

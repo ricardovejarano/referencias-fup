@@ -13,28 +13,66 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app.routing';
 import { environment } from 'src/environments/environment';
-import { LibrosComponent } from './components/icontec/components/libros/libros.component';
-import { ArticuloWebComponent } from './components/icontec/components/articulo-web/articulo-web.component';
-import { TesisComponent } from './components/icontec/components/tesis/tesis.component';
-import { ArticuloRevistaComponent } from './components/icontec/components/articulo-revista/articulo-revista.component';
+import { LibrosIcontecComponent } from './components/icontec/components/libros/libros.component';
+import { ArticuloWebIcontecComponent } from './components/icontec/components/articulo-web/articulo-web.component';
+import { TesisIcontecComponent } from './components/icontec/components/tesis/tesis.component';
 import { CongresoReunionComponent } from './components/icontec/components/congreso-reunion/congreso-reunion.component';
 import { NormasJuridicasComponent } from './components/icontec/components/normas-juridicas/normas-juridicas.component';
 import { NormasTecnicasComponent } from './components/icontec/components/normas-tecnicas/normas-tecnicas.component';
 import { IcontecComponent } from './components/icontec/icontec.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LibroApaComponent } from './components/apa/components/libro/libro.component';
+import { RevistaComponent } from './components/apa/components/revista/revista.component';
+import { SitioWebComponent } from './components/apa/components/sitio-web/sitio-web.component';
+import { CongresosComponent } from './components/apa/components/congresos/congresos.component';
+import { PeriodicosComponent } from './components/apa/components/periodicos/periodicos.component';
+import { CapituloLibroComponent } from './components/apa/components/capitulo-libro/capitulo-libro.component';
+import { ApaComponent } from './components/apa/apa.component';
+import { InformeTecnicoComponent } from './components/ieee/components/informe-tecnico/informe-tecnico.component';
+import { PatenteComponent } from './components/ieee/components/patente/patente.component';
+import { IeeeComponent } from './components/ieee/ieee.component';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { GraficasComponent } from './components/ranking/components/graficas/graficas.component';
+import { EstadisticasComponent } from './components/ranking/components/estadisticas/estadisticas.component';
+import { TesisComponent } from './components/apa/components/tesis/tesis.component';
+import { ArticuloWebComponent } from './components/ieee/components/articulo-web/articulo-web.component';
+import { ArticuloRevistaComponent } from './components/ieee/components/articulo-revista/articulo-revista.component';
+import { ArticuloRevistaIcontecComponent } from './components/icontec/components/articulo-revista/articulo-revista.component';
+import { LibroComponent } from './components/ieee/components/libro/libro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LibrosComponent,
+    ArticuloWebIcontecComponent,
+    LibroApaComponent,
     ArticuloWebComponent,
     TesisComponent,
+    TesisIcontecComponent,
+    ArticuloRevistaIcontecComponent,
     ArticuloRevistaComponent,
     CongresoReunionComponent,
+    LibrosIcontecComponent,
     NormasJuridicasComponent,
     NormasTecnicasComponent,
-    IcontecComponent
+    IcontecComponent,
+    NavBarComponent,
+    LibroComponent,
+    RevistaComponent,
+    SitioWebComponent,
+    CongresosComponent,
+    PeriodicosComponent,
+    CapituloLibroComponent,
+    ApaComponent,
+    InformeTecnicoComponent,
+    PatenteComponent,
+    IeeeComponent,
+    RankingComponent,
+    RegistroComponent,
+    GraficasComponent,
+    EstadisticasComponent
   ],
   imports: [
     FormsModule,
