@@ -1,11 +1,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyD-qXVMcaHrURelZoZth19RLPOdNM4Cyr4',
-    authDomain: 'tadhack-19067.firebaseapp.com',
-    databaseURL: 'https://tadhack-19067.firebaseio.com',
-    projectId: 'tadhack-19067',
-    storageBucket: '',
-    messagingSenderId: '13473408814'
+    apiKey: 'AIzaSyD3ThMO8ne--uH0gJXIhLf4SnVmH8A5oU4',
+    authDomain: 'referencias-fup.firebaseapp.com',
+    databaseURL: 'https://referencias-fup.firebaseio.com',
+    projectId: 'referencias-fup',
+    storageBucket: 'referencias-fup.appspot.com',
+    messagingSenderId: '915820890285'
   }
 };

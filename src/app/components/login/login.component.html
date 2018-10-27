@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<br>
+<br><br>
+<main class="container">
+    <div class="card text-center">
+      <form class="login100-form validate-form" (submit)="onSubmitLogin()">
+        <span class="login100-form-title">
+          INICIAR SESION
+        </span>
+        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+          <input class="input100" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+          <input class="input100" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" type="submit">
+            Ingresar
+          </button>
+          <button (click)="return()" class="login100-form-btn" type="button">
+              Regresar
+            </button>
+            <br>
+            <a (click)="goToRegister()">No tienes una cuenta?, registrate!</a>
+        </div>
+      </form>
+    </div>
+  </main>

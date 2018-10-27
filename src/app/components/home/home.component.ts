@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   flagLogged = false;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit {
       this.flagLogged = false;
     }
 
+  }
+
+  goToLogin() {
+    this.router.navigate(['login']);
   }
 
 }
