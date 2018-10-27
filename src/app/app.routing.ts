@@ -6,6 +6,7 @@ import { icontecRoutes } from './components/icontec/icontec.routing';
 import { apaRoutes } from './components/apa/apa.routing';
 import { ieeeRoutes } from './components/ieee/ieee.routing';
 import { rankingRoute } from './components/ranking/ranking.routing';
+import { registronRoute } from './components/registro/registro.routing';
 
 
 const appRoutes: Routes = [
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
     ...icontecRoutes,
     ...apaRoutes,
     ...ieeeRoutes,
-    ...rankingRoute
+    ...rankingRoute,
+    ...registronRoute
 ];
 
 @NgModule({
