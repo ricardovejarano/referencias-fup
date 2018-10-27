@@ -1,3 +1,52 @@
-<p>
-  articulo-web works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h5 class="text-center">Artículo web o fuente electrónica</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+          <div class="form-group">
+            <label for="title">Nombre</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="nombre" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Apellido</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="apellido" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Titulo</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo" name="title">
+          </div>
+          <div class="form-group">
+            <label for="title">Medio electrónico</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="medioElectronico" name="title">
+          </div>
+          <div class="form-group">
+            <label for="title">Edición</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="edicion" name="title">
+          </div>
+          <div class="form-group">
+            <label for="title">Fecha publicación</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="fechaPublicacion" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Fecha de la cita</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="fechaCita" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Disponibilidad</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="disponibilidad" name="title">
+          </div>
+
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</main>

@@ -1,3 +1,19 @@
-<p>
-  articulo-revista works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h5 class="text-center">Artículo de revista</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="autor" name="title">
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</main>

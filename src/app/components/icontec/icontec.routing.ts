@@ -12,8 +12,8 @@ import { TesisComponent } from './components/tesis/tesis.component';
 export const icontecRoutes: Routes = [
     {
         path: 'icontec', component: IcontecComponent, children: [
-            { path: '', component: ArticuloRevistaComponent },
-            { path: 'articulo-web', component: ArticuloWebComponent },
+            { path: '', component: ArticuloWebComponent },
+            { path: 'articulo-revista', component: ArticuloRevistaComponent },
             { path: 'congreso-reunion', component: CongresoReunionComponent },
             { path: 'libros', component: LibrosComponent },
             { path: 'normas-juridicas', component: NormasJuridicasComponent },

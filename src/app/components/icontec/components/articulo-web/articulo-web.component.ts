@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticuloWebComponent implements OnInit {
 
+  nombre = '';
+  apellido = '';
+  titulo = '';
+  medioElectronico = '';
+  edicion = '';
+  fechaPublicacion = '';
+  fechaCita = '';
+  disponibilidad = '';
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addReference() {
+    
   }
 
 }
