@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  flagLogged = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.seeIfIsLogged();
+  }
+
+  seeIfIsLogged() {
+    if (localStorage.getItem('logged') === 'true') {
+      this.flagLogged = true;
+    } else {
+      this.flagLogged = false;
+    }
+
   }
 
 }

@@ -2,7 +2,8 @@
   <div class="card text-center">
     <div class="card-header">
       Bienvenido a UNIVIDA - FUP
-      <button class="btn btn-sm float-right bg-graycontent">Iniciar Sesión</button>
+      <button *ngIf="flagLogged" class="btn btn-sm float-right bg-graycontent">Perfil</button>
+      <button *ngIf="flagLogged == false" class="btn btn-sm float-right bg-graycontent">Iniciar Sesión</button>
     </div>
     <div class="card-body">
       <h5 class="card-title">REFERENCIAS</h5>

@@ -13,12 +13,26 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app.routing';
 import { environment } from 'src/environments/environment';
+import { LibrosComponent } from './components/icontec/components/libros/libros.component';
+import { ArticuloWebComponent } from './components/icontec/components/articulo-web/articulo-web.component';
+import { TesisComponent } from './components/icontec/components/tesis/tesis.component';
+import { ArticuloRevistaComponent } from './components/icontec/components/articulo-revista/articulo-revista.component';
+import { CongresoReunionComponent } from './components/icontec/components/congreso-reunion/congreso-reunion.component';
+import { NormasJuridicasComponent } from './components/icontec/components/normas-juridicas/normas-juridicas.component';
+import { NormasTecnicasComponent } from './components/icontec/components/normas-tecnicas/normas-tecnicas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LibrosComponent,
+    ArticuloWebComponent,
+    TesisComponent,
+    ArticuloRevistaComponent,
+    CongresoReunionComponent,
+    NormasJuridicasComponent,
+    NormasTecnicasComponent
   ],
   imports: [
     FormsModule,
