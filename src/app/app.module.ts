@@ -20,6 +20,7 @@ import { ArticuloRevistaComponent } from './components/icontec/components/articu
 import { CongresoReunionComponent } from './components/icontec/components/congreso-reunion/congreso-reunion.component';
 import { NormasJuridicasComponent } from './components/icontec/components/normas-juridicas/normas-juridicas.component';
 import { NormasTecnicasComponent } from './components/icontec/components/normas-tecnicas/normas-tecnicas.component';
+import { IcontecComponent } from './components/icontec/icontec.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NormasTecnicasComponent } from './components/icontec/components/normas-
     ArticuloRevistaComponent,
     CongresoReunionComponent,
     NormasJuridicasComponent,
-    NormasTecnicasComponent
+    NormasTecnicasComponent,
+    IcontecComponent
   ],
   imports: [
     FormsModule,
