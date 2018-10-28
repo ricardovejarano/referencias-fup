@@ -6,17 +6,21 @@
       <div class="row justify-content-center">
         <div class="col-md-4 pr-md-5 border-right">
 
-          <div class="form-group">
-            <label for="apellido">Apellido(s)</label>
-            <input type="text" placeholder="Pérez" class="form-control" id="apellido" maxlength="100" [(ngModel)]="apellido"
-              name="apellido">
-          </div>
+          <div *ngFor="let item of nombres; let in=index">
+            <div class="form-group">
+              <label for="title">Nombre</label>
+              <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+                name="nameN{{in}}">
+            </div>
 
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" placeholder="Ramiro" class="form-control" id="nombre" maxlength="100" [(ngModel)]="nombre"
-              name="nombre">
+            <div class="form-group">
+              <label for="title">Apellido</label>
+              <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+                name="nameA{{in}}">
+            </div>
+            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
           </div>
+          <button (click)="addAuthor()">Agregar Autor</button>
 
           <div class="form-group">
             <label for="titulo">Titulo</label>
