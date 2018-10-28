@@ -43,9 +43,12 @@ export class RegistroComponent implements OnInit {
     if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co') {
       window.alert('El Dominio debe ser @fup.edu.co');
     } else {
-      window.alert('Correo correcto');
+      if (this.password !== this.password2) {
+        window.alert('Las contraseñas no coinciden');
+      } else {
+        console.log('AQUI VA EL REGISTRO YA VALIDADO');
+      }
     }
-    console.log();
   }
 
 }
