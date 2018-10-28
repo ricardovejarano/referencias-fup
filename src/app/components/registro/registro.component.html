@@ -1,33 +1,74 @@
 <br>
 <br><br>
 <main class="container">
-    <div class="card text-center">
-      <form class="login100-form validate-form" (submit)="onSubmitRegister()">
-        <span class="login100-form-title">
-          Registro
-        </span>
-        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-          <input class="input100" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-          </span>
+  <div class="card text-center">
+    <form class="login100-form validate-form" (submit)="onSubmitRegister()">
+      <span class="login100-form-title">
+        Registro
+      </span>
+      <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <label for="title">Rol en la Universidad</label><br>
+        <select [(ngModel)]="rol" name="mes1" (ngModelChange)="onChangeSl($event)" class="input100">
+          <option value="" disabled selected>Rol</option>
+          <option value="estudiante">Estudiante</option>
+          <option value="docente">Docente</option>
+          <option value="administrativo">Administrativo</option>
+          <option value="egresado">Egresado</option>
+        </select>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <label for="title">Nombre Completo</label><br>
+        <input class="input100" type="text" name="fullName" id="fullName" [(ngModel)]="fullName" placeholder="Nombre Completo">
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <label for="title">Correo Electrónico</label><br>
+        <input class="input100" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Correo">
+      </div>
+
+      <div *ngIf="esEstudiante || esEgresado" class="wrap-input100 validate-input">
+          <label for="title">Rol en la Universidad</label><br>
+          <select [(ngModel)]="semestre" name="programa" class="input100">
+            <option value="" disabled selected>Administración de Empresas</option>
+            <option value="Administración de Empresas Agropecuarias">Administración de Empresas Agropecuarias</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Contaduría Pública">Contaduría Pública</option>
+            <option value="Ecología">Ecología</option>
+            <option value="Economía">Economía</option>
+            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+            <option value="Licenciatura en educación Artística y Cultural">Licenciatura en educación Artística y Cultural</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Trabajo Social">Trabajo Social</option>
+            <option value="Posgrados">Posgrados</option>
+            <option value="Escuela de formación para el trabajo y el desarrollo Humano">Escuela de formación para el trabajo y el desarrollo Humano</option>
+            <option value="Pregrado a distancia">Pregrado a distancia</option>
+            <option value="Virtual - Administración de empresas">Virtual - Administración de empresas</option>
+            <option value="Virtual - Administración de empresas Agropecuarias">Virtual - Administración de empresas Agropecuarias</option>
+            <option value="Virtual - Comunicación Social">Virtual - Comunicación Social</option>
+          </select>
         </div>
-        <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Password">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-          </span>
-        </div>
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" type="submit">
-            Ingresar
-          </button>
-          <button (click)="return()" class="login100-form-btn" type="button">
-              Regresar
-            </button>
-        </div>
-      </form>
-    </div>
-  </main>
+
+      <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <label>Contraseña</label><br>
+        <input class="input100" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Contraseña">
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <label for="title">Verifica tu Contraseña</label><br>
+        <input class="input100" type="password" name="password2" id="password2" [(ngModel)]="password2" placeholder="Contraseña">
+      </div>
+
+
+      <div class="container-login100-form-btn">
+        <button [disabled]="!flagFormulario" class="login100-form-btn" type="submit">
+          Ingresar
+        </button>
+        <button (click)="return()" class="login100-form-btn" type="button">
+          Regresar
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
