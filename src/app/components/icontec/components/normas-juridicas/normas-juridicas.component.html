@@ -1,3 +1,111 @@
-<p>
-  normas-juridicas works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h3 class="text-center">ICONTEC</h3>
+      <h5 class="text-center">Normas Jurídicas</h5>
+      <div class="row justify-content-center">
+
+        <div class="col-md-4 pr-md-5 border-right">
+
+          <div class="form-group">
+            <label for="title">Jurisdicción</label>
+            <input type="text" placeholder="Colombia" class="form-control" id="title" maxlength="100" [(ngModel)]="jurisdiccion"
+              name="title">
+          </div>
+          <div class="form-group">
+            <label for="title">Ministerio o entidad responsable</label>
+            <input type="text" placeholder="Congreso de la república" class="form-control" id="title" maxlength="100"
+              [(ngModel)]="autorCorporativo" name="title">
+          </div>
+          <div class="form-group">
+            <label for="title">Designación</label>
+            <input type="text" placeholder="Ley 100" class="form-control" id="title" maxlength="100" [(ngModel)]="designacion"
+              name="title">
+          </div>
+
+
+          <div class="form-group">
+            <label for="title">Fecha de Norma</label>
+            <select [(ngModel)]="fechaNormaDia" name="fechaNormaDia" class="form-control">
+              <option value="" disabled selected>Día</option>
+              <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
+            </select>
+
+            <select [(ngModel)]="fechaNormaMes" name="fechaNormaMes" class="form-control">
+              <option value="" disabled selected>Mes</option>
+              <option *ngFor="let mes of mes" value="{{mes}}">{{mes}}</option>
+            </select>
+
+
+            <select [(ngModel)]="fechaNormaAnio" name="fechaNormaAnio" class="form-control">
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+            <label for="title">Nombre de la norma</label>
+            <input type="text" placeholder="Todas las personas tienen derecho a una identidad." class="form-control" id="title"
+              maxlength="100" [(ngModel)]="nombreNorma" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Titulo de la publicación</label>
+            <input type="text" placeholder="Diario Oficial." class="form-control" id="title" maxlength="100"
+              [(ngModel)]="tituloPublicacion" name="title">
+          </div>
+
+
+          <div class="form-group">
+            <label for="title">Lugar de la publicación</label>
+            <input type="text" placeholder="Medellin." class="form-control" id="title" maxlength="100" [(ngModel)]="lugarPublicacion"
+              name="title">
+          </div>
+
+
+          <div class="form-group">
+            <label for="title">Año de publicación</label>
+            <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label for="title">Pagina Inicial</label>
+            <input type="number" placeholder="4" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaInicial"
+              name="paginaInicial">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Pagina final</label>
+            <input type="number" placeholder="28" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaFinal"
+              name="paginaFinal">
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
+            <i class="fas fa-sync-alt"></i> Limpiar
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+  <div class="form-group">
+    <label for="title">Referencia Final</label>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button *ngIf="userRegister">Guardar en historial</button>
+    <p>Ejemplo: {{ejemplo}}</p>
+  </div>
+
+
+</main>

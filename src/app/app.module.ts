@@ -40,6 +40,7 @@ import { ArticuloWebComponent } from './components/ieee/components/articulo-web/
 import { ArticuloRevistaComponent } from './components/ieee/components/articulo-revista/articulo-revista.component';
 import { ArticuloRevistaIcontecComponent } from './components/icontec/components/articulo-revista/articulo-revista.component';
 import { LibroComponent } from './components/ieee/components/libro/libro.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { LibroComponent } from './components/ieee/components/libro/libro.compone
     RankingComponent,
     RegistroComponent,
     GraficasComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
+    PerfilComponent
   ],
   imports: [
     FormsModule,
