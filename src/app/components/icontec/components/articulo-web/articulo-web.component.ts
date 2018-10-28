@@ -120,6 +120,22 @@ export class ArticuloWebIcontecComponent implements OnInit {
     this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
   }
 
+  clear() {
+    this.nombre = '';
+    this.apellido = '';
+    this.titulo = '';
+    this.medioElectronico = '';
+    this.edicion = '';
+    this.fechaPublicacion = '';
+    this.fechaCitaDia = '';
+    this.fechaCitaMes = '';
+    this.fechaCitaAnio = '';
+    this.disponibilidad = '';
+    this.referenciaFinal = '';
+    this.nombres = [{ value: '' }];
+    this.apellidos = [{ value: '' }];
+  }
+
   copyInputMessage(inputElement) {
     inputElement.select();
     document.execCommand('copy');
