@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { format } from 'url';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-articulo-web',
@@ -120,20 +121,10 @@ export class ArticuloWebIcontecComponent implements OnInit {
     this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
   }
 
-  clear() {
-    this.nombre = '';
-    this.apellido = '';
-    this.titulo = '';
-    this.medioElectronico = '';
-    this.edicion = '';
-    this.fechaPublicacion = '';
-    this.fechaCitaDia = '';
-    this.fechaCitaMes = '';
-    this.fechaCitaAnio = '';
-    this.disponibilidad = '';
-    this.referenciaFinal = '';
-    this.nombres = [{ value: '' }];
-    this.apellidos = [{ value: '' }];
+  resetForm(validForm?: NgForm) {
+    if (validForm != null) {
+      validForm.reset();
+    }
   }
 
   copyInputMessage(inputElement) {
