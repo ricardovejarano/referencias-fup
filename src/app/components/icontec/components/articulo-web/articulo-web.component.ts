@@ -31,10 +31,24 @@ export class ArticuloWebIcontecComponent implements OnInit {
   anioCita = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
 
 
+  nombres = [{ value: '' }];
+  apellidos = [{ value: '' }];
+
+
   constructor() { }
 
   ngOnInit() {
     this.getArray();
+  }
+
+  addAuthor() {
+    this.nombres.push({ value: '' });
+    this.apellidos.push({ value: '' });
+  }
+
+  quitAuthor(index) {
+    this.nombres.splice(index, 1);
+    this.apellidos.splice(index, 1);
   }
 
   getArray() {
@@ -49,12 +63,18 @@ export class ArticuloWebIcontecComponent implements OnInit {
 
   addReference() {
     this.referenciaFinal = '';
-    if (this.apellido) {
-      this.referenciaFinal += this.apellido.toUpperCase() + ', ';
-    }
-    if (this.nombre) {
-      // return word[0].toUpperCase() + word.substr(1).toLowerCase();
-      this.referenciaFinal += this.nombre[0].toUpperCase() + this.nombre.substr(1).toLocaleLowerCase();
+
+    for (let z = 0; z < this.nombres.length; z++) {
+      if (this.apellidos[z].value) {
+        if (z !== 0) {
+          this.referenciaFinal += ', ';
+        }
+        this.referenciaFinal += this.apellidos[z].value.toUpperCase() + ', ';
+      }
+      if (this.nombres[z].value) {
+        // return word[0].toUpperCase() + word.substr(1).toLowerCase();
+        this.referenciaFinal += this.nombres[z].value[0].toUpperCase() + this.nombres[z].value.substr(1).toLocaleLowerCase();
+      }
     }
 
     if (this.titulo) {
