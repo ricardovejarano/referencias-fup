@@ -26,6 +26,7 @@ export class ArticuloWebIcontecComponent implements OnInit {
   }
 
   addReference() {
+    this.referenciaFinal = '';
     if (this.apellido) {
       this.referenciaFinal += this.apellido.toUpperCase() + ', ';
     }
@@ -35,20 +36,20 @@ export class ArticuloWebIcontecComponent implements OnInit {
     }
 
     if (this.titulo) {
-      this.referenciaFinal += '“' + this.titulo + '”.';
+      this.referenciaFinal += ' “' + this.titulo + '”.';
     }
 
-    this.referenciaFinal += '{En línea}';
+    this.referenciaFinal += ' {En línea}';
 
     if (this.fechaPublicacion) {
-      this.referenciaFinal += this.fechaPublicacion + '. ';
+      this.referenciaFinal += '. ' + this.fechaPublicacion + '. ';
     }
 
     if (this.fechaCita) {
-      this.referenciaFinal += '{' + this.titulo + '}';
+      this.referenciaFinal += '{' + this.fechaCita + '} ';
     }
 
-    this.referenciaFinal += 'disponiible en:' + '(' + this.disponibilidad + ')';
+    this.referenciaFinal += 'disponiible en: ' + '(' + this.disponibilidad + ')';
   }
 
   copyInputMessage(inputElement) {

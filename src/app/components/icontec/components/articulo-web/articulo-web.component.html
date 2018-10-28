@@ -28,7 +28,7 @@
             <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="edicion" name="title">
           </div>
           <div class="form-group">
-            <label for="title">Fecha publicación</label>
+            <label for="title">Año de publicación</label>
             <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="fechaPublicacion" name="title">
           </div>
 
@@ -55,7 +55,7 @@
     <label for="title">Referencia Final</label>
     <input type="text" class="form-control" id="title" maxlength="100"  #userinput [(ngModel)]="referenciaFinal" name="title">
     <button (click)="copyInputMessage(userinput)" value="click to copy" >Copy from Textbox</button>
-    <h5>Ejemplo: {{ejemplo}}</h5>
+    <p>Ejemplo: {{ejemplo}}</p>
   </div>
 
 
