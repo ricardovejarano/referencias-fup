@@ -7,50 +7,62 @@
         <div class="col-md-4 pr-md-5 border-right">
           <div class="form-group">
             <label for="title">Nombre</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="nombre" name="title">
+            <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombre"
+              name="title">
           </div>
 
           <div class="form-group">
             <label for="title">Apellido</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="apellido" name="title">
+            <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellido"
+              name="title">
           </div>
 
           <div class="form-group">
             <label for="title">Titulo</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo" name="title">
+            <input type="text" placeholder="Titulo" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo"
+              name="title">
           </div>
           <div class="form-group">
             <label for="title">Medio electrónico</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="medioElectronico" name="title">
+            <input type="text" placeholder="En linea / CD-ROM" class="form-control" id="title" maxlength="100"
+              [(ngModel)]="medioElectronico" name="title">
           </div>
           <div class="form-group">
             <label for="title">Edición</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="edicion" name="title">
+            <input type="text" placeholder="EF DEPORTES" class="form-control" id="title" maxlength="100" [(ngModel)]="edicion"
+              name="title">
           </div>
           <div class="form-group">
             <label for="title">Año de publicación</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="fechaPublicacion" name="title">
+            <select [(ngModel)]="fechaPublicacion" name="fechaPublicacion" class="form-control">
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
           </div>
 
           <div class="form-group">
             <label for="title">Fecha de la cita</label>
             <select [(ngModel)]="fechaCitaDia" name="fechaCitaDia" class="form-control">
+              <option value="" disabled selected>Día</option>
               <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
             </select>
 
             <select [(ngModel)]="fechaCitaMes" name="fechaCitaMes" class="form-control">
+              <option value="" disabled selected>Mes</option>
               <option *ngFor="let mes of mes" value="{{mes}}">{{mes}}</option>
             </select>
-            
+
             <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
-              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
             </select>
-            
+
           </div>
 
           <div class="form-group">
             <label for="title">Disponibilidad</label>
-            <input type="text" class="form-control" id="title" maxlength="100" [(ngModel)]="disponibilidad" name="title">
+            <input type="text" placeholder="http://unividafup.edu.co" class="form-control" id="title" maxlength="100"
+              [(ngModel)]="disponibilidad" name="title">
           </div>
 
 
@@ -64,8 +76,9 @@
 
   <div class="form-group">
     <label for="title">Referencia Final</label>
-    <input type="text" class="form-control" id="title" maxlength="100"  #userinput [(ngModel)]="referenciaFinal" name="title">
-    <button (click)="copyInputMessage(userinput)" value="click to copy" >Copy from Textbox</button>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button *ngIf="userRegister">Guardar en historial</button>
     <p>Ejemplo: {{ejemplo}}</p>
   </div>
 

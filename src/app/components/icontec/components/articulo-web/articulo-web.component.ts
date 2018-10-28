@@ -21,12 +21,14 @@ export class ArticuloWebIcontecComponent implements OnInit {
   fechaCitaAnio = '';
   disponibilidad = '';
   referenciaFinal = '';
+  userRegister = false;
 
   // Arrays para Fecha
   mes = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre',
     'noviembre', 'diciembre'];
   dia = [];
   anio = [];
+  anioCita = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
 
 
   constructor() { }
@@ -76,14 +78,23 @@ export class ArticuloWebIcontecComponent implements OnInit {
     }
 
     if (this.fechaCitaMes) {
-      if (this.fechaCitaDia) {
+      if (!this.fechaCitaDia) {
         this.referenciaFinal += ' {';
       }
-      this.referenciaFinal += ' {' + this.fechaCitaMes + '}';
+      this.referenciaFinal += ' ' + this.fechaCitaMes;
+      if (!this.fechaCitaAnio) {
+        this.referenciaFinal += '}';
+      }
     }
 
     if (this.fechaCitaAnio) {
-      this.referenciaFinal += ' {' + this.fechaCitaAnio + '}';
+      if (!this.fechaCitaDia && !this.fechaCitaMes) {
+        this.referenciaFinal += '{';
+      }
+      if (this.fechaCitaDia || this.fechaCitaMes) {
+        this.referenciaFinal += ' de';
+      }
+      this.referenciaFinal += ' ' + this.fechaCitaAnio + '}';
     }
 
     this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
