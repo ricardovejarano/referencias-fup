@@ -26,7 +26,35 @@ export class ArticuloWebIcontecComponent implements OnInit {
   }
 
   addReference() {
-    this.referenciaFinal = this.nombre + this.apellido + this.titulo;
+    if (this.apellido) {
+      this.referenciaFinal += this.apellido.toUpperCase() + ', ';
+    }
+    if (this.nombre) {
+      // return word[0].toUpperCase() + word.substr(1).toLowerCase();
+      this.referenciaFinal += this.nombre[0].toUpperCase() + this.nombre.substr(1).toLocaleLowerCase();
+    }
+
+    if (this.titulo) {
+      this.referenciaFinal += '“' + this.titulo + '”.';
+    }
+
+    this.referenciaFinal += '{En línea}';
+
+    if (this.fechaPublicacion) {
+      this.referenciaFinal += this.fechaPublicacion + '. ';
+    }
+
+    if (this.fechaCita) {
+      this.referenciaFinal += '{' + this.titulo + '}';
+    }
+
+    this.referenciaFinal += 'disponiible en:' + '(' + this.disponibilidad + ')';
+  }
+
+  copyInputMessage(inputElement) {
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
   }
 
 }
