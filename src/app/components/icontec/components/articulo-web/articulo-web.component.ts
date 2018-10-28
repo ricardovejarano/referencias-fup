@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { format } from 'url';
 
 @Component({
   selector: 'app-articulo-web',
@@ -15,14 +16,33 @@ export class ArticuloWebIcontecComponent implements OnInit {
   medioElectronico = '';
   edicion = '';
   fechaPublicacion = '';
-  fechaCita = '';
+  fechaCitaDia = '';
+  fechaCitaMes = '';
+  fechaCitaAnio = '';
   disponibilidad = '';
   referenciaFinal = '';
+
+  // Arrays para Fecha
+  mes = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre',
+    'noviembre', 'diciembre'];
+  dia = [];
+  anio = [];
 
 
   constructor() { }
 
   ngOnInit() {
+    this.getArray();
+  }
+
+  getArray() {
+    for (let y = 1; y < 32; y++) {
+      this.dia.push(y);
+    }
+
+    for (let x = 1940; x < 2020; x++) {
+      this.anio.push(x);
+    }
   }
 
   addReference() {
@@ -39,17 +59,34 @@ export class ArticuloWebIcontecComponent implements OnInit {
       this.referenciaFinal += ' “' + this.titulo + '”.';
     }
 
-    this.referenciaFinal += ' {En línea}';
+    if (this.medioElectronico) {
+      this.referenciaFinal += ' {' + this.medioElectronico + '}.';
+    }
+
+    if (this.edicion) {
+      this.referenciaFinal += ' ' + this.edicion + '.';
+    }
 
     if (this.fechaPublicacion) {
-      this.referenciaFinal += '. ' + this.fechaPublicacion + '. ';
+      this.referenciaFinal += ' ' + this.fechaPublicacion + '.';
     }
 
-    if (this.fechaCita) {
-      this.referenciaFinal += '{' + this.fechaCita + '} ';
+    if (this.fechaCitaDia) {
+      this.referenciaFinal += ' {' + this.fechaCitaDia;
     }
 
-    this.referenciaFinal += 'disponiible en: ' + '(' + this.disponibilidad + ')';
+    if (this.fechaCitaMes) {
+      if (this.fechaCitaDia) {
+        this.referenciaFinal += ' {';
+      }
+      this.referenciaFinal += ' {' + this.fechaCitaMes + '}';
+    }
+
+    if (this.fechaCitaAnio) {
+      this.referenciaFinal += ' {' + this.fechaCitaAnio + '}';
+    }
+
+    this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
   }
 
   copyInputMessage(inputElement) {

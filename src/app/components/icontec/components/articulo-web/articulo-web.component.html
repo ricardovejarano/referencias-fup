@@ -34,7 +34,18 @@
 
           <div class="form-group">
             <label for="title">Fecha de la cita</label>
-            <input type="date" class="form-control" id="title" maxlength="100" [(ngModel)]="fechaCita" name="title">
+            <select [(ngModel)]="fechaCitaDia" name="fechaCitaDia" class="form-control">
+              <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
+            </select>
+
+            <select [(ngModel)]="fechaCitaMes" name="fechaCitaMes" class="form-control">
+              <option *ngFor="let mes of mes" value="{{mes}}">{{mes}}</option>
+            </select>
+            
+            <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
+            
           </div>
 
           <div class="form-group">
