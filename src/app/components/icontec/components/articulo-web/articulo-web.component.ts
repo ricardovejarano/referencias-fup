@@ -31,10 +31,24 @@ export class ArticuloWebIcontecComponent implements OnInit {
   anioCita = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
 
 
+  nombres = [{value: ''}];
+  apellidos = [{value: ''}];
+
+
   constructor() { }
 
   ngOnInit() {
     this.getArray();
+  }
+
+  addAuthor() {
+    this.nombres.push({value: ''});
+    this.apellidos.push({value: ''});
+  }
+
+  quitAuthor(index) {
+    this.nombres.splice(index, 1);
+    this.apellidos.splice(index, 1);
   }
 
   getArray() {
