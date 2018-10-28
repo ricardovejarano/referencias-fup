@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-libros',
@@ -99,4 +100,11 @@ export class LibrosIcontecComponent implements OnInit {
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
   }
+
+  resetForm(validForm?: NgForm) {
+    if (validForm != null) {
+      validForm.reset();
+    }
+  }
+
 }
