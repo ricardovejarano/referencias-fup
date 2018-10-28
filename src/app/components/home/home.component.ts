@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,26 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  flag = true;
   flagLogged = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
     this.seeIfIsLogged();
+  }
+
+  goToProfile() {
+    this.router.navigate(['perfil']);
+  }
+
+  logout() {
+    console.log('CIERRA SESIÓN');
+    this.router.navigate(['/']);
+    localStorage.setItem('logged', 'false');
+    this.authService.logout();
+    this.flagLogged = false;
   }
 
   seeIfIsLogged() {
