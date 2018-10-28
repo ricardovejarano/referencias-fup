@@ -56,14 +56,14 @@ export class LibrosIcontecComponent implements OnInit {
 
     for (let z = 0; z < this.nombres.length; z++) {
       if (this.apellidos[z].value) {
-        if (z !== 0) {
-          this.referenciaFinal += ', ';
-        }
-        this.referenciaFinal += this.apellidos[z].value.toUpperCase() + ', ';
+        this.referenciaFinal += this.apellidos[z].value.toUpperCase() + '. ';
       }
       if (this.nombres[z].value) {
-        // return word[0].toUpperCase() + word.substr(1).toLowerCase();
-        this.referenciaFinal += this.nombres[z].value[0].toUpperCase() + this.nombres[z].value.substr(1).toLocaleLowerCase() + '. ';
+        if (z !== (this.nombres.length - 1)  && this.nombres.length !== 1) {
+          this.referenciaFinal += this.nombres[z].value[0].toUpperCase() + this.nombres[z].value.substr(1).toLocaleLowerCase() + ', ';
+        } else {
+          this.referenciaFinal += this.nombres[z].value[0].toUpperCase() + this.nombres[z].value.substr(1).toLocaleLowerCase() + '. ';
+        }
       }
     }
 
