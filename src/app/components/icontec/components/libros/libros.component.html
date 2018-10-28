@@ -1,3 +1,82 @@
-<p>
-  libros works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h3 class="text-center">ICONTEC</h3>
+      <h5 class="text-center">Libros</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+
+          <div class="form-group">
+            <label for="apellido">Apellido(s)</label>
+            <input type="text" placeholder="Pérez" class="form-control" id="apellido" maxlength="100" [(ngModel)]="apellido"
+              name="apellido">
+          </div>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" placeholder="Ramiro" class="form-control" id="nombre" maxlength="100" [(ngModel)]="nombre"
+              name="nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input type="text" placeholder="Titulo" class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
+              name="titulo">
+          </div>
+
+          <div class="form-group">
+            <label for="subtitulo">Subtitulo</label>
+            <input type="text" placeholder="Subtitulo" class="form-control" id="subtitulo" maxlength="100" [(ngModel)]="subtitulo"
+              name="subtitulo">
+          </div>
+
+          <div class="form-group">
+            <label for="edicion">Numero Edición</label>
+            <input type="text" placeholder="2000" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion"
+              name="edicion">
+          </div>
+
+          <div class="form-group">
+            <label for="ciudad">Ciudad de Publicacion</label>
+            <input type="text" placeholder="Bogota" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
+              name="ciudad">
+          </div>
+
+          <div class="form-group">
+            <label for="editorial">Editorial</label>
+            <input type="text" placeholder="Editorial" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
+              name="editorial">
+          </div>
+
+          <div class="form-group">
+            <label for="anioPublicacion">Año de publicación</label>
+            <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+              <option value="" disabled selected>Año Publicación</option>
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Paginación</label>
+            <input type="text" placeholder="Paginas" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
+              name="paginas">
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+
+  <div class="form-group">
+    <label for="title">Referencia Final</label>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button *ngIf="userRegister">Guardar en historial</button>
+    <p>Ejemplo: {{ejemplo}}</p>
+  </div>
+
+
+</main>
