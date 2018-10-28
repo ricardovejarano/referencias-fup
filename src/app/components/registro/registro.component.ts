@@ -46,6 +46,7 @@ export class RegistroComponent implements OnInit {
       if (this.password !== this.password2) {
         window.alert('Las contraseñas no coinciden');
       } else {
+
         console.log('AQUI VA EL REGISTRO YA VALIDADO');
       }
     }
