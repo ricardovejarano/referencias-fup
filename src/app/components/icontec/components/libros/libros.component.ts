@@ -17,7 +17,7 @@ export class LibrosIcontecComponent implements OnInit {
   edicion = '';
   ciudad = '';
   editorial = '';
-  paginas = '';
+  paginas = 0;
   anioPublicacion = 0;
   userRegister = false;
 
@@ -74,7 +74,7 @@ export class LibrosIcontecComponent implements OnInit {
     }
 
     if (this.edicion) {
-      this.referenciaFinal += this.edicion + '. ';
+      this.referenciaFinal += 'Ed. ' + this.edicion + '. ';
     }
 
     if (this.ciudad) {
