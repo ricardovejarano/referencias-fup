@@ -1,12 +1,14 @@
 <main class="container">
-  <h3>Promedio de Edad General</h3>
-  <h5>{{promedioEdad}}</h5>
-  <h3>Promedio de Edad de Estudiantes</h3>
-  <h5>{{averageEstuaidntes}}</h5>
-  <h3>Promedio de Edad de Docentes</h3>
-  <h5>{{averageDocentes}}</h5>
-  <h3>Promedio de Edad de Administrativos</h3>
-  <h5>{{averageAdminstrativos}}</h5>
-  <h3>Promedio de Edad de Egresados</h3>
-  <h5>{{averageEgresados}}</h5>
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Promedio de Edad
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">General: {{promedioEdad}}</li>
+      <li class="list-group-item">Estudiantes: {{averageEstuaidntes}}</li>
+      <li class="list-group-item">Docentes: {{averageDocentes}}</li>
+      <li class="list-group-item">Administrativos: {{averageAdminstrativos}}</li>
+      <li class="list-group-item">Egresados: {{averageEgresados}}</li>
+    </ul>
+  </div>
 </main>
