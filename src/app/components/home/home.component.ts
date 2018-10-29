@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['perfil']);
   }
 
+  goToHistory() {
+    this.router.navigate(['historial']);
+  }
+
   logout() {
     console.log('CIERRA SESIÓN');
     this.router.navigate(['/']);
