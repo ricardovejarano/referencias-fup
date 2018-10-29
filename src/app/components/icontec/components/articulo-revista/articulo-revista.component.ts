@@ -47,6 +47,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   programa = '';
   contadorPrograma = 0;
   contadorPersona = 0;
+  contadorReferencia = 0;
 
   constructor(public profileService: PerfilService, public rankingService: RankingService) {
     this.keyAdmin = localStorage.getItem('uid');
@@ -54,8 +55,8 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   ngOnInit() {
     this.getArray();
+    this.getCounterReference();
     if (localStorage.getItem('logged') === 'true') {
-      console.log('Entra a la función');
       this.getRol();
     } else {
       console.log('NO ENTRA');
@@ -159,6 +160,16 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
       });
   }
 
+  getCounterReference() {
+    this.rankingService.getContadorReferencia('icontec', 'articulo-revista')
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.contadorReferencia = Number(x);
+        });
+      });
+  }
+
   addCountProgram() {
 
     this.rankingService.addCounterProgram(this.programa, this.contadorPrograma)
@@ -171,6 +182,15 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addCountPerson() {
     this.rankingService.addCounterPerson(this.rolUsuario, this.keyAdmin, this.contadorPersona)
+      .then(res => {
+        console.log(res);
+      }, err => {
+        console.log('Error', err);
+      });
+  }
+
+  addCounterReference() {
+    this.rankingService.addCounterReference('icontec', 'articulo-revista', this.contadorReferencia)
       .then(res => {
         console.log(res);
       }, err => {
@@ -200,6 +220,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addReference() {
 
+    this.addCounterReference();
     if (localStorage.getItem('logged') === 'true') {
       this.addCountProgram();
       this.addCountPerson();
