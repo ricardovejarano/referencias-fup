@@ -43,6 +43,7 @@ import { LibroComponent } from './components/ieee/components/libro/libro.compone
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilService } from './services/perfil.service';
 import { CapituloLibroIeeeComponent } from './components/ieee/components/capitulo-libro-ieee/capitulo-libro-ieee.component';
+import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-tecnica-ieee/norma-tecnica-ieee.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { CapituloLibroIeeeComponent } from './components/ieee/components/capitul
     GraficasComponent,
     EstadisticasComponent,
     PerfilComponent,
-    CapituloLibroIeeeComponent
+    CapituloLibroIeeeComponent,
+    NormaTecnicaIeeeComponent
   ],
   imports: [
     FormsModule,
