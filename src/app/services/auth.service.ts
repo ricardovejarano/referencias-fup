@@ -32,7 +32,9 @@ export class AuthService {
           const key = firebase.auth().currentUser.uid;
           // añadir administrador en la rama admin con su Auth como key
           const usersRef = firebase.database().ref(rol);
+          const usersRefRol = firebase.database().ref('rol');
           usersRef.child(key).set(usuario);
+          usersRefRol.child(key).set(rol);
         },
           err => {
             reject(err);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/models/usuario.model';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-registro',
@@ -92,6 +93,7 @@ export class RegistroComponent implements OnInit {
               .then((res2) => {
                 this.router.navigate(['/']);
                 localStorage.setItem('logged', 'true');
+                localStorage.setItem('uid', firebase.auth().currentUser.uid);
               }).catch((err) => {
                 console.log('Error en Login', err);
                 window.alert('Datos incorrectos');
