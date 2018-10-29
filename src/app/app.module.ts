@@ -42,6 +42,8 @@ import { ArticuloRevistaIcontecComponent } from './components/icontec/components
 import { LibroComponent } from './components/ieee/components/libro/libro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilService } from './services/perfil.service';
+import { CapituloLibroIeeeComponent } from './components/ieee/components/capitulo-libro-ieee/capitulo-libro-ieee.component';
+import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-tecnica-ieee/norma-tecnica-ieee.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { PerfilService } from './services/perfil.service';
     RegistroComponent,
     GraficasComponent,
     EstadisticasComponent,
-    PerfilComponent
+    PerfilComponent,
+    CapituloLibroIeeeComponent,
+    NormaTecnicaIeeeComponent
   ],
   imports: [
     FormsModule,

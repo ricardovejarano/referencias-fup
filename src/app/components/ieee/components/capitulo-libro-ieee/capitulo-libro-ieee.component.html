@@ -1,0 +1,97 @@
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h3 class="text-center">IEEE</h3>
+      <h5 class="text-center">Capitulo Libro</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+
+          <div *ngFor="let item of nombres; let in=index">
+            <div class="form-group">
+              <label for="title">Iniciales Nombres Autor</label>
+              <input type="text" placeholder="N. G. " class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+                name="nameN{{in}}">
+            </div>
+
+            <div class="form-group">
+              <label for="title">Apellidos Autor</label>
+              <input type="text" placeholder="Mankiw" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+                name="nameA{{in}}">
+            </div>
+
+            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+          </div>
+          <button (click)="addAuthor()">Agregar Autor</button>
+
+          <div class="form-group">
+            <label for="tituloCapitulo">Titulo del Capítulo</label>
+            <input type="text" placeholder="Biotransformation in ionic liquid" class="form-control" id="tituloCapitulo"
+              maxlength="100" [(ngModel)]="tituloCapitulo" name="tituloCapitulo">
+          </div>
+
+          <div class="form-group">
+            <label for="tituloLibro">Titulo del Libro</label>
+            <input type="text" placeholder="Future directions in biocatalysis" class="form-control" id="tituloLibro"
+              maxlength="100" [(ngModel)]="tituloLibro" name="tituloLibro">
+          </div>
+
+          <div class="form-group">
+            <label for="edicion">Edición</label>
+            <input type="text" placeholder="Ed 3tr" class="form-control" id="edicion" maxlength="100"
+              [(ngModel)]="edicion" name="edicion">
+          </div>
+
+          <div class="form-group">
+            <label for="ciudad">Lugar de Publicación</label>
+            <input type="text" placeholder="Amsterdam" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
+              name="ciudad">
+          </div>
+
+          <div class="form-group">
+              <label for="editorial">Editorial</label>
+              <input type="text" placeholder="Elsevier Science" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
+                name="editorial">
+            </div>
+
+          <div class="form-group">
+            <label for="anioPublicacion">Año de publicación</label>
+            <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+              <option value="" disabled selected>Año Publicación</option>
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Pagina Inicial</label>
+            <input type="number" placeholder="Ej: 167" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaInicial"
+              name="paginaInicial">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Pagina final</label>
+            <input type="number" placeholder="Ej: 189" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaFinal"
+              name="paginaFinal">
+          </div>
+
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
+            <i class="fas fa-sync-alt"></i> Limpiar
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="form-group">
+    <label for="title">Referencia Final</label>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button *ngIf="userRegister">Guardar en historial</button>
+    <p>Ejemplo: {{ejemplo}}</p>
+  </div>
+
+
+</main>
