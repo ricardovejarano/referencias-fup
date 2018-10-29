@@ -29,8 +29,20 @@ export class RankingService {
     });
   }
 
+  addCounterReference(ref: String, subRef: String, contadorActual: Number) {
+    const contador = Number(contadorActual) + 1;
+    const myRefSale = this.afDatabase.object(`contador-referencias/${ref}/${subRef}`);
+    return myRefSale.update({
+         contador
+    });
+  }
+
   getContadorPersona(uid, rol) {
     return this.adminsList = this.afDatabase.list(`${rol}/${uid}`);
+  }
+
+  getContadorReferencia(ref, subRef) {
+    return this.adminsList = this.afDatabase.list(`contador-referencias/${ref}/${subRef}`);
   }
 
 }
