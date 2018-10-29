@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PerfilService } from 'src/app/services/perfil.service';
 
 @Component({
   selector: 'app-graficas',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graficas.component.css']
 })
 export class GraficasComponent implements OnInit {
+
+  // Array para gráfica
+  arrayProgramas = [];
+  arrayContadorProgramas = [];
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -50,9 +55,26 @@ export class GraficasComponent implements OnInit {
      */
   }
 
-  constructor() { }
+  constructor(public profileService: PerfilService) { }
 
   ngOnInit() {
+    this.getValueConunterProgram();
   }
 
+  getValueConunterProgram() {
+    if (localStorage.getItem('logged') === 'true') {
+      console.log('ÉNTRA!!!');
+      this.profileService.getContadorProgramas()
+        .snapshotChanges().subscribe(item => {
+          this.arrayProgramas = [];
+          this.arrayContadorProgramas = [];
+          item.forEach(element => {
+            const x = element.payload.toJSON();
+            this.arrayProgramas.push(element.key);
+            this.arrayContadorProgramas.push(x['contadorActualizado']);
+          });
+          console.log(this.arrayContadorProgramas, this.arrayProgramas);
+        });
+    }
+  }
 }
