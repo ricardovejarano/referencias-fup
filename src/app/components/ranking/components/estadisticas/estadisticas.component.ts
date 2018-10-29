@@ -42,6 +42,7 @@ export class EstadisticasComponent implements OnInit {
   estudiantesPromedio() {
     this.profileService.getEstudiantes()
       .snapshotChanges().subscribe(item => {
+        this.arrayEstudiantes = [];
         this.usuarios = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
@@ -63,6 +64,7 @@ export class EstadisticasComponent implements OnInit {
   docentesPromedio() {
     this.profileService.getDocentes()
       .snapshotChanges().subscribe(item => {
+        this.arrayDocentes = [];
         this.usuarios = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
@@ -84,6 +86,7 @@ export class EstadisticasComponent implements OnInit {
   administrativosPromedio() {
     this.profileService.getAdministrativos()
       .snapshotChanges().subscribe(item => {
+        this.arrayAdministrativos = [];
         this.usuarios = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
@@ -105,6 +108,7 @@ export class EstadisticasComponent implements OnInit {
   egresadosPromedio() {
     this.profileService.getEgresado()
       .snapshotChanges().subscribe(item => {
+        this.arrayEgresados = [];
         this.usuarios = [];
         item.forEach(element => {
           const x = element.payload.toJSON();

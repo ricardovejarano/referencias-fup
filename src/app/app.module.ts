@@ -53,6 +53,7 @@ import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-te
 import { RankingService } from './services/ranking.service';
 import { ImageProfileComponent } from './components/perfil/image-profile/image-profile.component';
 import { UpdateInfoComponent } from './components/perfil/update-info/update-info.component';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { UpdateInfoComponent } from './components/perfil/update-info/update-info
     NormaTecnicaIeeeComponent,
     ImageProfileComponent,
     UpdateInfoComponent,
+    HistorialComponent,
   ],
   imports: [
     FormsModule,
