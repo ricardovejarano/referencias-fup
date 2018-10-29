@@ -9,13 +9,13 @@
           <div *ngFor="let item of nombres; let in=index">
             <div class="form-group">
               <label for="title">Nombre</label>
-              <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+              <input type="text" placeholder="Hugo" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
                 name="nameN{{in}}">
             </div>
 
             <div class="form-group">
               <label for="title">Apellido</label>
-              <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+              <input type="text" placeholder="LOPEZ CASTAÑO" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
                 name="nameA{{in}}">
             </div>
             <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
@@ -24,19 +24,19 @@
 
           <div class="form-group">
             <label for="titulo">Titulo</label>
-            <input type="text" placeholder="Titulo" class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
+            <input type="text" placeholder="El comportamiento de la oferta" class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
               name="titulo">
           </div>
 
           <div class="form-group">
             <label for="subtitulo">Subtitulo</label>
-            <input type="text" placeholder="Subtitulo" class="form-control" id="subtitulo" maxlength="100" [(ngModel)]="subtitulo"
+            <input type="text" placeholder="si tiene Subtitulo" class="form-control" id="subtitulo" maxlength="100" [(ngModel)]="subtitulo"
               name="subtitulo">
           </div>
 
           <div class="form-group">
             <label for="edicion">Numero Edición</label>
-            <input type="text" placeholder="2000" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion"
+            <input type="text" placeholder="diferente a la primera" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion"
               name="edicion">
           </div>
 
@@ -48,7 +48,7 @@
 
           <div class="form-group">
             <label for="editorial">Editorial</label>
-            <input type="text" placeholder="Editorial" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
+            <input type="text" placeholder="escala" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
               name="editorial">
           </div>
 
@@ -62,7 +62,7 @@
 
           <div class="form-group">
             <label for="title">Paginación</label>
-            <input type="text" placeholder="Paginas" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
+            <input type="number" placeholder="128p" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
               name="paginas">
           </div>
 

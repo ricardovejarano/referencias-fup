@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class RevistaComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  ejemplo = 'Mankiw, N. G. (2014). Macroeconomía. Barcelona: Antoni Bosch.';
+  ejemplo = 'Khoudour-Castéras, D. (2015). Convertir la migración en motor del desarrollo. Política Exterior, 29(168), pp. 62-74.';
   nombre = '';
   apellido = '';
   titulo = '';

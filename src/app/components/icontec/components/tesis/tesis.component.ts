@@ -56,7 +56,7 @@ export class TesisIcontecComponent implements OnInit {
 
     for (let z = 0; z < this.nombres.length; z++) {
       if (this.apellidos[z].value) {
-        this.referenciaFinal += this.apellidos[z].value.toUpperCase() + '. ';
+        this.referenciaFinal += this.apellidos[z].value.toUpperCase() + ', ';
       }
       if (this.nombres[z].value) {
         if (z !== (this.nombres.length - 1) && this.nombres.length !== 1) {
@@ -81,7 +81,7 @@ export class TesisIcontecComponent implements OnInit {
     }
 
     if (this.paginas) {
-      this.referenciaFinal += this.paginas + 'p.';
+      this.referenciaFinal += this.paginas + 'p. ';
     }
 
     if (this.tgTitulo) {
