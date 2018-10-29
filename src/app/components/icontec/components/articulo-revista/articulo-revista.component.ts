@@ -46,6 +46,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   usuarios: Usuario[];
   programa = '';
   contadorPrograma = 0;
+  contadorPersona = 0;
 
   constructor(public profileService: PerfilService, public rankingService: RankingService) {
     this.keyAdmin = localStorage.getItem('uid');
@@ -71,6 +72,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
             if (this.rolUsuario !== 'administrativo') {
               console.log('ROL', this.rolUsuario);
               this.getProgram();
+              this.getCounterPerson();
             }
           }
         });
@@ -145,9 +147,30 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
     }
   }
 
-  addCount() {
+  getCounterPerson() {
+    this.rankingService.getContadorPersona(this.keyAdmin, this.rolUsuario)
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.contadorPersona = Number(x);
+          }
+        });
+      });
+  }
 
-    this.rankingService.addCounter(this.programa, this.contadorPrograma)
+  addCountProgram() {
+
+    this.rankingService.addCounterProgram(this.programa, this.contadorPrograma)
+      .then(res => {
+        console.log(res);
+      }, err => {
+        console.log('Error', err);
+      });
+  }
+
+  addCountPerson() {
+    this.rankingService.addCounterPerson(this.rolUsuario, this.keyAdmin, this.contadorPersona)
       .then(res => {
         console.log(res);
       }, err => {
@@ -177,7 +200,10 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addReference() {
 
-    this.addCount();
+    if (localStorage.getItem('logged') === 'true') {
+      this.addCountProgram();
+      this.addCountPerson();
+    }
 
     this.referenciaFinal = '';
 
