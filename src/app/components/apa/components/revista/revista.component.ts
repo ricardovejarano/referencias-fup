@@ -57,7 +57,7 @@ export class RevistaComponent implements OnInit {
 
     for (let z = 0; z < this.nombres.length; z++) {
       if (this.apellidos[z].value) {
-        this.referenciaFinal += this.apellidos[z].value + ', ';
+        this.referenciaFinal += this.apellidos[z].value.replace(/ /g, '-') + ', ';
       }
       if (this.nombres[z].value) {
         if (z !== (this.nombres.length - 1) && this.nombres.length !== 1) {

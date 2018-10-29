@@ -1,3 +1,86 @@
-<p>
-  tesis works!
-</p>
+<main class="container card mt-5">
+    <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+      <div class="col-12 mb-5">
+        <h3 class="text-center">ICONTEC</h3>
+        <h5 class="text-center">Tesis</h5>
+        <div class="row justify-content-center">
+          <div class="col-md-4 pr-md-5 border-right">
+  
+            <div *ngFor="let item of nombres; let in=index">
+  
+              <div class="form-group">
+                <label for="title">Apellido Autor</label>
+                <input type="text" placeholder="Aponte" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+                  name="nameA{{in}}">
+              </div>
+  
+              <div class="form-group">
+                <label for="title">Iniciales Nombre Autor</label>
+                <input type="text" placeholder="L." class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+                  name="nameN{{in}}">
+              </div>
+  
+              <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+            </div>
+            <button (click)="addAuthor()">Agregar Autor</button>
+  
+            <div class="form-group">
+              <label for="anioPublicacion">Año de publicación</label>
+              <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+                <option value="" disabled selected>Año Publicación</option>
+                <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+              </select>
+            </div>
+  
+            <div class="form-group">
+              <label for="titulo">Titulo</label>
+              <input type="text" placeholder="Educación ambiental y evaluación de la densidad " class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
+                name="titulo">
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="tipoTesis">Tipo de Tesis</label>
+              <input type="text" placeholder="Tesis de pregrado, maestria o doctoral" class="form-control" id="tipoTesis"
+                maxlength="100" [(ngModel)]="tipoTesis" name="tipoTesis">
+            </div>
+  
+            <div class="form-group">
+              <label for="institucion">Institución</label>
+              <input type="text" placeholder="Universidad de Caldas" class="form-control" id="institucion" maxlength="100"
+                [(ngModel)]="institucion" name="institucion">
+            </div>
+  
+            <div class="form-group">
+              <label for="pais">Pais Publicacion</label>
+              <input type="text" placeholder="Colombia" class="form-control" id="pais" maxlength="100" [(ngModel)]="pais"
+                name="pais">
+            </div>
+  
+            <div class="form-group">
+              <label for="ciudad">Ciudad de Publicación</label>
+              <input type="text" placeholder="Manizales" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
+                name="ciudad">
+            </div>
+  
+            <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+            <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
+              <i class="fas fa-sync-alt"></i> Limpiar
+            </button>
+  
+          </div>
+        </div>
+      </div>
+    </form>
+  
+  
+    <div class="form-group">
+      <label for="title">Referencia Final</label>
+      <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+      <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+      <button *ngIf="userRegister">Guardar en historial</button>
+      <p>Ejemplo: {{ejemplo}}</p>
+    </div>
+  
+  
+  </main>
