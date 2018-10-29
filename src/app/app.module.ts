@@ -54,6 +54,7 @@ import { RankingService } from './services/ranking.service';
 import { ImageProfileComponent } from './components/perfil/image-profile/image-profile.component';
 import { UpdateInfoComponent } from './components/perfil/update-info/update-info.component';
 import { HistorialComponent } from './components/historial/historial.component';
+import { CardReferenciaComponent } from './components/historial/components/card-referencia/card-referencia.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { HistorialComponent } from './components/historial/historial.component';
     ImageProfileComponent,
     UpdateInfoComponent,
     HistorialComponent,
+    CardReferenciaComponent,
   ],
   imports: [
     FormsModule,
