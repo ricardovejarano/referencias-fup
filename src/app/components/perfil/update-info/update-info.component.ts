@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-update-info',
@@ -21,14 +23,17 @@ export class UpdateInfoComponent implements OnInit {
   UsuarioPerfil: Usuario = new Usuario();
   data: any;
 
-  constructor(public profileService: PerfilService,
-    public router: Router
-    ) {
+  constructor(
+    public profileService: PerfilService,
+    public router: Router,
+    private toastr: ToastrService,
+  ) {
     this.getKey();
   }
 
   ngOnInit() {
     this.getRol();
+
     // obtener Imagen de perfil
     this.profileService.getProfileImage(this.keyUser).then(url => {
       this.data = url;
@@ -75,11 +80,21 @@ export class UpdateInfoComponent implements OnInit {
   }
 
   editProfile() {
-    console.log('Se edita perfil');
+    this.profileService.updateProfileUser(this.UsuarioPerfil, this.rolUsuario, this.keyUser)
+      .then((res) => {
+        this.toastr.success('Perfil Actualizado');
+      }).catch((err) => {
+        this.toastr.warning('No se ha Podido actualizar el perfil');
+      });
+
   }
 
   changeImageProfile() {
     this.router.navigate(['perfil/cambiar-imagen']);
+  }
+
+  returnOrganization() {
+    this.router.navigate(['']);
   }
 
 }

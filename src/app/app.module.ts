@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ImageCropperModule} from 'ng2-img-cropper';
+import { CommonModule } from '@angular/common';
 
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
@@ -100,7 +101,8 @@ import { UpdateInfoComponent } from './components/perfil/update-info/update-info
     AppRoutingModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    CommonModule,
   ],
   providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]

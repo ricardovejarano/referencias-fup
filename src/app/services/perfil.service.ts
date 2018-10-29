@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,14 +55,25 @@ export class PerfilService {
     return this.usersList = this.afDatabase.list('rol');
   }
 
-  saveImageProfile(keyAdmin, img) {
-    const storageRef = firebase.storage().ref(`imagesProfile/${keyAdmin}`);
+  saveImageProfile(keyUser, img) {
+    const storageRef = firebase.storage().ref(`imagesProfile/${keyUser}`);
     return storageRef.putString(img, 'base64', { contentType: 'image/png' });
   }
 
-  getProfileImage(keyAdmin) {
+  getProfileImage(keyUser) {
     const storage = firebase.storage();
-    const pathReference = storage.ref(`imagesProfile/${keyAdmin}`);
+    const pathReference = storage.ref(`imagesProfile/${keyUser}`);
     return pathReference.getDownloadURL();
+  }
+
+  updateProfileUser(user: Usuario, rolUsuario, keyUser) {
+    console.log(rolUsuario);
+    console.log(keyUser);
+    return this.afDatabase.list(`${rolUsuario}`).update(keyUser, {
+      edad: user.edad,
+      nombre: user.nombre,
+      programa: user.programa,
+      semestre: user.semestre,
+    });
   }
 }
