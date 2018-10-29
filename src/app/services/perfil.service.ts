@@ -30,6 +30,10 @@ export class PerfilService {
     return this.adminsList = this.afDatabase.list(rol);
   }
 
+  getContadorProgramas() {
+    return this.adminsList = this.afDatabase.list('contador-programas');
+  }
+
   getEstudiantes() {
     return this.adminsList = this.afDatabase.list('estudiante');
   }
