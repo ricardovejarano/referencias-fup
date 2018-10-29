@@ -145,6 +145,19 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   }
 
   addReference() {
+
+    if (localStorage.getItem('logged') === 'true') {
+      this.profileService.getContadorPersonas()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === this.programa) {
+            console.log('VALOR', x);
+          }
+        });
+      });
+    }
+
     this.referenciaFinal = '';
 
     for (let z = 0; z < this.nombres.length; z++) {
