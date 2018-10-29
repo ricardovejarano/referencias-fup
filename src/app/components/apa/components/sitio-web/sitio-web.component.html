@@ -25,7 +25,7 @@
           <button (click)="addAuthor()">Agregar Autor</button>
 
           <div class="form-group">
-              <label for="title">Fecha de la publicacíon</label>
+              <label for="title">Fecha de la publicación</label>
               <select [(ngModel)]="fechaCitaDia" name="fechaCitaDia" class="form-control">
                 <option value="" disabled selected>Día</option>
                 <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
@@ -44,9 +44,9 @@
             </div>
 
           <div class="form-group  border-top ">
-            <label for="title">Titulo Articulo/Post</label>
-            <input type="text" placeholder="Anarquismo y leyes justas " class="form-control" id="title" maxlength="100" [(ngModel)]="titulo"
-              name="title">
+            <label for="titulo">Titulo Articulo/Post</label>
+            <input type="text" placeholder="Anarquismo y leyes justas " class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
+              name="titulo">
           </div>
 
           <div class="form-group">
