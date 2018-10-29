@@ -30,6 +30,22 @@ export class PerfilService {
     return this.adminsList = this.afDatabase.list(rol);
   }
 
+  getEstudiantes() {
+    return this.adminsList = this.afDatabase.list('estudiante');
+  }
+
+  getDocentes() {
+    return this.adminsList = this.afDatabase.list('docente');
+  }
+
+  getAdministrativos() {
+    return this.adminsList = this.afDatabase.list('administrativo');
+  }
+
+  getEgresado() {
+    return this.adminsList = this.afDatabase.list('egresado');
+  }
+
   getRol() {
     return this.adminsList = this.afDatabase.list('rol');
   }
