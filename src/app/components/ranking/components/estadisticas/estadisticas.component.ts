@@ -21,6 +21,24 @@ export class EstadisticasComponent implements OnInit {
   arrayEgresados = [];
   averageEgresados = 0;
 
+  // Usuario que más usa la aplicación
+  estudiante = '';
+  estudianteUsos = 0;
+  administrativo = '';
+  administrativoUsos = 0;
+  egresado = '';
+  egresadoUsos = 0;
+  docente = '';
+  docenteUsos = 0;
+
+  // Referencias mas usadas
+  icontec = '';
+  apa = '';
+  ieee = '';
+  icontecUsos = 0;
+  apaUsos = 0;
+  ieeeUsos = 0;
+
 
   constructor(public profileService: PerfilService) { }
 
@@ -56,7 +74,7 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayEstudiantes.length; x++) {
           sum += this.arrayEstudiantes[x];
         }
-        this.averageEstuaidntes = sum /  this.arrayEstudiantes.length;
+        this.averageEstuaidntes = sum / this.arrayEstudiantes.length;
         console.log(this.arrayEstudiantes, 'Promedio', this.averageEstuaidntes);
       });
   }
@@ -78,7 +96,7 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayDocentes.length; x++) {
           sum += this.arrayDocentes[x];
         }
-        this.averageDocentes = sum /  this.arrayDocentes.length;
+        this.averageDocentes = sum / this.arrayDocentes.length;
         console.log(this.arrayDocentes, 'Promedio', this.averageDocentes);
       });
   }
@@ -100,7 +118,7 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayAdministrativos.length; x++) {
           sum += this.arrayAdministrativos[x];
         }
-        this.averageAdminstrativos = sum /  this.arrayAdministrativos.length;
+        this.averageAdminstrativos = sum / this.arrayAdministrativos.length;
         console.log(this.arrayAdministrativos, 'Promedio', this.averageAdminstrativos);
       });
   }
@@ -122,7 +140,7 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayEgresados.length; x++) {
           sum += this.arrayEgresados[x];
         }
-        this.averageEgresados = sum /  this.arrayEgresados.length;
+        this.averageEgresados = sum / this.arrayEgresados.length;
         console.log(this.arrayEgresados, 'Promedio', this.averageEgresados);
       });
   }
