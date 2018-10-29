@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PerfilService } from 'src/app/services/perfil.service';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-articulo-revista',
@@ -38,11 +40,88 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   nombres = [{ value: '' }];
   apellidos = [{ value: '' }];
+  keyAdmin = '';
+  rolUsuario = '';
+  usuarios: Usuario[];
+  programa = '';
 
-  constructor() { }
+  constructor(public profileService: PerfilService) {
+    this.keyAdmin = localStorage.getItem('uid');
+  }
 
   ngOnInit() {
     this.getArray();
+    if (localStorage.getItem('logged') === 'true') {
+      console.log('Entra a la función');
+      this.getRol();
+    } else {
+      console.log('NO ENTRA');
+    }
+  }
+
+  getRol() {
+    this.profileService.getRol()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === this.keyAdmin) {
+            this.rolUsuario = x.toString();
+            if (this.rolUsuario !== 'administrativo') {
+              console.log('ROL', this.rolUsuario);
+              this.getProgram();
+            }
+          }
+        });
+      });
+  }
+
+  getProgram() {
+    switch (this.rolUsuario) {
+      case 'estudiante':
+        this.profileService.getEstudiantes()
+          .snapshotChanges().subscribe(item => {
+            this.usuarios = [];
+            item.forEach(element => {
+              const x = element.payload.toJSON();
+              if (element.key === this.keyAdmin) {
+                x['$key'] = element.key;
+                if (x['programa']) {
+                  this.programa = x['programa'];
+                }
+              }
+            });
+            console.log('Programa', this.programa);
+          });
+        break;
+      case 'docente':
+        this.profileService.getDocentes()
+          .snapshotChanges().subscribe(item => {
+            this.usuarios = [];
+            item.forEach(element => {
+              const x = element.payload.toJSON();
+              x['$key'] = element.key;
+              if (x['programa']) {
+                this.programa = x['programa'];
+              }
+            });
+            console.log('Programa', this.programa);
+          });
+        break;
+      case 'egresado':
+        this.profileService.getEgresado()
+          .snapshotChanges().subscribe(item => {
+            this.usuarios = [];
+            item.forEach(element => {
+              const x = element.payload.toJSON();
+              x['$key'] = element.key;
+              if (x['programa']) {
+                this.programa = x['programa'];
+              }
+            });
+            console.log('Programa', this.programa);
+          });
+        break;
+    }
   }
 
   addAuthor() {
