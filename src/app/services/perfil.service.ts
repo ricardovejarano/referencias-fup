@@ -8,7 +8,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class PerfilService {
 
-  adminsList: AngularFireList<any>;
+  usersList: AngularFireList<any>;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -27,30 +27,41 @@ export class PerfilService {
   }
 
   getUsers(rol) {
-    return this.adminsList = this.afDatabase.list(rol);
+    return this.usersList = this.afDatabase.list(rol);
   }
 
   getContadorProgramas() {
-    return this.adminsList = this.afDatabase.list('contador-programas');
+    return this.usersList = this.afDatabase.list('contador-programas');
   }
 
   getEstudiantes() {
-    return this.adminsList = this.afDatabase.list('estudiante');
+    return this.usersList = this.afDatabase.list('estudiante');
   }
 
   getDocentes() {
-    return this.adminsList = this.afDatabase.list('docente');
+    return this.usersList = this.afDatabase.list('docente');
   }
 
   getAdministrativos() {
-    return this.adminsList = this.afDatabase.list('administrativo');
+    return this.usersList = this.afDatabase.list('administrativo');
   }
 
   getEgresado() {
-    return this.adminsList = this.afDatabase.list('egresado');
+    return this.usersList = this.afDatabase.list('egresado');
   }
 
   getRol() {
-    return this.adminsList = this.afDatabase.list('rol');
+    return this.usersList = this.afDatabase.list('rol');
+  }
+
+  saveImageProfile(keyAdmin, img) {
+    const storageRef = firebase.storage().ref(`imagesProfile/${keyAdmin}`);
+    return storageRef.putString(img, 'base64', { contentType: 'image/png' });
+  }
+
+  getProfileImage(keyAdmin) {
+    const storage = firebase.storage();
+    const pathReference = storage.ref(`imagesProfile/${keyAdmin}`);
+    return pathReference.getDownloadURL();
   }
 }

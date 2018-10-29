@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+// Estilos
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ImageCropperModule} from 'ng2-img-cropper';
+
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -45,6 +50,8 @@ import { PerfilService } from './services/perfil.service';
 import { CapituloLibroIeeeComponent } from './components/ieee/components/capitulo-libro-ieee/capitulo-libro-ieee.component';
 import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-tecnica-ieee/norma-tecnica-ieee.component';
 import { RankingService } from './services/ranking.service';
+import { ImageProfileComponent } from './components/perfil/image-profile/image-profile.component';
+import { UpdateInfoComponent } from './components/perfil/update-info/update-info.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +87,9 @@ import { RankingService } from './services/ranking.service';
     EstadisticasComponent,
     PerfilComponent,
     CapituloLibroIeeeComponent,
-    NormaTecnicaIeeeComponent
+    NormaTecnicaIeeeComponent,
+    ImageProfileComponent,
+    UpdateInfoComponent,
   ],
   imports: [
     FormsModule,
@@ -88,7 +97,10 @@ import { RankingService } from './services/ranking.service';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    ImageCropperModule
   ],
   providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]

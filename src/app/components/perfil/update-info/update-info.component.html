@@ -4,18 +4,13 @@
         <div class="col-md-6 card p-5">
             <h1 class="m-3 text-center">Perfil de Usuario</h1>
             <h3 class="m-3 text-center">{{rolUsuario}}</h3>
-            <div class="w-100">
-                <figure class="text-center">
-                    <img width="80" height="80" alt="Imagen de perfil" class="rounded-circle shadow" [src]="srcImage">
-                </figure>
-            </div>
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-8 text-center mt-3">
-                    <span> Seleccionar Imagen:
-                        <input type="file" accept="image/*" (change)="fileChangeListener($event)">
-                    </span>
-                </div>
-            </div>
+            <div class=" form-group text-center">
+                <img class="profile-img" alt=""
+                [src]=" data ? data :  srcImage"  >
+                <button class="btn btn-color btn-md" (click)="changeImageProfile()">
+                  <i class=""></i> Cambiar Imagen de Perfil
+                </button>
+              </div>
 
             <form (ngSubmit)="editProfile()" #orgForm="ngForm">
                 <div class="form-group">
