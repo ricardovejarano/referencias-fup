@@ -17,20 +17,11 @@
         </select>
       </div>
 
-      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-        <label for="title">Nombre Completo</label><br>
-        <input class="input100" required type="text" name="fullName" id="fullName" [(ngModel)]="fullName" placeholder="Nombre Completo">
-      </div>
-
-      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-        <label for="title">Correo Electrónico</label><br>
-        <input class="input100" required email type="email" name="email" id="email" [(ngModel)]="email" placeholder="Correo">
-      </div>
-
       <div *ngIf="esEstudiante || esEgresado" class="wrap-input100 validate-input">
-        <label for="title">Rol en la Universidad</label><br>
-        <select [(ngModel)]="semestre" name="programa" class="input100">
-          <option value="" disabled selected>Administración de Empresas</option>
+        <label for="title">Programa</label><br>
+        <select [(ngModel)]="programa" name="programa" class="input100">
+          <option value="" disabled selected>Selecciones una opción</option>
+          <option value="Administración de Empresas">Administración de Empresas</option>
           <option value="Administración de Empresas Agropecuarias">Administración de Empresas Agropecuarias</option>
           <option value="Arquitectura">Arquitectura</option>
           <option value="Contaduría Pública">Contaduría Pública</option>
@@ -51,6 +42,40 @@
           <option value="Virtual - Comunicación Social">Virtual - Comunicación Social</option>
         </select>
       </div>
+
+      <div *ngIf="esEstudiante || esEgresado" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+          <label for="title">Semestre</label><br>
+          <select [(ngModel)]="semestre" name="semestre" class="input100">
+              <option value="" disabled selected>Seleccione el semestre</option>
+              <option value="1">I</option>
+              <option value="2">II</option>
+              <option value="3">III</option>
+              <option value="4">VI</option>
+              <option value="5">V</option>
+              <option value="6">VI</option>
+              <option value="7">VII</option>
+              <option value="8">VIII</option>
+              <option value="9">IX</option>
+              <option value="10">X</option>
+            </select>
+        </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <label for="title">Nombre Completo</label><br>
+        <input class="input100" required type="text" name="fullName" id="fullName" [(ngModel)]="fullName" placeholder="Nombre Completo">
+      </div>
+
+      <div class="wrap-input100 validate-input">
+        <label for="title">Edad</label><br>
+        <input class="input100" required type="text" name="edad" id="edad" [(ngModel)]="edad" placeholder="Edad">
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+        <label for="title">Correo Electrónico</label><br>
+        <input class="input100" required email type="email" name="email" id="email" [(ngModel)]="email" placeholder="Correo">
+      </div>
+
+
 
       <div class="wrap-input100 validate-input" data-validate="Password is required">
         <label>Contraseña</label><br>
