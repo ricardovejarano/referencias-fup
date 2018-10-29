@@ -44,6 +44,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilService } from './services/perfil.service';
 import { CapituloLibroIeeeComponent } from './components/ieee/components/capitulo-libro-ieee/capitulo-libro-ieee.component';
 import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-tecnica-ieee/norma-tecnica-ieee.component';
+import { RankingService } from './services/ranking.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,7 @@ import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-te
     AngularFireDatabaseModule,
     AppRoutingModule
   ],
-  providers: [AuthService, PerfilService],
+  providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { Usuario } from 'src/app/models/usuario.model';
+import { RankingService } from 'src/app/services/ranking.service';
 
 @Component({
   selector: 'app-articulo-revista',
@@ -44,8 +45,9 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   rolUsuario = '';
   usuarios: Usuario[];
   programa = '';
+  contadorPrograma = 0;
 
-  constructor(public profileService: PerfilService) {
+  constructor(public profileService: PerfilService, public rankingService: RankingService) {
     this.keyAdmin = localStorage.getItem('uid');
   }
 
@@ -131,15 +133,26 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
     if (localStorage.getItem('logged') === 'true') {
       console.log('ÉNTRA!!!');
       this.profileService.getContadorProgramas()
-      .snapshotChanges().subscribe(item => {
-        item.forEach(element => {
-          const x = element.payload.toJSON();
-          if (element.key === this.programa) {
-            console.log('VALOR', x);
-          }
+        .snapshotChanges().subscribe(item => {
+          item.forEach(element => {
+            const x = element.payload.toJSON();
+            if (element.key === this.programa) {
+              this.contadorPrograma = Number(x['contadorActualizado']);
+              console.log('VALOR', this.contadorPrograma);
+            }
+          });
         });
-      });
     }
+  }
+
+  addCount() {
+
+    this.rankingService.addCounter(this.programa, this.contadorPrograma)
+      .then(res => {
+        console.log(res);
+      }, err => {
+        console.log('Error', err);
+      });
   }
 
   addAuthor() {
@@ -164,7 +177,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addReference() {
 
-
+    this.addCount();
 
     this.referenciaFinal = '';
 
