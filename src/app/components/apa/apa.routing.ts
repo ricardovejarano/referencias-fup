@@ -16,7 +16,7 @@ export const apaRoutes: Routes = [
             { path: '', component: SitioWebComponent },
             { path: 'periodico', component: PeriodicosComponent },
             { path: 'congreso', component: CongresosComponent },
-            { path: 'libro', component: LibroApaComponent },
+            { path: 'libros', component: LibroApaComponent },
             { path: 'capitulo-libro', component: CapituloLibroComponent },
             { path: 'revista', component: RevistaComponent },
             { path: 'tesis', component: TesisComponent },
