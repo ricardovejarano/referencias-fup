@@ -36,6 +36,7 @@ export class EstadisticasComponent implements OnInit {
 
   edadPromedio() {
     this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / 4;
+    this.promedioEdad = Math.floor(this.promedioEdad);
   }
 
   estudiantesPromedio() {
