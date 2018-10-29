@@ -91,6 +91,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
               }
             });
             console.log('Programa', this.programa);
+            this.getValueConunterProgram();
           });
         break;
       case 'docente':
@@ -105,6 +106,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
               }
             });
             console.log('Programa', this.programa);
+            this.getValueConunterProgram();
           });
         break;
       case 'egresado':
@@ -119,8 +121,24 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
               }
             });
             console.log('Programa', this.programa);
+            this.getValueConunterProgram();
           });
         break;
+    }
+  }
+
+  getValueConunterProgram() {
+    if (localStorage.getItem('logged') === 'true') {
+      console.log('ÉNTRA!!!');
+      this.profileService.getContadorProgramas()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === this.programa) {
+            console.log('VALOR', x);
+          }
+        });
+      });
     }
   }
 
@@ -146,17 +164,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addReference() {
 
-    if (localStorage.getItem('logged') === 'true') {
-      this.profileService.getContadorPersonas()
-      .snapshotChanges().subscribe(item => {
-        item.forEach(element => {
-          const x = element.payload.toJSON();
-          if (element.key === this.programa) {
-            console.log('VALOR', x);
-          }
-        });
-      });
-    }
+
 
     this.referenciaFinal = '';
 
