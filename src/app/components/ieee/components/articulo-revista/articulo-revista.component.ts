@@ -14,8 +14,8 @@ export class ArticuloRevistaComponent implements OnInit {
   apellido = '';
   titulo = '';
   tituloRevista = '';
-  volumen = '';
-  numero = '';
+  volumen = 0;
+  numero = 0;
   paginaInicial = 0;
   paginaFinal = 0;
   url = '';
@@ -81,11 +81,11 @@ export class ArticuloRevistaComponent implements OnInit {
     }
 
     if (this.volumen) {
-      this.referenciaFinal += this.volumen + ', ';
+      this.referenciaFinal += 'vol. ' + this.volumen + ', ';
     }
 
     if (this.numero) {
-      this.referenciaFinal += this.numero + ', ';
+      this.referenciaFinal += 'n.º ' + this.numero + ', ';
     }
 
     if (this.paginaInicial) {
