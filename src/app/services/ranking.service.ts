@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Referencia } from '../models/referencia.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,11 @@ export class RankingService {
     return myRefSale.update({
          contador
     });
+  }
+
+  addReference(rol: String, uid: string, referencia: Referencia) {
+    const myRefSale = this.afDatabase.list(`${rol}/${uid}/historial`);
+    return myRefSale.push(referencia);
   }
 
   getContadorPersona(uid, rol) {

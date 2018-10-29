@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { RankingService } from 'src/app/services/ranking.service';
+import { Referencia } from 'src/app/models/referencia.model';
 
 @Component({
   selector: 'app-articulo-revista',
@@ -44,6 +45,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   keyAdmin = '';
   rolUsuario = '';
   usuarios: Usuario[];
+  referencia: Referencia = new Referencia();
   programa = '';
   contadorPrograma = 0;
   contadorPersona = 0;
@@ -57,6 +59,7 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
     this.getArray();
     this.getCounterReference();
     if (localStorage.getItem('logged') === 'true') {
+      this.userRegister = true;
       this.getRol();
     } else {
       console.log('NO ENTRA');
@@ -193,6 +196,19 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
     this.rankingService.addCounterReference('icontec', 'articulo-revista', this.contadorReferencia)
       .then(res => {
         console.log(res);
+      }, err => {
+        console.log('Error', err);
+      });
+  }
+
+  saveHistory() {
+    this.referencia.cita = this.referenciaFinal;
+    this.referencia.referencia = 'ICONTEC';
+    this.referencia.subReferencia = 'Artículo o Revista';
+    this.rankingService.addReference(this.rolUsuario, this.keyAdmin, this.referencia)
+      .then(res => {
+        console.log(res);
+        window.alert('Cita guardada');
       }, err => {
         console.log('Error', err);
       });
