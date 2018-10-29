@@ -1,3 +1,79 @@
-<p>
-  libro works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h3 class="text-center">IEEE</h3>
+      <h5 class="text-center">Libros</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+
+          <div *ngFor="let item of nombres; let in=index">
+
+            <div class="form-group">
+              <label for="title">Iniciales Nombres Autor</label>
+              <input type="text" placeholder="G. F. " class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+                name="nameN{{in}}">
+            </div>
+
+            <div class="form-group">
+              <label for="title">Apellidos Autor</label>
+              <input type="text" placeholder="Knoll" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+                name="nameA{{in}}">
+            </div>
+
+            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+          </div>
+          <button (click)="addAuthor()">Agregar Autor</button>
+
+          <div class="form-group">
+            <label for="titulo">Titulo del Libro</label>
+            <input type="text" placeholder="Radiation detection and measurement" class="form-control" id="titulo"
+              maxlength="100" [(ngModel)]="titulo" name="titulo">
+          </div>
+          
+          <div class="form-group">
+              <label for="edicion">Edición</label>
+              <input type="text" placeholder="4th ed" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion"
+                name="edicion">
+            </div>
+
+            <div class="form-group">
+                <label for="ciudad">Lugar de Publicación</label>
+                <input type="text" placeholder="Valencia" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
+                  name="ciudad">
+              </div>
+  
+          <div class="form-group">
+            <label for="title">Editorial</label>
+            <input type="text" placeholder="John Wiley & Sons" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
+              name="editorial">
+          </div>
+
+          <div class="form-group">
+            <label for="anioPublicacion">Año de publicación</label>
+            <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+              <option value="" disabled selected>Año Publicación</option>
+              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+            </select>
+          </div>
+   
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
+            <i class="fas fa-sync-alt"></i> Limpiar
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="form-group">
+    <label for="title">Referencia Final</label>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button *ngIf="userRegister">Guardar en historial</button>
+    <p>Ejemplo: {{ejemplo}}</p>
+  </div>
+
+
+</main>
