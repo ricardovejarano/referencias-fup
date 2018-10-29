@@ -41,6 +41,7 @@ import { ArticuloRevistaComponent } from './components/ieee/components/articulo-
 import { ArticuloRevistaIcontecComponent } from './components/icontec/components/articulo-revista/articulo-revista.component';
 import { LibroComponent } from './components/ieee/components/libro/libro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilService } from './services/perfil.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     AngularFireDatabaseModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PerfilService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

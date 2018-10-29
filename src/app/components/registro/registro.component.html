@@ -17,7 +17,7 @@
         </select>
       </div>
 
-      <div *ngIf="esEstudiante || esEgresado" class="wrap-input100 validate-input">
+      <div *ngIf="esEstudiante || esEgresado || esDocente" class="wrap-input100 validate-input">
         <label for="title">Programa</label><br>
         <select [(ngModel)]="programa" name="programa" class="input100">
           <option value="" disabled selected>Selecciones una opción</option>
@@ -43,7 +43,7 @@
         </select>
       </div>
 
-      <div *ngIf="esEstudiante || esEgresado" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+      <div *ngIf="esEstudiante" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
           <label for="title">Semestre</label><br>
           <select [(ngModel)]="semestre" name="semestre" class="input100">
               <option value="" disabled selected>Seleccione el semestre</option>
