@@ -63,6 +63,13 @@ export class EstadisticasComponent implements OnInit {
   nombreAdministrativo = '';
   contadorAdministrativo = 0;
 
+  arrayNombresEgresado = [];
+  arrayNombresDocente = [];
+  arrayNombresEstudiante = [];
+  arrayContadoresEstudiante = [] ;
+  arrayContadoresEgresado = [];
+  arrayContadoresDocente = [];
+
 
   constructor(public profileService: PerfilService, public rankingService: RankingService) { }
 
@@ -233,6 +240,45 @@ export class EstadisticasComponent implements OnInit {
         this.mejorAdministrativo();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
       });
+
+      this.rankingService.getEstudiantes()
+      .snapshotChanges().subscribe(item => {
+        this.arrayNombresEstudiante = [];
+        this.arrayContadoresEstudiante = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayNombresEstudiante.push(x['nombre']);
+          this.arrayContadoresEstudiante.push(Number(x['contador']));
+        });
+        this.mejorEstudiante();
+        console.log('ARRAY DE Estudiantes', this.arrayNombresEstudiante, this.arrayContadoresEstudiante);
+      });
+
+      this.rankingService.getDocentes()
+      .snapshotChanges().subscribe(item => {
+        this.arrayNombresDocente = [];
+        this.arrayContadoresDocente = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayNombresDocente.push(x['nombre']);
+          this.arrayContadoresDocente.push(Number(x['contador']));
+        });
+        this.mejorDocente();
+        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresDocente, this.arrayContadoresDocente);
+      });
+
+      this.rankingService.getEgresados()
+      .snapshotChanges().subscribe(item => {
+        this.arrayNombresEgresado = [];
+        this.arrayContadoresEgresado = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayNombresEgresado.push(x['nombre']);
+          this.arrayContadoresEgresado.push(Number(x['contador']));
+        });
+        this.mejorEgresado();
+        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresEgresado, this.arrayContadoresEgresado);
+      });
   }
 
   mejorAdministrativo() {
@@ -244,6 +290,42 @@ export class EstadisticasComponent implements OnInit {
     }
     this.nombreAdministrativo = this.arrayNombresAdministrativo[pos];
     this.contadorAdministrativo = this.arrayContadoresAdministrativo[pos];
+    console.log('La posición ganadora es: ', pos);
+  }
+
+  mejorEstudiante() {
+    let pos = 0;
+    for (let x = 0; x < this.arrayNombresEstudiante.length; x++) {
+      if (this.arrayContadoresEstudiante[x] > this.arrayContadoresEstudiante[pos]) {
+        pos = x;
+      }
+    }
+    this.estudiante = this.arrayNombresEstudiante[pos];
+    this.estudianteUsos = this.arrayContadoresEstudiante[pos];
+    console.log('La posición ganadora es: ', pos);
+  }
+
+  mejorDocente() {
+    let pos = 0;
+    for (let x = 0; x < this.arrayNombresDocente.length; x++) {
+      if (this.arrayContadoresDocente[x] > this.arrayContadoresDocente[pos]) {
+        pos = x;
+      }
+    }
+    this.docente = this.arrayNombresDocente[pos];
+    this.docenteUsos = this.arrayContadoresDocente[pos];
+    console.log('La posición ganadora es: ', pos);
+  }
+
+  mejorEgresado() {
+    let pos = 0;
+    for (let x = 0; x < this.arrayNombresEgresado.length; x++) {
+      if (this.arrayContadoresEgresado[x] > this.arrayContadoresEgresado[pos]) {
+        pos = x;
+      }
+    }
+    this.egresado = this.arrayNombresEgresado[pos];
+    this.egresadoUsos = this.arrayContadoresEgresado[pos];
     console.log('La posición ganadora es: ', pos);
   }
 
