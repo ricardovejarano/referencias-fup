@@ -242,6 +242,8 @@ export class EstadisticasComponent implements OnInit {
         pos = x;
       }
     }
+    this.nombreAdministrativo = this.arrayNombresAdministrativo[pos];
+    this.contadorAdministrativo = this.arrayContadoresAdministrativo[pos];
     console.log('La posición ganadora es: ', pos);
   }
 
