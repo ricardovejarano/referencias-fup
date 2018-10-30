@@ -23,8 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/sass/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "../node_modules/bootstrap-scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
