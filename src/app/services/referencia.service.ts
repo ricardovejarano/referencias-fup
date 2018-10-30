@@ -18,4 +18,8 @@ export class ReferenciaService {
     return this.Referencias = this.afDatabase.list(`${rolUser}/${keyUser}/historial`);
   }
 
+  deleteReference(keyReferencia, rolUser, keyUser) {
+    return this.afDatabase.list(`${rolUser}/${keyUser}/historial`).remove(keyReferencia);
+    }
+
 }
