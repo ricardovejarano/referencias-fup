@@ -1,0 +1,54 @@
+//@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+$turquesa: rgb(50, 173,195);
+$amarillo: rgb(255, 204, 0);
+
+#sideBar{
+    max-width: 20rem;
+    min-width: 3.5rem;
+    width: 100%;
+    height: 100vh;
+    .nav-link {
+        color: $amarillo;
+        font-weight: 700;
+    }
+    background-color: $turquesa;
+    .dropdown-item{
+        white-space: normal;
+        color: #fff;
+        padding-left: 0;
+        &.active{
+            padding-left: 1.5rem;
+            border-left: 3px solid $amarillo;
+            background-color: transparent !important;
+        }
+        &:hover{
+            text-decoration: underline !important;
+            background-color: transparent;
+        }
+    }
+}
+app-root > *:nth-child(2){
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center !important;
+    & > *:nth-child(3){       
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+        padding: 3rem 1.5rem;
+        max-height: 100vh;
+        overflow-y: auto;
+        .card{
+            padding: 2rem;
+        }
+    }
+}
