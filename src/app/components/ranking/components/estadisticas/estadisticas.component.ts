@@ -39,13 +39,13 @@ export class EstadisticasComponent implements OnInit {
 
 
   // Usuario que más usa la aplicación
-  estudiante = '';
+  estudiante = 'No aplica';
   estudianteUsos = 0;
-  administrativo = '';
+  administrativo = 'No aplica';
   administrativoUsos = 0;
-  egresado = '';
+  egresado = 'No aplica';
   egresadoUsos = 0;
-  docente = '';
+  docente = 'No aplica';
   docenteUsos = 0;
 
   zero = 0;
@@ -82,7 +82,7 @@ export class EstadisticasComponent implements OnInit {
   arrayNombresEgresado = [];
   arrayNombresDocente = [];
   arrayNombresEstudiante = [];
-  arrayContadoresEstudiante = [] ;
+  arrayContadoresEstudiante = [];
   arrayContadoresEgresado = [];
   arrayContadoresDocente = [];
 
@@ -114,7 +114,24 @@ export class EstadisticasComponent implements OnInit {
   }
 
   edadPromedio() {
-    this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / 4;
+    let totalEdades = 0;
+    if (this.averageAdminstrativos !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageEstuaidntes !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageEgresados !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageDocentes !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (totalEdades !== 0) {
+      // tslint:disable-next-line:max-line-length
+      this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / totalEdades;
+    }
+
     this.promedioEdad = Math.floor(this.promedioEdad);
     if (this.promedioEdad === 0 && this.zero === 0) {
       this.ngOnInit();
@@ -139,7 +156,10 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayEstudiantes.length; x++) {
           sum += this.arrayEstudiantes[x];
         }
-        this.averageEstuaidntes = sum / this.arrayEstudiantes.length;
+        if (this.arrayEstudiantes.length !== 0) {
+          this.averageEstuaidntes = sum / this.arrayEstudiantes.length;
+          this.averageEstuaidntes = Math.floor(this.averageEstuaidntes);
+        }
         // console.log(this.arrayEstudiantes, 'Promedio', this.averageEstuaidntes);
       });
   }
@@ -161,7 +181,10 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayDocentes.length; x++) {
           sum += this.arrayDocentes[x];
         }
-        this.averageDocentes = sum / this.arrayDocentes.length;
+        if (this.arrayDocentes.length !== 0) {
+          this.averageDocentes = sum / this.arrayDocentes.length;
+          this.averageDocentes = Math.floor(this.averageDocentes);
+        }
         // console.log(this.arrayDocentes, 'Promedio', this.averageDocentes);
       });
   }
@@ -183,7 +206,11 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayAdministrativos.length; x++) {
           sum += this.arrayAdministrativos[x];
         }
-        this.averageAdminstrativos = sum / this.arrayAdministrativos.length;
+        if (this.arrayAdministrativos.length !== 0) {
+          this.averageAdminstrativos = sum / this.arrayAdministrativos.length;
+          this.averageAdminstrativos = Math.floor(this.averageAdminstrativos);
+        }
+
         // console.log(this.arrayAdministrativos, 'Promedio', this.averageAdminstrativos);
       });
   }
@@ -205,7 +232,10 @@ export class EstadisticasComponent implements OnInit {
         for (let x = 0; x < this.arrayEgresados.length; x++) {
           sum += this.arrayEgresados[x];
         }
-        this.averageEgresados = sum / this.arrayEgresados.length;
+        if (this.arrayEgresados.length !== 0) {
+          this.averageEgresados = sum / this.arrayEgresados.length;
+          this.averageEgresados = Math.floor(this.averageEgresados);
+        }
         // console.log(this.arrayEgresados, 'Promedio', this.averageEgresados);
       });
   }
@@ -270,7 +300,7 @@ export class EstadisticasComponent implements OnInit {
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
       });
 
-      this.rankingService.getEstudiantes()
+    this.rankingService.getEstudiantes()
       .snapshotChanges().subscribe(item => {
         this.arrayNombresEstudiante = [];
         this.arrayContadoresEstudiante = [];
@@ -284,7 +314,7 @@ export class EstadisticasComponent implements OnInit {
         console.log('ARRAY DE Estudiantes', this.arrayNombresEstudiante, this.arrayContadoresEstudiante);
       });
 
-      this.rankingService.getDocentes()
+    this.rankingService.getDocentes()
       .snapshotChanges().subscribe(item => {
         this.arrayNombresDocente = [];
         this.arrayContadoresDocente = [];
@@ -298,7 +328,7 @@ export class EstadisticasComponent implements OnInit {
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresDocente, this.arrayContadoresDocente);
       });
 
-      this.rankingService.getEgresados()
+    this.rankingService.getEgresados()
       .snapshotChanges().subscribe(item => {
         this.arrayNombresEgresado = [];
         this.arrayContadoresEgresado = [];

@@ -93,7 +93,7 @@
     </div>
   </div>
 
-  <button *ngIf="userRegister">Guardar en historial</button>
+  <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
   <p class="text-monospace text-muted small">Ejemplo: {{ejemplo}}</p>
 </div>
 
