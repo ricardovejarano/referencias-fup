@@ -41,9 +41,20 @@ export class EstadisticasComponent implements OnInit {
   apaUsos = 0;
   ieeeUsos = 0;
 
-    // Array para gráfica
-    arrayProgramas = [];
-    arrayContadorProgramas = [];
+  // Array para gráfica
+  arrayProgramas = [];
+  arrayContadorProgramas = [];
+  posición1Programa = 0;
+  posición2Programa = 0;
+  posición3Programa = 0;
+  programa1Nombre = '';
+  programa1cuenta = 0;
+
+  programa2Nombre = '';
+  programa2cuenta = 0;
+
+  programa3Nombre = '';
+  programa3cuenta = 0;
 
 
   constructor(public profileService: PerfilService) { }
@@ -64,7 +75,7 @@ export class EstadisticasComponent implements OnInit {
     this.promedioEdad = Math.floor(this.promedioEdad);
     if (this.promedioEdad === 0 && this.zero === 0) {
       this.ngOnInit();
-      this.zero ++;
+      this.zero++;
     }
   }
 
@@ -157,20 +168,18 @@ export class EstadisticasComponent implements OnInit {
   }
 
   rankingProgramas() {
-    if (localStorage.getItem('logged') === 'true') {
-      // console.log('ÉNTRA!!!');
-      this.profileService.getContadorProgramas()
-        .snapshotChanges().subscribe(item => {
-          this.arrayProgramas = [];
-          this.arrayContadorProgramas = [];
-          item.forEach(element => {
-            const x = element.payload.toJSON();
-            this.arrayProgramas.push(element.key);
-            this.arrayContadorProgramas.push(x['contadorActualizado']);
-          });
-          this.reorderCounterProgram();
+    // console.log('ÉNTRA!!!');
+    this.profileService.getContadorProgramas()
+      .snapshotChanges().subscribe(item => {
+        this.arrayProgramas = [];
+        this.arrayContadorProgramas = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayProgramas.push(element.key);
+          this.arrayContadorProgramas.push(x['contadorActualizado']);
         });
-    }
+        this.reorderCounterProgram();
+      });
   }
 
   reorderCounterProgram() {
@@ -189,6 +198,17 @@ export class EstadisticasComponent implements OnInit {
         pos3 = x;
       }
     }
+    this.programa1Nombre = this.arrayProgramas[pos1];
+    this.programa2Nombre = this.arrayProgramas[pos2];
+    this.programa3Nombre = this.arrayProgramas[pos3];
+
+    this.programa1cuenta = this.arrayContadorProgramas[pos1];
+    this.programa2cuenta = this.arrayContadorProgramas[pos2];
+    this.programa3cuenta = this.arrayContadorProgramas[pos3];
+
+    this.posición1Programa = pos1;
+    this.posición2Programa = pos2;
+    this.posición3Programa = pos3;
     console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
   }
 
