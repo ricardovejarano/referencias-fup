@@ -74,11 +74,6 @@ export class UpdateInfoComponent implements OnInit {
       });
   }
 
-  fileChangeListener($event) {
-    const image: any = new Image();
-    const file: File = $event.target.files[0];
-  }
-
   editProfile() {
     this.profileService.updateProfileUser(this.UsuarioPerfil, this.rolUsuario, this.keyUser)
       .then((res) => {

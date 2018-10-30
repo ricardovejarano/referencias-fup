@@ -14,8 +14,8 @@ export class ReferenciaService {
     public afAuth: AngularFireAuth
     ) { }
 
-  getReferences(keyUser) {
-    return this.Referencias = this.afDatabase.list(`${keyUser}/historial`);
+  getReferences(rolUser, keyUser) {
+    return this.Referencias = this.afDatabase.list(`${rolUser}/${keyUser}/historial`);
   }
 
 }
