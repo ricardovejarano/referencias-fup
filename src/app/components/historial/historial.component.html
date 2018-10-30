@@ -1,2 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<h2>HISTORIAL</h2>
+<div class="container">
+    <h1 class="m-3 text-center">Historial de Citas</h1>
+    <div class="conntainer mt-3">
+        <app-card-referencia *ngFor="let referencia of referencias" [referencia]="referencia"></app-card-referencia>
+    </div>
+</div>
