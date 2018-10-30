@@ -49,6 +49,7 @@ export class EstadisticasComponent implements OnInit {
     this.docentesPromedio();
     this.administrativosPromedio();
     this.egresadosPromedio();
+    this.referenciasMasUsadas();
     setTimeout(() => {
       this.edadPromedio();
     }, 1000);
@@ -81,7 +82,7 @@ export class EstadisticasComponent implements OnInit {
           sum += this.arrayEstudiantes[x];
         }
         this.averageEstuaidntes = sum / this.arrayEstudiantes.length;
-        console.log(this.arrayEstudiantes, 'Promedio', this.averageEstuaidntes);
+        // console.log(this.arrayEstudiantes, 'Promedio', this.averageEstuaidntes);
       });
   }
 
@@ -103,7 +104,7 @@ export class EstadisticasComponent implements OnInit {
           sum += this.arrayDocentes[x];
         }
         this.averageDocentes = sum / this.arrayDocentes.length;
-        console.log(this.arrayDocentes, 'Promedio', this.averageDocentes);
+        // console.log(this.arrayDocentes, 'Promedio', this.averageDocentes);
       });
   }
 
@@ -125,7 +126,7 @@ export class EstadisticasComponent implements OnInit {
           sum += this.arrayAdministrativos[x];
         }
         this.averageAdminstrativos = sum / this.arrayAdministrativos.length;
-        console.log(this.arrayAdministrativos, 'Promedio', this.averageAdminstrativos);
+        // console.log(this.arrayAdministrativos, 'Promedio', this.averageAdminstrativos);
       });
   }
 
@@ -147,8 +148,12 @@ export class EstadisticasComponent implements OnInit {
           sum += this.arrayEgresados[x];
         }
         this.averageEgresados = sum / this.arrayEgresados.length;
-        console.log(this.arrayEgresados, 'Promedio', this.averageEgresados);
+        // console.log(this.arrayEgresados, 'Promedio', this.averageEgresados);
       });
+  }
+
+  referenciasMasUsadas() {
+
   }
 
 }
