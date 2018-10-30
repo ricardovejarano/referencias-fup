@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { ProgramasContador } from 'src/app/models/programas.contador.model';
 
 @Component({
   selector: 'app-graficas',
@@ -18,6 +19,8 @@ export class GraficasComponent implements OnInit {
   public barChartData: any[] = [];
 
   public data = [];
+
+  programas = [{ nombre: '' , contador: 0}];
 
 
   public chartColors: Array<any> = [
@@ -65,21 +68,23 @@ export class GraficasComponent implements OnInit {
             const x = element.payload.toJSON();
             this.arrayProgramas.push(element.key);
             this.arrayContadorProgramas.push(x['contadorActualizado']);
+            this.programas.push({nombre: element.key, contador: Number(x['contadorActualizado'])});
           });
-          console.log(this.arrayContadorProgramas, this.arrayProgramas);
+          console.log('OBJETO', this.programas);
           this.flag = false;
+          this.reorderCounterProgram();
           setTimeout(() => {
             this.barChartData = this.barChartDataFunct();
-            // this.barChartData = this.barChartDataFunct();
-            // this.barChartData = [
-            // { data: [5, 59, 80], label: 'Series A' }
-            //  ];
             this.barChartLabels = this.barChartLabelsFunct();
             console.log(this.barChartData);
             this.flag = true;
           }, 500);
         });
     }
+  }
+
+  reorderCounterProgram() {
+
   }
 
   barChartDataFunct(): any {
