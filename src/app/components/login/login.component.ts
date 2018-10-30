@@ -39,4 +39,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  goToRestorePass() {
+    this.authService.restorePass('jucapo05@gmail.com');
+  }
+
 }

@@ -43,4 +43,12 @@ export class AuthService {
           });
     });
   }
+
+
+  restorePass(email) {
+    const auth = firebase.auth();
+    return auth.sendPasswordResetEmail(email)
+      .then(() => console.log('email sent'))
+      .catch((error) => console.log(error));
+  }
 }
