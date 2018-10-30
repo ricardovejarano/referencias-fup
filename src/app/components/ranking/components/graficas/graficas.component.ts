@@ -13,13 +13,23 @@ export class GraficasComponent implements OnInit {
   arrayContadorProgramas = [];
 
   // public barChartData: any[];
-  public barChartLabels: string[] = ['2006', '2007', '2008'];
+  public barChartLabels: string[] = [];
 
-  public barChartData: any[] = [
-    { data: [65, 59, 80], label: 'Series A' }
-  ];
+  public barChartData: any[] = [];
 
   public data = [];
+
+
+  public chartColors: Array<any> = [
+    { // first color
+      backgroundColor: '#4665BD	',
+      borderColor: 'rgba(225,10,24,0.2)',
+      pointBackgroundColor: 'rgba(225,10,24,0.2)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(225,10,24,0.2)'
+    }
+  ];
 
   public barChartOptions: any = {
     scaleShowVerticalLines: true,
@@ -60,10 +70,10 @@ export class GraficasComponent implements OnInit {
           this.flag = false;
           setTimeout(() => {
             this.barChartData = this.barChartDataFunct();
-           // this.barChartData = this.barChartDataFunct();
-          // this.barChartData = [
+            // this.barChartData = this.barChartDataFunct();
+            // this.barChartData = [
             // { data: [5, 59, 80], label: 'Series A' }
-         //  ];
+            //  ];
             this.barChartLabels = this.barChartLabelsFunct();
             console.log(this.barChartData);
             this.flag = true;
