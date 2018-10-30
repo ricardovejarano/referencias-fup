@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { ProgramasContador } from 'src/app/models/programas.contador.model';
+import { TopRanking } from 'src/app/models/topRanking.model';
 
 @Component({
   selector: 'app-graficas',
@@ -12,6 +13,8 @@ export class GraficasComponent implements OnInit {
   // Array para gráfica
   arrayProgramas = [];
   arrayContadorProgramas = [];
+  contRanking: TopRanking[];
+
   // public barChartData: any[];
   public barChartLabels: string[] = [];
 
@@ -72,6 +75,7 @@ export class GraficasComponent implements OnInit {
           setTimeout(() => {
             this.barChartData = this.barChartDataFunct();
             this.barChartLabels = this.barChartLabelsFunct();
+            this.reorderCounterProgram();
             console.log(this.barChartData);
             this.flag = true;
           }, 500);
@@ -80,6 +84,7 @@ export class GraficasComponent implements OnInit {
   }
 
   reorderCounterProgram() {
+   
   }
 
   barChartDataFunct(): any {
