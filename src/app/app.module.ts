@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ImageCropperModule} from 'ng2-img-cropper';
 import { CommonModule } from '@angular/common';
+import { ParticlesModule } from 'angular-particle';
 
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
@@ -111,6 +112,7 @@ import { RestorePassComponent } from './components/restore-pass/restore-pass.com
     BrowserAnimationsModule,
     ImageCropperModule,
     CommonModule,
+    ParticlesModule,
   ],
   providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]

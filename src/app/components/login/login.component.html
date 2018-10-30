@@ -1,36 +1,45 @@
-<br>
-<br><br>
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
 <main class="container">
-    <div class="card text-center">
-      <form class="login100-form validate-form" (submit)="onSubmitLogin()">
-        <span class="login100-form-title">
-          INICIAR SESION
-        </span>
-        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-          <input class="input100" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
+<div class="row h-100 justify-content-center">
+  <div class="col-lg-4 align-self-center">
+
+      <div class="card bg-white text-center p-5">
+        <form class="login100-form validate-form" (submit)="onSubmitLogin()">
+          <span class="login100-form-title">
+            INICIAR SESION
           </span>
-        </div>
-        <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Password">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-          </span>
-        </div>
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" type="submit">
-            Ingresar
-          </button>
-          <button (click)="return()" class="login100-form-btn" type="button">
-              Regresar
+          <div class="input-group mb-3 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <div class="input-group mb-3 validate-input" data-validate="Password is required">
+            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password" placeholder="Password">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <div class="d-flex flex-column">
+            <button class="btn btn-success mb-3" type="submit">
+              Ingresar
             </button>
-            <br>
-            <a (click)="goToRegister()">No tienes una cuenta?, registrate!</a>
-            <a (click)="goToRestorePass()">Olvidé mi contraseña</a>
-        </div>
-      </form>
-    </div>
-  </main>
+            <button (click)="return()" class="btn btn-warning mb-3" type="button">
+                Regresar
+              </button>
+              <br>
+              <a class="btn btn-link" (click)="goToRegister()">No tienes una cuenta?, registrate!</a>
+              <a class="btn btn-link" (click)="goToRestorePass()">Olvidé mi contraseña</a>
+          </div>
+        </form>
+      </div>
+
+
+  </div>
+</div>
+
+</main>

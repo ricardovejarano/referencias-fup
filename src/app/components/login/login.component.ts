@@ -14,9 +14,49 @@ export class LoginComponent implements OnInit {
   password = '';
   keyAdmin = '';
 
+  myStyle: object = {};
+  myParams: object = {};
+  width = 100;
+  height = 100;
+
   constructor(public router: Router, public authService: AuthService) { }
 
   ngOnInit() {
+    this.myStyle = {
+      'position': 'absolute',
+      'width': '100%',
+      'height': '100%',
+      'z-index': 0,
+      'top': 0,
+      'left': 0,
+      'right': 0,
+      'bottom': 0
+    };
+
+    this.myParams = {
+      particles: {
+        number: {
+          value: 180
+        },
+        color: {
+          value: '#ffffff'
+        },
+        shape: {
+          type: 'circle'
+        },
+        line_linked: {
+          color: '#ffffff'
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onclick: {
+            mode: 'repulse'
+          }
+        }
+      }
+    };
   }
 
   onSubmitLogin() {

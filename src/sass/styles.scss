@@ -45,11 +45,13 @@ app-root > *:nth-child(2){
         margin: 2rem 1rem;
         max-height: calc(100vh - 4rem);
         overflow-y: hidden; 
-        .card{
+        main.card{
             padding: 2rem 2rem 0;
             width: 100%;
             height: 100%;
             position: relative;
+            overflow: hidden;
+            
             form{
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -65,7 +67,6 @@ app-root > *:nth-child(2){
     }
 }
 app-home {
-    //background-image: linear-gradient(to bottom, #32adc3 70%, #104C83 110%);
     min-height: 100vh;
     main{
         min-height: calc(100vh - 140px);
@@ -75,5 +76,20 @@ app-home {
     }
     #footer{
         background-color: #104C83;
+    }
+}
+app-login{
+    height: 100vh;
+    background-image: radial-gradient(#32adc3, #104C83);
+}
+
+app-ranking {
+    .card{
+        max-height: calc(100vh - 6rem);
+    }
+    .wrapper{
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: calc(100% - 4rem);
     }
 }
