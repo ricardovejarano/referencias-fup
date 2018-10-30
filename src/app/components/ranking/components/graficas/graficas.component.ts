@@ -7,53 +7,36 @@ import { PerfilService } from 'src/app/services/perfil.service';
   styleUrls: ['./graficas.component.css']
 })
 export class GraficasComponent implements OnInit {
-
+  flag = true;
   // Array para gráfica
   arrayProgramas = [];
   arrayContadorProgramas = [];
 
+  // public barChartData: any[];
+  public barChartLabels: string[] = ['2006', '2007', '2008'];
+
+  public barChartData: any[] = [
+    { data: [65, 59, 80], label: 'Series A' }
+  ];
+
+  public data = [];
+
   public barChartOptions: any = {
-    scaleShowVerticalLines: false,
-    responsive: true
+    scaleShowVerticalLines: true,
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+
   public barChartType = 'bar';
   public barChartLegend = true;
 
-  public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
-  public randomize(): void {
-    // Only Change 3 values
-    const data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    const clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
-  }
 
   constructor(public profileService: PerfilService) { }
 
@@ -74,7 +57,28 @@ export class GraficasComponent implements OnInit {
             this.arrayContadorProgramas.push(x['contadorActualizado']);
           });
           console.log(this.arrayContadorProgramas, this.arrayProgramas);
+          this.flag = false;
+          setTimeout(() => {
+            this.barChartData = this.barChartDataFunct();
+           // this.barChartData = this.barChartDataFunct();
+          // this.barChartData = [
+            // { data: [5, 59, 80], label: 'Series A' }
+         //  ];
+            this.barChartLabels = this.barChartLabelsFunct();
+            console.log(this.barChartData);
+            this.flag = true;
+          }, 500);
         });
     }
+  }
+
+  barChartDataFunct(): any {
+    return [
+      { data: this.arrayContadorProgramas, label: 'Uso por programa' }
+    ];
+  }
+
+  barChartLabelsFunct(): any {
+    return this.arrayProgramas;
   }
 }
