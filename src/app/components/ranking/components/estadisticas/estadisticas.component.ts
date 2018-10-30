@@ -114,7 +114,24 @@ export class EstadisticasComponent implements OnInit {
   }
 
   edadPromedio() {
-    this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / 4;
+    let totalEdades = 0;
+    if (this.averageAdminstrativos !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageEstuaidntes !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageEgresados !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (this.averageDocentes !== 0) {
+      totalEdades = totalEdades + 1;
+    }
+    if (totalEdades !== 0) {
+      // tslint:disable-next-line:max-line-length
+      this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / totalEdades;
+    }
+
     this.promedioEdad = Math.floor(this.promedioEdad);
     if (this.promedioEdad === 0 && this.zero === 0) {
       this.ngOnInit();
