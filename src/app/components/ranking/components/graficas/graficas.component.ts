@@ -20,7 +20,7 @@ export class GraficasComponent implements OnInit {
 
   public data = [];
 
-  programas = [{ nombre: '' , contador: 0}];
+  programas = [{}];
 
 
   public chartColors: Array<any> = [
@@ -68,7 +68,7 @@ export class GraficasComponent implements OnInit {
             const x = element.payload.toJSON();
             this.arrayProgramas.push(element.key);
             this.arrayContadorProgramas.push(x['contadorActualizado']);
-            this.programas.push({nombre: element.key, contador: Number(x['contadorActualizado'])});
+            this.programas.push({ nombre: element.key, contador: Number(x['contadorActualizado']) });
           });
           console.log('OBJETO', this.programas);
           this.flag = false;
