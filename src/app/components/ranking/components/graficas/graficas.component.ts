@@ -60,7 +60,6 @@ export class GraficasComponent implements OnInit {
   }
 
   getValueConunterProgram() {
-    if (localStorage.getItem('logged') === 'true') {
       // console.log('ÉNTRA!!!');
       this.profileService.getContadorProgramas()
         .snapshotChanges().subscribe(item => {
@@ -80,7 +79,6 @@ export class GraficasComponent implements OnInit {
             this.flag = true;
           }, 500);
         });
-    }
   }
 
   reorderCounterProgram() {
