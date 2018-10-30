@@ -7,7 +7,8 @@
   <div id="mainMenuAccordion">
     <ul class="navbar-nav flex-column pl-0 pl-md-5">
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" id="icontecMenuLink" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a class="nav-link dropdown-toggle" id="icontecMenuLink" data-toggle="collapse" data-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
           ICONTEC
         </a>
         <div id="collapseOne" class="collapse show" data-parent="#mainMenuAccordion" aria-labelledby="icontecMenuLink">
@@ -15,14 +16,16 @@
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec">Artículo Web</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/tesis">Tesis</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/articulo-revista">Articulo de revista</a>
-          <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/congreso-reunion">Referencia para congreso, conferencia o reunión</a>
+          <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/congreso-reunion">Referencia para
+            congreso, conferencia o reunión</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/normas-juridicas">Normas jurídicas</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/normas-tecnicas">Normas técnicas</a>
         </div>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" id="apaMenuLink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="nav-link dropdown-toggle" id="apaMenuLink" data-toggle="collapse" data-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
           APA
         </a>
         <div id="collapseTwo" class="collapse" data-parent="#mainMenuAccordion" aria-labelledby="apaMenuLink">
@@ -37,7 +40,8 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" id="ieeeMenuLink" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <a class="nav-link dropdown-toggle" id="ieeeMenuLink" data-toggle="collapse" data-target="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree">
           IEEE
         </a>
         <div id="collapseThree" class="collapse" data-parent="#mainMenuAccordion" aria-labelledby="ieeeMenuLink">
@@ -53,6 +57,14 @@
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/ranking">RANKING</a>
+      </li>
+
+      <li class="nav-item" *ngIf="logged == 'true'">
+        <a class="nav-link" routerLink="/perfil">PERFIL</a>
+      </li>
+
+      <li class="nav-item" *ngIf="logged == 'true'">
+        <a class="nav-link" routerLink="/historial">HISTORIAL</a>
       </li>
 
     </ul>
