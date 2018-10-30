@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { ProgramasContador } from 'src/app/models/programas.contador.model';
+import { TopRanking } from 'src/app/models/topRanking.model';
 
 @Component({
   selector: 'app-graficas',
@@ -12,6 +13,8 @@ export class GraficasComponent implements OnInit {
   // Array para gráfica
   arrayProgramas = [];
   arrayContadorProgramas = [];
+  contRanking: TopRanking[];
+
   // public barChartData: any[];
   public barChartLabels: string[] = [];
 
