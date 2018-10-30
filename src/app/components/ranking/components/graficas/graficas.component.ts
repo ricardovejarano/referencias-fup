@@ -12,15 +12,14 @@ export class GraficasComponent implements OnInit {
   // Array para gráfica
   arrayProgramas = [];
   arrayContadorProgramas = [];
-
   // public barChartData: any[];
   public barChartLabels: string[] = [];
 
-  public barChartData: any[] = [];
+  public barChartData: any[] = [{ data: this.arrayContadorProgramas, label: 'Uso por programa' }];
 
   public data = [];
 
-  programas = [{ nombre: '' , contador: 0}];
+  programas = [{}];
 
 
   public chartColors: Array<any> = [
@@ -68,11 +67,8 @@ export class GraficasComponent implements OnInit {
             const x = element.payload.toJSON();
             this.arrayProgramas.push(element.key);
             this.arrayContadorProgramas.push(x['contadorActualizado']);
-            this.programas.push({nombre: element.key, contador: Number(x['contadorActualizado'])});
           });
-          console.log('OBJETO', this.programas);
           this.flag = false;
-          this.reorderCounterProgram();
           setTimeout(() => {
             this.barChartData = this.barChartDataFunct();
             this.barChartLabels = this.barChartLabelsFunct();
@@ -84,7 +80,6 @@ export class GraficasComponent implements OnInit {
   }
 
   reorderCounterProgram() {
-
   }
 
   barChartDataFunct(): any {

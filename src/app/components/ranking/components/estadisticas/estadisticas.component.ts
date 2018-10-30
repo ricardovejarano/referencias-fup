@@ -31,6 +31,8 @@ export class EstadisticasComponent implements OnInit {
   docente = '';
   docenteUsos = 0;
 
+  zero = 0;
+
   // Referencias mas usadas
   icontec = '';
   apa = '';
@@ -55,6 +57,10 @@ export class EstadisticasComponent implements OnInit {
   edadPromedio() {
     this.promedioEdad = (this.averageAdminstrativos + this.averageDocentes + this.averageEgresados + this.averageEstuaidntes) / 4;
     this.promedioEdad = Math.floor(this.promedioEdad);
+    if (this.promedioEdad === 0 && this.zero === 0) {
+      this.ngOnInit();
+      this.zero ++;
+    }
   }
 
   estudiantesPromedio() {
