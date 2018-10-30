@@ -56,6 +56,7 @@ import { UpdateInfoComponent } from './components/perfil/update-info/update-info
 import { HistorialComponent } from './components/historial/historial.component';
 import { CardReferenciaComponent } from './components/historial/components/card-referencia/card-referencia.component';
 import { ChartsModule } from 'ng2-charts';
+import { RestorePassComponent } from './components/restore-pass/restore-pass.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { ChartsModule } from 'ng2-charts';
     UpdateInfoComponent,
     HistorialComponent,
     CardReferenciaComponent,
+    RestorePassComponent,
   ],
   imports: [
     FormsModule,

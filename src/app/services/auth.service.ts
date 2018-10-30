@@ -3,13 +3,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Usuario } from '../models/usuario.model';
 import * as firebase from 'firebase';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth, private toastr: ToastrService, public router: Router) { }
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
@@ -48,7 +50,22 @@ export class AuthService {
   restorePass(email) {
     const auth = firebase.auth();
     return auth.sendPasswordResetEmail(email)
-      .then(() => console.log('email sent'))
-      .catch((error) => console.log(error));
+      .then(() => {
+        console.log('email sent');
+        this.toastr.success('Revise su bandeja de entrada', 'Operación exitosa');
+        this.router.navigate(['login']);
+      }
+      )
+      .catch((error) => {
+        if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+          this.toastr.warning('Usuario no encontrado');
+        } else if (error.message === 'The email address is badly formatted.') {
+          this.toastr.warning('Correo no valido');
+        } else {
+          this.toastr.warning('Error en el proceso');
+        }
+        console.log(error.message);
+      }
+      );
   }
 }
