@@ -61,8 +61,11 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmitRegister() {
-    if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co') {
-      window.alert('El Dominio debe ser @fup.edu.co');
+    // Agregar nuevo dominio:
+    // && this.email.split('@')[1].toLowerCase()  !== <X-dominio>
+    console.log('Dominio', this.email.split('@')[1].toLowerCase());
+    if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co' && this.email.split('@')[1].toLowerCase() !== 'unividafup.edu.co') {
+      window.alert('El Dominio debe ser @fup.edu.co o @unividafup.edu.co');
     } else {
       if (this.password !== this.password2) {
         window.alert('Las contraseñas no coinciden');
