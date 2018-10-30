@@ -1,9 +1,10 @@
 <main class="card">
     <h3 class="text-center">ICONTEC</h3>
     <h5 class="text-center">Libros</h5>
-  <form class="form-row" (ngSubmit)="addReference()" #validForm="ngForm">
+  <form (ngSubmit)="addReference()" #validForm="ngForm">
+      <div class="form-row">
         <div class="col-md-3">
-            <div *ngFor="let item of nombres; let in=index">
+            <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
               <div class="form-group">
                 <label for="title">Nombre</label>
                 <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
@@ -15,9 +16,9 @@
                 <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
                   name="nameA{{in}}">
               </div>
-              <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+              <button class="btn btn-outline-danger btn-sm d-block mx-auto" *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
             </div>
-            <button class="btn btn-outline-primary" (click)="addAuthor()">Agregar Autor</button>
+            <button class="btn btn-outline-primary btn-sm d-block mx-auto" (click)="addAuthor()">Agregar Autor</button>
         </div>
         
         <div class="col-md-8 offset-md-1">
@@ -66,25 +67,30 @@
                 name="paginas">
             </div>
           </div>
+
+        </div>
         </div>
 
-        <div class="col-12 border-top mt-3 pt-4">
-
-          <button type="submit" class="btn btn-success mx-auto">Agregar Referencia</button>
-          <button class="btn btn-outline-inf btn-space " type="reset" (click)="resetForm(validForm)">
-            <i class="fa fa-sync-alt"></i> Limpiar
-          </button>
+        <div class="form-row mt-3 justify-content-end">
+          <button type="submit" class="btn btn-success mx-3">Agregar Referencia</button>
+          <button class="btn btn-warning mx-3" type="reset" (click)="resetForm(validForm)">Limpiar <i class="fa fa-undo"></i></button>
         </div>
 
   </form>
 
 
-  <div class="form-group">
-    <label for="title">Referencia Final</label>
-    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
-    <button class="btn btn-primary" (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+  <div id="clipboard" class="border-top pt-2">
+    
+    <label for="title">Referencia Final:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+      </div>
+    </div>
+
     <button *ngIf="userRegister">Guardar en historial</button>
-    <p>Ejemplo: {{ejemplo}}</p>
+    <p class="text-monospace text-muted small">Ejemplo: {{ejemplo}}</p>
   </div>
 
 
