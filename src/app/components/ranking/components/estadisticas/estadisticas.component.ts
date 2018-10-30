@@ -41,6 +41,10 @@ export class EstadisticasComponent implements OnInit {
   apaUsos = 0;
   ieeeUsos = 0;
 
+    // Array para gráfica
+    arrayProgramas = [];
+    arrayContadorProgramas = [];
+
 
   constructor(public profileService: PerfilService) { }
 
@@ -49,7 +53,7 @@ export class EstadisticasComponent implements OnInit {
     this.docentesPromedio();
     this.administrativosPromedio();
     this.egresadosPromedio();
-    this.referenciasMasUsadas();
+    this.rankingProgramas();
     setTimeout(() => {
       this.edadPromedio();
     }, 1000);
@@ -152,8 +156,40 @@ export class EstadisticasComponent implements OnInit {
       });
   }
 
-  referenciasMasUsadas() {
+  rankingProgramas() {
+    if (localStorage.getItem('logged') === 'true') {
+      // console.log('ÉNTRA!!!');
+      this.profileService.getContadorProgramas()
+        .snapshotChanges().subscribe(item => {
+          this.arrayProgramas = [];
+          this.arrayContadorProgramas = [];
+          item.forEach(element => {
+            const x = element.payload.toJSON();
+            this.arrayProgramas.push(element.key);
+            this.arrayContadorProgramas.push(x['contadorActualizado']);
+          });
+          this.reorderCounterProgram();
+        });
+    }
+  }
 
+  reorderCounterProgram() {
+    let pos1 = 0;
+    let pos2 = 1;
+    let pos3 = 2;
+    for (let x = 2; x < this.arrayContadorProgramas.length; x++) {
+      if (this.arrayContadorProgramas[x] > this.arrayContadorProgramas[pos1]) {
+        pos3 = pos2;
+        pos2 = pos1;
+        pos1 = x;
+      } else if (this.arrayContadorProgramas[x] > this.arrayContadorProgramas[pos2]) {
+        pos3 = pos2;
+        pos2 = x;
+      } else if (this.arrayContadorProgramas[x] > this.arrayContadorProgramas[pos3]) {
+        pos3 = x;
+      }
+    }
+    console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
   }
 
 }

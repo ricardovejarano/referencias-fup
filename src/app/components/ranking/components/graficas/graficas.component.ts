@@ -87,7 +87,7 @@ export class GraficasComponent implements OnInit {
     let pos1 = 0;
     let pos2 = 1;
     let pos3 = 2;
-    for (let x = 1; x < this.arrayContadorProgramas.length; x++) {
+    for (let x = 2; x < this.arrayContadorProgramas.length; x++) {
       if (this.arrayContadorProgramas[x] > this.arrayContadorProgramas[pos1]) {
         pos3 = pos2;
         pos2 = pos1;
