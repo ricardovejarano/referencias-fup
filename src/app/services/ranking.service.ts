@@ -51,4 +51,8 @@ export class RankingService {
     return this.adminsList = this.afDatabase.list(`contador-referencias/${ref}/${subRef}`);
   }
 
+  getAdminstrativos() {
+    return this.adminsList = this.afDatabase.list(`administrativo`);
+  }
+
 }

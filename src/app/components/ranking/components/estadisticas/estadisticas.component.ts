@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { Usuario } from 'src/app/models/usuario.model';
+import { RankingService } from 'src/app/services/ranking.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -56,8 +57,14 @@ export class EstadisticasComponent implements OnInit {
   programa3Nombre = '';
   programa3cuenta = 0;
 
+  // Variables Ranking Administrativos
+  arrayNombresAdministrativo = [];
+  arrayContadoresAdministrativo = [];
+  nombreAdministrativo = '';
+  contadorAdministrativo = 0;
 
-  constructor(public profileService: PerfilService) { }
+
+  constructor(public profileService: PerfilService, public rankingService: RankingService) { }
 
   ngOnInit() {
     this.estudiantesPromedio();
@@ -65,6 +72,7 @@ export class EstadisticasComponent implements OnInit {
     this.administrativosPromedio();
     this.egresadosPromedio();
     this.rankingProgramas();
+    this.listaAdministrativos();
     setTimeout(() => {
       this.edadPromedio();
     }, 1000);
@@ -209,7 +217,32 @@ export class EstadisticasComponent implements OnInit {
     this.posición1Programa = pos1;
     this.posición2Programa = pos2;
     this.posición3Programa = pos3;
-    console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
+    // console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
+  }
+
+  listaAdministrativos() {
+    this.rankingService.getAdminstrativos()
+      .snapshotChanges().subscribe(item => {
+        this.arrayNombresAdministrativo = [];
+        this.arrayContadoresAdministrativo = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayNombresAdministrativo.push(x['nombre']);
+          this.arrayContadoresAdministrativo.push(Number(x['contador']));
+        });
+        this.mejorAdministrativo();
+        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
+      });
+  }
+
+  mejorAdministrativo() {
+    let pos = 0;
+    for (let x = 0; x < this.arrayNombresAdministrativo.length; x++) {
+      if (this.arrayContadoresAdministrativo[x] > this.arrayContadoresAdministrativo[pos]) {
+        pos = x;
+      }
+    }
+    console.log('La posición ganadora es: ', pos);
   }
 
 }

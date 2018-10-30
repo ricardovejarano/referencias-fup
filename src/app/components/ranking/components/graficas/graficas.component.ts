@@ -94,7 +94,7 @@ export class GraficasComponent implements OnInit {
         pos3 = x;
       }
     }
-    console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
+    // console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
   }
 
   barChartDataFunct(): any {
