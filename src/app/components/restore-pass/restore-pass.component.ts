@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-restore-pass',
@@ -10,13 +11,18 @@ import { ToastrService } from 'ngx-toastr';
 export class RestorePassComponent implements OnInit {
   email = '';
 
-  constructor(public authService: AuthService, private toastr: ToastrService) { }
+  constructor(public authService: AuthService, private toastr: ToastrService,
+    public router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmitRestore() {
     this.authService.restorePass(this.email);
+  }
+
+  return() {
+    this.router.navigate(['login']);
   }
 
 }
