@@ -55,4 +55,16 @@ export class RankingService {
     return this.adminsList = this.afDatabase.list(`administrativo`);
   }
 
+  getEstudiantes() {
+    return this.adminsList = this.afDatabase.list(`estudiante`);
+  }
+
+  getDocentes() {
+    return this.adminsList = this.afDatabase.list(`docente`);
+  }
+
+  getEgresados() {
+    return this.adminsList = this.afDatabase.list(`egresado`);
+  }
+
 }
