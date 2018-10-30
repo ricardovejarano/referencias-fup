@@ -72,7 +72,7 @@
     <label for="title">Referencia Final</label>
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
     <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button *ngIf="userRegister">Guardar en historial</button>
+    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
     <p>Ejemplo: {{ejemplo}}</p>
   </div>
 

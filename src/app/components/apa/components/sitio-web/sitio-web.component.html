@@ -58,7 +58,7 @@
 
           <div class="form-group">
             <label for="url">URL del Recurso</label>
-            <input type="text" placeholder="http://unividafup.edu.co" class="form-control" id="url" maxlength="100"
+            <input type="text" placeholder="http://www.jotdown.es/2014/09 /anarquismo-leyes-justas/" class="form-control" id="url" maxlength="100"
               [(ngModel)]="url" name="url">
           </div>
 
@@ -78,7 +78,7 @@
     <label for="title">Referencia Final</label>
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
     <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button *ngIf="userRegister">Guardar en historial</button>
+    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
     <p>Ejemplo: {{ejemplo}}</p>
   </div>
 

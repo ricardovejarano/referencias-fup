@@ -1,0 +1,25 @@
+<div class="col-md-6 mx-auto mt-3 mb-4">
+  <div class="card text-center">
+    <div class="card-body">
+      <div class="file-upload">
+        <div class="file-upload text-center">
+          <div class="fas fa-upload">
+            <span> Seleccionar Imagen:
+              <input type="file" accept="image/*" (change)="fileChangeListener($event)">
+            </span>
+          </div>
+        </div>
+        <img-cropper *ngIf="flag == true" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <br>
+        <span class="result rounded" *ngIf="data.image">
+          <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+        </span>
+        <img *ngIf="flag == false" [src]="dataI" class="profile-img">
+        <button class="btn btn-color btn-md" (click)="saveNewImage()">
+          <i class=""></i>Guardar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

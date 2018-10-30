@@ -1,3 +1,6 @@
-<p>
-  graficas works!
-</p>
+<div *ngIf="flag == true">
+  <div style="display: block">
+    <canvas baseChart [colors]="chartColors" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+  </div>
+</div>

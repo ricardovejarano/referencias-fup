@@ -1,3 +1,120 @@
-<p>
-  articulo-revista works!
-</p>
+<main class="container card mt-5">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="col-12 mb-5">
+      <h3 class="text-center">IEEE</h3>
+      <h5 class="text-center">Articulo de Revista</h5>
+      <div class="row justify-content-center">
+        <div class="col-md-4 pr-md-5 border-right">
+
+          <div *ngFor="let item of nombres; let in=index">
+
+            <div class="form-group">
+              <label for="title">Iniciales Nombres Autor</label>
+              <input type="text" placeholder="G. F. " class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+                name="nameN{{in}}">
+            </div>
+
+            <div class="form-group">
+              <label for="title">Apellidos Autor</label>
+              <input type="text" placeholder="Knoll" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+                name="nameA{{in}}">
+            </div>
+
+            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+          </div>
+          <button (click)="addAuthor()">Agregar Autor</button>
+
+          <div class="form-group">
+            <label for="titulo">Titulo del Artículo</label>
+            <input type="text" placeholder="Source phone identification using sketches of features" class="form-control"
+              id="titulo" maxlength="100" [(ngModel)]="titulo" name="titulo">
+          </div>
+
+          <div class="form-group">
+            <label for="tituloRevista">Titulo de la Revista</label>
+            <input type="text" placeholder="IET Biometrics" class="form-control" id="tituloRevista" maxlength="100"
+              [(ngModel)]="tituloRevista" name="tituloRevista">
+          </div>
+
+          <div class="form-group">
+            <label for="volumen">Volumen de la Revista</label>
+            <input type="number" placeholder="vol. 3" class="form-control" id="volumen" maxlength="100" [(ngModel)]="volumen"
+              name="volumen">
+          </div>
+
+          <div class="form-group">
+            <label for="numero">Numero de la Revista</label>
+            <input type="number" placeholder="n.º 2" class="form-control" id="numero" maxlength="100" [(ngModel)]="numero"
+              name="numero">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Pagina Inicial</label>
+            <input type="number" placeholder="Ej: 167" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaInicial"
+              name="paginaInicial">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Pagina final</label>
+            <input type="number" placeholder="Ej: 189" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaFinal"
+              name="paginaFinal">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Fecha de la publicación</label>
+
+            <select [(ngModel)]="fechaCitaMes" name="fechaCitaMes" class="form-control">
+              <option value="" disabled selected>Mes</option>
+              <option *ngFor="let mes of mes, let i = index" value="{{mes}}">{{mes}}</option>
+            </select>
+
+            <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+            </select>
+
+          </div>
+
+          <div class="form-group">
+            <label for="url">URL del Recurso</label>
+            <input type="text" placeholder="http://dx.doi.org/10.1049/iet-bmt.2013.0056" class="form-control" id="url"
+              maxlength="100" [(ngModel)]="url" name="url">
+          </div>
+
+
+          <div class="form-group">
+            <label for="title">Fecha de Acceso</label>
+
+            <select [(ngModel)]="fechaAccesoMes" name="fechaAccesoMes" class="form-control">
+              <option value="" disabled selected>Mes</option>
+              <option *ngFor="let mes of mes, let i = index" value="{{mes}}">{{mes}}</option>
+            </select>
+
+            <select [(ngModel)]="fechaAcessoAnio" name="fechaAcessoAnio" class="form-control">
+              <option value="" disabled selected>Año</option>
+              <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+            </select>
+
+          </div>
+
+          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
+          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
+            <i class="fas fa-sync-alt"></i> Limpiar
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="form-group">
+    <label for="title">Referencia Final</label>
+    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
+    <p>Ejemplo: {{ejemplo}}</p>
+  </div>
+
+
+</main>

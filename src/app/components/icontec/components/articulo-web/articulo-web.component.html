@@ -9,13 +9,13 @@
           <div *ngFor="let item of nombres; let in=index">
             <div class="form-group">
               <label for="title">Nombre</label>
-              <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+              <input type="text" placeholder="José " class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
               name="nameN{{in}}">
             </div>
 
             <div class="form-group">
               <label for="title">Apellido</label>
-              <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+              <input type="text" placeholder="MARQUEZ DE MELO" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
               name="nameA{{in}}">
             </div>
             <button *ngIf="in != 0" (click)="quitAuthor(in)" >Quitar</button>
@@ -24,7 +24,7 @@
         
           <div class="form-group  border-top ">
             <label for="title">Titulo</label>
-            <input type="text" placeholder="Titulo" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo"
+            <input type="text" placeholder="Comunicación e integración latinoamericana: El papel de ALAIC" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo"
               name="title">
           </div>
           <div class="form-group">
@@ -66,7 +66,7 @@
 
           <div class="form-group">
             <label for="title">Disponibilidad</label>
-            <input type="text" placeholder="http://unividafup.edu.co" class="form-control" id="title" maxlength="100"
+            <input type="text" placeholder="www.mty.itsem.mx/externos/alaic/texto1html" class="form-control" id="title" maxlength="100"
               [(ngModel)]="disponibilidad" name="title">
           </div>
 
@@ -86,7 +86,7 @@
     <label for="title">Referencia Final</label>
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
     <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button *ngIf="userRegister">Guardar en historial</button>
+    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
     <p>Ejemplo: {{ejemplo}}</p>
   </div>
 

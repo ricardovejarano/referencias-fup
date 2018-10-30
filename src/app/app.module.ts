@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+// Estilos
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ImageCropperModule} from 'ng2-img-cropper';
+import { CommonModule } from '@angular/common';
+
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -42,6 +48,14 @@ import { ArticuloRevistaIcontecComponent } from './components/icontec/components
 import { LibroComponent } from './components/ieee/components/libro/libro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PerfilService } from './services/perfil.service';
+import { CapituloLibroIeeeComponent } from './components/ieee/components/capitulo-libro-ieee/capitulo-libro-ieee.component';
+import { NormaTecnicaIeeeComponent } from './components/ieee/components/norma-tecnica-ieee/norma-tecnica-ieee.component';
+import { RankingService } from './services/ranking.service';
+import { ImageProfileComponent } from './components/perfil/image-profile/image-profile.component';
+import { UpdateInfoComponent } from './components/perfil/update-info/update-info.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { CardReferenciaComponent } from './components/historial/components/card-referencia/card-referencia.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -75,17 +89,28 @@ import { PerfilService } from './services/perfil.service';
     RegistroComponent,
     GraficasComponent,
     EstadisticasComponent,
-    PerfilComponent
+    PerfilComponent,
+    CapituloLibroIeeeComponent,
+    NormaTecnicaIeeeComponent,
+    ImageProfileComponent,
+    UpdateInfoComponent,
+    HistorialComponent,
+    CardReferenciaComponent,
   ],
   imports: [
     FormsModule,
+    ChartsModule,
     BrowserModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    ImageCropperModule,
+    CommonModule,
   ],
-  providers: [AuthService, PerfilService],
+  providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

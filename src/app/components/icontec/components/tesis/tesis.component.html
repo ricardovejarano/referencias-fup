@@ -9,13 +9,13 @@
           <div *ngFor="let item of nombres; let in=index">
             <div class="form-group">
               <label for="title">Nombre</label>
-              <input type="text" placeholder="Ramiro" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
+              <input type="text" placeholder="Félix" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
                 name="nameN{{in}}">
             </div>
 
             <div class="form-group">
               <label for="title">Apellido</label>
-              <input type="text" placeholder="Pérez" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+              <input type="text" placeholder="BERRQUET MARIMON" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
                 name="nameA{{in}}">
             </div>
             <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
@@ -24,13 +24,13 @@
 
           <div class="form-group">
             <label for="titulo">Titulo</label>
-            <input type="text" placeholder="Titulo" class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
+            <input type="text" placeholder="Experiencia de iniciaciones cultura investigativa con estudiantes de pregrado desde un semillero de investigación" class="form-control" id="titulo" maxlength="100" [(ngModel)]="titulo"
               name="titulo">
           </div>
 
           <div class="form-group">
             <label for="ciudad">Ciudad de Publicacion</label>
-            <input type="text" placeholder="Bogota" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
+            <input type="text" placeholder="Medellin" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
               name="ciudad">
           </div>
 
@@ -40,6 +40,12 @@
               <option value="" disabled selected>Año Publicación</option>
               <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
             </select>
+          </div>
+
+          <div class="form-group">
+            <label for="paginas">Numero de paginas</label>
+            <input type="number" placeholder="Numero Total" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
+              name="paginas">
           </div>
        
           <div class="form-group">
@@ -81,7 +87,7 @@
     <label for="title">Referencia Final</label>
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
     <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button *ngIf="userRegister">Guardar en historial</button>
+    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
     <p>Ejemplo: {{ejemplo}}</p>
   </div>
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Usuario } from '../models/usuario.model';
@@ -9,8 +9,9 @@ import * as firebase from 'firebase';
 })
 export class AuthService {
 
-
   constructor(public afAuth: AngularFireAuth) { }
+
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
   loginEmail(email: string, pass: string) {
     return new Promise((resolve, reject) => {
