@@ -70,6 +70,15 @@ export class EstadisticasComponent implements OnInit {
   arrayContadoresEgresado = [];
   arrayContadoresDocente = [];
 
+  correoEstudiante = '';
+  arrayCorreoEstudiante = [];
+  correoAdministrativo = '';
+  arrayCorreoAdministrativo = [];
+  correoEgresado = '';
+  arrayCorreoEgresado = [];
+  correoDocente = '';
+  arrayCorreoDocente = [];
+
 
   constructor(public profileService: PerfilService, public rankingService: RankingService) { }
 
@@ -236,6 +245,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresAdministrativo.push(x['nombre']);
           this.arrayContadoresAdministrativo.push(Number(x['contador']));
+          this.arrayCorreoAdministrativo.push(x['correo']);
         });
         this.mejorAdministrativo();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
@@ -249,6 +259,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEstudiante.push(x['nombre']);
           this.arrayContadoresEstudiante.push(Number(x['contador']));
+          this.arrayCorreoEstudiante.push(x['correo']);
         });
         this.mejorEstudiante();
         console.log('ARRAY DE Estudiantes', this.arrayNombresEstudiante, this.arrayContadoresEstudiante);
@@ -262,6 +273,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresDocente.push(x['nombre']);
           this.arrayContadoresDocente.push(Number(x['contador']));
+          this.arrayCorreoDocente.push(x['correo']);
         });
         this.mejorDocente();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresDocente, this.arrayContadoresDocente);
@@ -275,6 +287,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEgresado.push(x['nombre']);
           this.arrayContadoresEgresado.push(Number(x['contador']));
+          this.arrayCorreoEgresado.push(x['correo']);
         });
         this.mejorEgresado();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresEgresado, this.arrayContadoresEgresado);
@@ -290,6 +303,7 @@ export class EstadisticasComponent implements OnInit {
     }
     this.nombreAdministrativo = this.arrayNombresAdministrativo[pos];
     this.contadorAdministrativo = this.arrayContadoresAdministrativo[pos];
+    this.correoAdministrativo = this.arrayCorreoAdministrativo[pos];
     console.log('La posición ganadora es: ', pos);
   }
 
@@ -303,6 +317,7 @@ export class EstadisticasComponent implements OnInit {
     this.estudiante = this.arrayNombresEstudiante[pos];
     this.estudianteUsos = this.arrayContadoresEstudiante[pos];
     console.log('La posición ganadora es: ', pos);
+    this.correoEstudiante = this.arrayCorreoEstudiante[pos];
   }
 
   mejorDocente() {
@@ -314,6 +329,7 @@ export class EstadisticasComponent implements OnInit {
     }
     this.docente = this.arrayNombresDocente[pos];
     this.docenteUsos = this.arrayContadoresDocente[pos];
+    this.correoDocente = this.arrayCorreoDocente[pos];
     console.log('La posición ganadora es: ', pos);
   }
 
@@ -326,6 +342,7 @@ export class EstadisticasComponent implements OnInit {
     }
     this.egresado = this.arrayNombresEgresado[pos];
     this.egresadoUsos = this.arrayContadoresEgresado[pos];
+    this.correoEgresado = this.arrayCorreoEgresado[pos];
     console.log('La posición ganadora es: ', pos);
   }
 
