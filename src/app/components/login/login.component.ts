@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import * as firebase from 'firebase';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -37,6 +38,11 @@ export class LoginComponent implements OnInit {
 
   return() {
     this.router.navigate(['/']);
+  }
+
+  goToRestorePass() {
+    this.router.navigate(['restablecer']);
+    // this.authService.restorePass('jucapo05@gmail.com');
   }
 
 }

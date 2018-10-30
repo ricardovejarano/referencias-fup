@@ -1,80 +1,90 @@
-<main class="container card mt-5">
-  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
-    <div class="col-12 mb-5">
-      <h3 class="text-center">ICONTEC</h3>
-      <h5 class="text-center">Normas Tecnicas</h5>
-      <div class="row justify-content-center">
-        <div class="col-md-4 pr-md-5 border-right">
+<main class="card">
+  <h3 class="text-center">ICONTEC</h3>
+  <h5 class="text-center">Normas Tecnicas</h5>
 
-          <div class="form-group">
-            <label for="entidad">Entidad Responsable</label>
-            <input type="text" placeholder="INSTITUTO COLOMBIANO DE NORMALIZACIÓN Y CERTIFICACIÓN" class="form-control"
-              id="entidad" maxlength="100" [(ngModel)]="entidad" name="entidad">
-          </div>
+  <form (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="form-row justify-content-around">
 
-          <div class="form-group">
-            <label for="titulo">Titulo</label>
-            <input type="text" placeholder="Sistemas de gestión de la calidad: fundamentos y vocabulario" class="form-control"
-              id="titulo" maxlength="100" [(ngModel)]="titulo" name="titulo">
-          </div>
+      <div class="col-md-6">
+        <div class="form-row">
 
-          <div class="form-group">
-            <label for="codigo">Codigo de la norma</label>
-            <input type="text" placeholder="solo si no forma parte del titulo" class="form-control" id="codigo"
-              maxlength="100" [(ngModel)]="codigo" name="codigo">
-          </div>
-
-          <div class="form-group">
-              <label for="ciudad">Edicion de la  norma</label>
-              <input type="text" placeholder="34" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion"
-                name="edicion">
+            <div class="form-group col-12">
+              <label for="entidad">Entidad Responsable</label>
+              <input type="text" placeholder="INSTITUTO COLOMBIANO DE NORMALIZACIÓN Y CERTIFICACIÓN" class="form-control" id="entidad"
+                maxlength="100" [(ngModel)]="entidad" name="entidad">
             </div>
-
-          <div class="form-group">
-            <label for="ciudad">Lugar de Publicación</label>
-            <input type="text" placeholder="Sevilla" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad"
-              name="ciudad">
-          </div>
-
-          <div class="form-group">
-              <label for="editorial">Editorial</label>
-              <input type="text" placeholder="La Grulla" class="form-control" id="editorial" maxlength="100"
-                [(ngModel)]="editorial" name="editorial">
+            
+            <div class="form-group col-12">
+              <label for="titulo">Titulo</label>
+              <input type="text" placeholder="Sistemas de gestión de la calidad: fundamentos y vocabulario" class="form-control" id="titulo"
+                maxlength="100" [(ngModel)]="titulo" name="titulo">
             </div>
-     
+            
+            <div class="form-group col-12">
+              <label for="codigo">Codigo de la norma</label>
+              <input type="text" placeholder="solo si no forma parte del titulo" class="form-control" id="codigo" maxlength="100"
+                [(ngModel)]="codigo" name="codigo">
+            </div>
+            
+            <div class="form-group col-md-6">
+              <label for="ciudad">Edicion de la norma</label>
+              <input type="text" placeholder="34" class="form-control" id="edicion" maxlength="100" [(ngModel)]="edicion" name="edicion">
+            </div>
+            
+            <div class="form-group col-md-6">
+              <label for="ciudad">Lugar de Publicación</label>
+              <input type="text" placeholder="Sevilla" class="form-control" id="ciudad" maxlength="100" [(ngModel)]="ciudad" name="ciudad">
+            </div>
+        </div>
 
-          <div class="form-group">
-            <label for="anioPublicacion">Año de publicación</label>
-            <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
-              <option value="" disabled selected>Año Publicación</option>
-              <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
-            </select>
-          </div>
 
-          <div class="form-group">
-            <label for="title">Numero de paginas</label>
-            <input type="text" placeholder="Numero Total" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
-              name="paginas">
-          </div>
+      </div>
 
-          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
-          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
-            <i class="fas fa-sync-alt"></i> Limpiar
-          </button>
+      <div class="col-md-5">
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="editorial">Editorial</label>
+                  <input type="text" placeholder="La Grulla" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
+                    name="editorial">
+                </div>
 
+
+                <div class="form-group">
+                  <label for="anioPublicacion">Año de publicación</label>
+                  <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
+                    <option value="" disabled selected>Año Publicación</option>
+                    <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="title">Numero de paginas</label>
+                  <input type="text" placeholder="Numero Total" class="form-control" id="paginas" maxlength="100" [(ngModel)]="paginas"
+                    name="paginas">
+                </div>
         </div>
       </div>
+
+    </div>
+    <div class="form-row w-100 mt-3 justify-content-end">
+      <button type="submit" class="btn btn-success mx-3">Agregar Referencia</button>
+      <button class="btn btn-warning mx-3" type="reset" (click)="resetForm(validForm)">Limpiar <i class="fa fa-undo"></i></button>
     </div>
   </form>
 
-
-  <div class="form-group">
-    <label for="title">Referencia Final</label>
+<div id="clipboard" class="border-top pt-2">
+  <label for="title">Referencia Final:</label>
+  <div class="input-group">
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
-    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
-    <p>Ejemplo: {{ejemplo}}</p>
+    <div class="input-group-append">
+      <button (click)="copyInputMessage(userinput)" class="btn btn-primary" value="click to copy">Copiar al porta
+        papeles</button>
+    </div>
   </div>
+
+  <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
+  <p class="text-monospace text-muted small">Ejemplo: {{ejemplo}}</p>
+</div>
 
 
 </main>

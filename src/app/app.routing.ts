@@ -9,6 +9,7 @@ import { rankingRoute } from './components/ranking/ranking.routing';
 import { registronRoute } from './components/registro/registro.routing';
 import { perfilRoute } from './components/perfil/perfil.routing';
 import { historialRoute } from './components/historial/historial.routing';
+import { restoreRoute } from './components/restore-pass/restore.routing';
 
 
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     ...rankingRoute,
     ...registronRoute,
     ...perfilRoute,
-    ...historialRoute
+    ...historialRoute,
+    ...restoreRoute
 ];
 
 @NgModule({

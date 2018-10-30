@@ -1,12 +1,12 @@
-<main class="container card mt-5">
-  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
-    <div class="col-12 mb-5">
-      <h3 class="text-center">ICONTEC</h3>
-      <h5 class="text-center">Revistas</h5>
-      <div class="row justify-content-center">
+<main class="card">
+  <h5 class="text-center">Revistas</h5>
+  <h3 class="text-center">ICONTEC</h3>
 
-        <div class="col-md-4 pr-md-5 border-right">
-          <div *ngFor="let item of nombres; let in=index">
+  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="form-row">
+  
+      <div class="col-md-3">
+        <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
             <div class="form-group">
               <label for="title">Nombre</label>
               <input type="text" placeholder="FLECHA" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
@@ -18,32 +18,36 @@
               <input type="text" placeholder="Ramón" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
                 name="nameA{{in}}">
             </div>
-            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+            <button class="btn btn-outline-danger btn-sm d-block mx-auto" *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
           </div>
-          <button (click)="addAuthor()">Agregar Autor</button>
+          <button class="btn btn-outline-primary btn-sm d-block mx-auto" (click)="addAuthor()">Agregar Autor</button>
+      </div>
 
-          <div class="form-group  border-top ">
+      <div class="col-md-8 offset-md-1">
+        <div class="form-row">
+
+          <div class="form-group col-12">
             <label for="title">Titulo del Artículo</label>
             <input type="text" placeholder="Secretos de Windows" class="form-control" id="title" maxlength="100"
               [(ngModel)]="titulo" name="title">
           </div>
-          <div class="form-group">
+          <div class="form-group col-12">
             <label for="title">Nombre de la revista</label>
             <input type="text" placeholder="PC Word" class="form-control" id="title" maxlength="100" [(ngModel)]="nombreRevista"
               name="title">
           </div>
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <label for="title">Volumen</label>
             <input type="number" placeholder="2" class="form-control" id="title" maxlength="100" [(ngModel)]="volumen"
               name="title">
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <label for="title">Número de Revista</label>
             <input type="number" placeholder="31" class="form-control" id="title" maxlength="100" [(ngModel)]="numeroRevista"
               name="title">
           </div>
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <label for="title">Año</label>
             <select [(ngModel)]="anioRevista" name="anioRevista" class="form-control">
               <option value="" disabled selected>Año</option>
@@ -53,7 +57,7 @@
 
 
 
-          <div class="form-group">
+          <div class="form-group col-md-3">
             <label for="title">Mes</label>
             <select [(ngModel)]="mesRevista" name="mes1" class="form-control">
               <option value="" disabled selected>Mes</option>
@@ -70,7 +74,9 @@
               <option value="Nov">Noviembre</option>
               <option value="Dic">Diciembre</option>
             </select>
-
+          </div>
+          
+          <div class="form-group col-md-3">
             <label for="title">Mes 2 (Opcional)</label>
             <select [(ngModel)]="mes2Revista" name="mes2" class="form-control">
               <option value="" disabled selected>Mes2</option>
@@ -87,38 +93,42 @@
               <option value="Nov">Noviembre</option>
               <option value="Dic">Diciembre</option>
             </select>
-
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-md-3">
             <label for="title">Pagina Inicial</label>
             <input type="number" placeholder="Ej 10" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaInicial"
               name="paginaInicial">
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-md-3">
             <label for="title">Pagina final</label>
             <input type="number" placeholder="Ej 15" class="form-control" id="title" maxlength="100" [(ngModel)]="paginaFinal"
               name="paginaFinal">
           </div>
 
-          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
-          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
-            <i class="fas fa-sync-alt"></i> Limpiar
-          </button>
         </div>
       </div>
-    </div>
 
+    </div>
+    <div class="form-row w-100 mt-3 justify-content-end">
+      <button type="submit" class="btn btn-success mx-3">Agregar Referencia</button>
+      <button class="btn btn-warning mx-3" type="reset" (click)="resetForm(validForm)">Limpiar <i class="fa fa-undo"></i></button>
+    </div>
   </form>
 
-
-  <div class="form-group">
-    <label for="title">Referencia Final</label>
-    <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
-    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
+  <div id="clipboard" class="border-top pt-2">
+    <label for="title">Referencia Final:</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+      <div class="input-group-append">
+        <button (click)="copyInputMessage(userinput)" class="btn btn-primary" value="click to copy">Copiar al porta
+          papeles</button>
+      </div>
+    </div>
+  
     <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
-    <p>Ejemplo: {{ejemplo}}</p>
+    <p class="text-monospace text-muted small">Ejemplo: {{ejemplo}}</p>
   </div>
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReferenciaService } from 'src/app/services/referencia.service';
 import { ReferenciaWhitKey } from 'src/app/models/referenciaWithKey.model';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-historial',
@@ -17,6 +18,7 @@ export class HistorialComponent implements OnInit {
   constructor(
     public referenciaService: ReferenciaService,
     public profileService: PerfilService,
+    private toastr: ToastrService,
   ) {
     this.getKey();
   }
