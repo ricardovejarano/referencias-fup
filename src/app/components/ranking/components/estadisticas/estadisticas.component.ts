@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { Usuario } from 'src/app/models/usuario.model';
+import { ReferenciaService } from 'src/app/services/referencia.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -20,6 +21,21 @@ export class EstadisticasComponent implements OnInit {
   averageAdminstrativos = 0;
   arrayEgresados = [];
   averageEgresados = 0;
+
+  // Ranking Referencias
+  arrayRefenciaContadorIcontec = [];
+  arrayRefenciaIcontec = [];
+  arrayRefenciaContadorApa = [];
+  arrayRefenciaApa = [];
+  arrayRefenciaContadorIeee = [];
+  arrayRefenciaIeee = [];
+  referenciaIcontecTop = '';
+  contadorIcontecTop = 0;
+  referenciaIeeeTop = '';
+  contadorIeeeTop = 0;
+  referenciaApaTop = '';
+  contadorApaTop = 0;
+
 
   // Usuario que más usa la aplicación
   estudiante = '';
@@ -57,7 +73,10 @@ export class EstadisticasComponent implements OnInit {
   programa3cuenta = 0;
 
 
-  constructor(public profileService: PerfilService) { }
+  constructor(
+    public profileService: PerfilService,
+    public referenciaService: ReferenciaService,
+  ) { }
 
   ngOnInit() {
     this.estudiantesPromedio();
@@ -65,6 +84,7 @@ export class EstadisticasComponent implements OnInit {
     this.administrativosPromedio();
     this.egresadosPromedio();
     this.rankingProgramas();
+    this.rankingRefencias();
     setTimeout(() => {
       this.edadPromedio();
     }, 1000);
@@ -210,6 +230,85 @@ export class EstadisticasComponent implements OnInit {
     this.posición2Programa = pos2;
     this.posición3Programa = pos3;
     console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
+  }
+
+
+  rankingRefencias() {
+    // Refencias Normas ICONTEC
+    this.referenciaService.getRefIcontec()
+      .snapshotChanges().subscribe(item => {
+        this.arrayRefenciaIcontec = [];
+        this.arrayRefenciaContadorIcontec = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayRefenciaIcontec.push(element.key);
+          this.arrayRefenciaContadorIcontec.push(x['contador']);
+        });
+        this.topReferenceIcontec();
+      });
+
+    // Refencias Normas APA
+    this.referenciaService.getRefApa()
+      .snapshotChanges().subscribe(item => {
+        this.arrayRefenciaApa = [];
+        this.arrayRefenciaContadorApa = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayRefenciaApa.push(element.key);
+          this.arrayRefenciaContadorApa.push(x['contador']);
+        });
+        this.topReferenceApa();
+      });
+
+    // Refencias Normas IEEE
+    this.referenciaService.getRefIeee()
+      .snapshotChanges().subscribe(item => {
+        this.arrayRefenciaIeee = [];
+        this.arrayRefenciaContadorIeee = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          this.arrayRefenciaIeee.push(element.key);
+          this.arrayRefenciaContadorIeee.push(x['contador']);
+        });
+        this.topReferenceIeee();
+      });
+
+  }
+
+  topReferenceIcontec() {
+    let pos1 = 0;
+    for (let x = 1; x < this.arrayRefenciaIcontec.length; x++) {
+      if (this.arrayRefenciaContadorIcontec[x] > this.arrayRefenciaContadorIcontec[pos1]) {
+        pos1 = x;
+      }
+    }
+    this.referenciaIcontecTop = this.arrayRefenciaIcontec[pos1];
+    this.contadorIcontecTop = this.arrayRefenciaContadorIcontec[pos1];
+    console.log('Icontec Top1 => ', this.referenciaIcontecTop, 'Cont: ', this.contadorIcontecTop);
+  }
+
+  topReferenceApa() {
+    let pos1 = 0;
+    for (let x = 1; x < this.arrayRefenciaApa.length; x++) {
+      if (this.arrayRefenciaContadorApa[x] > this.arrayRefenciaContadorApa[pos1]) {
+        pos1 = x;
+      }
+    }
+    this.referenciaApaTop = this.arrayRefenciaApa[pos1];
+    this.contadorApaTop = this.arrayRefenciaContadorApa[pos1];
+    console.log('APA Top1 => ', this.referenciaApaTop, 'Cont: ', this.contadorApaTop);
+  }
+
+  topReferenceIeee() {
+    let pos1 = 0;
+    for (let x = 1; x < this.arrayRefenciaIeee.length; x++) {
+      if (this.arrayRefenciaContadorIeee[x] > this.arrayRefenciaContadorIeee[pos1]) {
+        pos1 = x;
+      }
+    }
+    this.referenciaIeeeTop = this.arrayRefenciaIeee[pos1];
+    this.contadorIeeeTop = this.arrayRefenciaContadorIeee[pos1];
+    console.log('IEEE Top1 => ', this.referenciaIeeeTop, 'Cont: ', this.contadorIeeeTop);
   }
 
 }
