@@ -78,18 +78,20 @@ app-home {
         background-color: #104C83;
     }
 }
-app-login{
+app-login, app-registro, app-restore-pass{
     height: 100vh;
     background-image: radial-gradient(#32adc3, #104C83);
 }
 
 app-ranking {
     .card{
-        max-height: calc(100vh - 6rem);
+        max-height: calc(100vh - 4rem);
+        padding-bottom: 2rem;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
-    .wrapper{
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: calc(100% - 4rem);
+    .wrapper .card-body {
+        min-height: 10rem;
+        margin-bottom: 0;
     }
 }

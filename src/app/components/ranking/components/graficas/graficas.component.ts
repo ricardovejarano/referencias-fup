@@ -25,14 +25,26 @@ export class GraficasComponent implements OnInit {
   programas = [{}];
 
 
-  public chartColors: Array<any> = [
+  public chartColors = [
     { // first color
-      backgroundColor: '#4665BD	',
-      borderColor: 'rgba(225,10,24,0.2)',
-      pointBackgroundColor: 'rgba(225,10,24,0.2)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(225,10,24,0.2)'
+      backgroundColor: [
+        '#D8BFD8',
+        '#FF00FF',
+        '#FA8072',
+        '#6B8E23',
+        '#FAEBD7',
+        '#ADD8E6',
+        '#DC143C',
+        '#32CD32',
+        '#CD5C5C',
+        '#5F9EA0',
+        '#BDB76B',
+        '#BA55D3',
+        '#708090',
+        '#FFDAB9',
+        '#ffc107',
+        '#dc3545'
+      ]
     }
   ];
 
@@ -102,11 +114,13 @@ export class GraficasComponent implements OnInit {
 
   barChartDataFunct(): any {
     return [
-      { data: this.arrayContadorProgramas, label: 'Uso por programa' }
+      {
+        data: this.arrayContadorProgramas, label: 'Uso por programa' }
     ];
   }
 
   barChartLabelsFunct(): any {
     return this.arrayProgramas;
   }
+
 }

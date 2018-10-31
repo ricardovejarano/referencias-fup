@@ -13,7 +13,7 @@ import { RevistaComponent } from './components/revista/revista.component';
 export const apaRoutes: Routes = [
     {
         path: 'apa', component: ApaComponent, children: [
-            { path: '', component: SitioWebComponent },
+            { path: 'articulo-web', component: SitioWebComponent },
             { path: 'periodico', component: PeriodicosComponent },
             { path: 'congreso', component: CongresosComponent },
             { path: 'libros', component: LibroApaComponent },

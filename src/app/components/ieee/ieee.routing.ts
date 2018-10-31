@@ -12,7 +12,7 @@ import { InformeTecnicoComponent } from './components/informe-tecnico/informe-te
 export const ieeeRoutes: Routes = [
     {
         path: 'ieee', component: IeeeComponent, children: [
-            { path: '', component: ArticuloWebComponent },
+            { path: 'articulo-web', component: ArticuloWebComponent },
             { path: 'articulo-revista', component: ArticuloRevistaComponent },
             { path: 'capitulo-libro', component: CapituloLibroIeeeComponent },
             { path: 'norma-tecnica', component: NormaTecnicaIeeeComponent },

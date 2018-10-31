@@ -1,59 +1,66 @@
 <main class="card">
+  <div class="row">
+      <div class="col">
+        <app-graficas></app-graficas>
+      </div>
+  </div>
+
   <div class="row wrapper">
-    <div class="col-md-4">
-      <div class="border rounded">
-        <div class="card-header">
+    <div class="col-md-6 mb-3">
+      <div class="card p-3">
+        <div class="card-header font-weight-bold text-info bg-white">
           Promedio de Edad
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">General: {{promedioEdad}}</li>
-          <li class="list-group-item">Estudiantes: {{averageEstuaidntes}}</li>
-          <li class="list-group-item">Docentes: {{averageDocentes}}</li>
-          <li class="list-group-item">Administrativos: {{averageAdminstrativos}}</li>
-          <li class="list-group-item">Egresados: {{averageEgresados}}</li>
+        <ul class="card-body list-unstyled">
+          <li>General: {{promedioEdad}}</li>
+          <li>Estudiantes: {{averageEstuaidntes}}</li>
+          <li>Docentes: {{averageDocentes}}</li>
+          <li>Administrativos: {{averageAdminstrativos}}</li>
+          <li>Egresados: {{averageEgresados}}</li>
         </ul>
       </div>
-      
-      
-      <div class="border rounded">
-        <div class="card-header">
+    </div>
+    
+    <div class="col-md-6 mb-3">
+      <div class="card p-3">
+        <div class="card-header font-weight-bold text-info bg-white">
           Programas que más usan la aplicación
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">1. {{programa1Nombre}} - {{programa1cuenta}} veces </li>
-          <li class="list-group-item">2. {{programa2Nombre}} - {{programa2cuenta}} veces</li>
-          <li class="list-group-item">3. {{programa3Nombre}} - {{programa3cuenta}} veces</li>
+        <ul class="card-body list-unstyled">
+          <li>1. {{programa1Nombre}} - {{programa1cuenta}} veces </li>
+          <li>2. {{programa2Nombre}} - {{programa2cuenta}} veces</li>
+          <li>3. {{programa3Nombre}} - {{programa3cuenta}} veces</li>
         </ul>
       </div>
+    </div> 
       
-      
-      
-      <div class="border rounded">
-        <div class="card-header">
+    <div class="col-md-6 mb-3">
+      <div class="card p-3">
+        <div class="card-header font-weight-bold text-info bg-white">
           Personas que más usan la aplicación
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Estudiante: {{estudiante}} - {{estudianteUsos}} usos - Correo: {{correoEstudiante}}</li>
-          <li class="list-group-item">Administrativo: {{nombreAdministrativo}} - {{contadorAdministrativo}} usos - Correo:
+        <ul class="card-body list-unstyled">
+          <li>Estudiante: {{estudiante}} - {{estudianteUsos}} usos - Correo: {{correoEstudiante}}</li>
+          <li>Administrativo: {{nombreAdministrativo}} - {{contadorAdministrativo}} usos - Correo:
             {{correoAdministrativo}}</li>
-          <li class="list-group-item">Egresado: {{egresado}} - {{egresadoUsos}} usos - Correo: {{correoEgresado}}</li>
-          <li class="list-group-item">Docente: {{docente}} - {{docenteUsos}} usos - Correo: {{correoDocente}}</li>
+          <li>Egresado: {{egresado}} - {{egresadoUsos}} usos - Correo: {{correoEgresado}}</li>
+          <li>Docente: {{docente}} - {{docenteUsos}} usos - Correo: {{correoDocente}}</li>
         </ul>
       </div>
-      
-      <div class="border rounded">
-        <div class="card-header">
+    </div>
+    
+    <div class="col-md-6 mb-3">
+      <div class="card p-3">
+        <div class="card-header font-weight-bold text-info bg-white">
           Referencia más usada
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Icontec: {{referenciaIcontecTop}} - {{contadorIcontecTop}} usos</li>
-          <li class="list-group-item">Apa: {{referenciaApaTop}} - {{contadorApaTop}} usos</li>
-          <li class="list-group-item">IEEE: {{referenciaIeeeTop}} - {{contadorIeeeTop}} usos</li>
+        <ul class="card-body list-unstyled">
+          <li>Icontec: {{referenciaIcontecTop}} - {{contadorIcontecTop}} usos</li>
+          <li>Apa: {{referenciaApaTop}} - {{contadorApaTop}} usos</li>
+          <li>IEEE: {{referenciaIeeeTop}} - {{contadorIeeeTop}} usos</li>
         </ul>
       </div>
     </div>
-    <div class="col-md-8">
-      <app-graficas></app-graficas>
-    </div>
+   
   </div>
 </main>
