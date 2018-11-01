@@ -65,16 +65,18 @@ export class ArticuloWebIcontecComponent implements OnInit {
   }
 
   getRol() {
+    console.log('ENTRA A BUSCAR ROL');
     this.profileService.getRol()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
           if (element.key === this.keyAdmin) {
             this.rolUsuario = x.toString();
+            console.log(this.rolUsuario);
+            this.getCounterPerson();
             if (this.rolUsuario !== 'administrativo') {
               console.log('ROL', this.rolUsuario);
               this.getProgram();
-              this.getCounterPerson();
             }
           }
         });
@@ -182,6 +184,7 @@ export class ArticuloWebIcontecComponent implements OnInit {
   }
 
   addCountPerson() {
+    console.log('CONTADOR PERSONA => ', this.rolUsuario, this.keyAdmin, this.contadorPersona);
     this.rankingService.addCounterPerson(this.rolUsuario, this.keyAdmin, this.contadorPersona)
       .then(res => {
         console.log(res);

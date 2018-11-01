@@ -59,10 +59,10 @@ export class LibroApaComponent implements OnInit {
           const x = element.payload.toJSON();
           if (element.key === this.keyAdmin) {
             this.rolUsuario = x.toString();
+            this.getCounterPerson();
             if (this.rolUsuario !== 'administrativo') {
               console.log('ROL', this.rolUsuario);
               this.getProgram();
-              this.getCounterPerson();
             }
           }
         });
