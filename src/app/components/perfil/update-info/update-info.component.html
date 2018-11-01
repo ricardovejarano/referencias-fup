@@ -1,50 +1,62 @@
 <app-nav-bar></app-nav-bar>
-<main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 card p-5">
-            <h1 class="m-3 text-center">Perfil de Usuario</h1>
-            <h3 class="m-3 text-center">{{rolUsuario}}</h3>
-            <div class=" form-group text-center">
-                <img class="profile-img" alt="" [src]=" data ? data :  srcImage">
-                <button class="btn btn-color btn-md" (click)="changeImageProfile()">
-                    <i class=""></i> Cambiar Imagen de Perfil
-                </button>
+<main class="card">
+    <h1 class="text-center">Perfil de Usuario</h1>
+    <h3 class="text-center">{{rolUsuario}}</h3>
+
+    <div class="wrapper">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-4 align-self-center">
+                <div class=" form-group text-center">
+                    <img class="profile-img" alt="" [src]=" data ? data :  srcImage">
+                    <button class="btn btn-color btn-md" (click)="changeImageProfile()">
+                        <i class=""></i> Cambiar Imagen de Perfil
+                    </button>
+                </div>
             </div>
 
-            <form (ngSubmit)="editProfile()" #orgForm="ngForm">
+            <div class="col-lg-4">
+    
+                <form (ngSubmit)="editProfile()" #orgForm="ngForm">
+    
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" [(ngModel)]="UsuarioPerfil.nombre" required name="nombre"
+                                #nombre="ngModel">
+                        </div>
+                        
+                        <div class="form-group col-12">
+                            <label for="correo">Correo Electrónico</label>
+                            <input disabled class="form-control" [(ngModel)]="UsuarioPerfil.correo" id="correo" #correo="ngModel" name="correo"
+                                input>
+                        </div>
+                        
+                        <div *ngIf="rolUsuario != 'administrativo'" class="form-group col-12">
+                            <label for="edad">Programa</label>
+                            <input disabled class="form-control" [(ngModel)]="UsuarioPerfil.programa" #progama="ngModel" id="usuario.programa"
+                                name="programa" input>
+                        </div>
+                        
+                        <div class="form-group col-lg-6">
+                            <label for="edad">Edad</label>
+                            <input class="form-control" [(ngModel)]="UsuarioPerfil.edad" id="edad" name="edad" #edad="ngModel" input>
+                        </div>
+                        <div *ngIf="rolUsuario == 'estudiante'" class="form-group col-lg-6">
+                            <label for="alterEgo">Semestre</label>
+                            <input class="form-control" [(ngModel)]="UsuarioPerfil.semestre" id="semestre" name="semestre" #semestre="ngModel"
+                                input>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" [(ngModel)]="UsuarioPerfil.nombre" required
-                        name="nombre" #nombre="ngModel">
-                </div>
+                    <div class="row mt-5">
+                        <div class="col-md-6"><button class="btn btn-warning btn-block" (click)="returnOrganization()">Regresar</button></div>
+                        <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" [disabled]="!orgForm.form.valid">Guardar
+                                Cambios</button></div>
+                    </div>
+                </form>
+            </div>
 
-                <div class="form-group">
-                    <label for="correo">Correo Electrónico</label>
-                    <input disabled class="form-control" [(ngModel)]="UsuarioPerfil.correo" id="correo" #correo="ngModel" name="correo" input>
-                </div>
-
-                <div *ngIf="rolUsuario != 'administrativo'" class="form-group">
-                    <label for="edad">Programa</label>
-                    <input disabled  class="form-control" [(ngModel)]="UsuarioPerfil.programa" #progama="ngModel" id="usuario.programa" name="programa"
-                        input>
-                </div>
-
-                <div class="form-group">
-                    <label for="edad">Edad</label>
-                    <input class="form-control" [(ngModel)]="UsuarioPerfil.edad" id="edad" name="edad" #edad="ngModel" input>
-                </div>
-                <div *ngIf="rolUsuario == 'estudiante'" class="form-group">
-                    <label for="alterEgo">Semestre</label>
-                    <input class="form-control" [(ngModel)]="UsuarioPerfil.semestre" id="semestre" name="semestre" #semestre="ngModel"
-                        input>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-md-6"><button class="btn btn-warning btn-block" (click)="returnOrganization()">Regresar</button></div>
-                    <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" [disabled]="!orgForm.form.valid">Guardar
-                            Cambios</button></div>
-                </div>
-            </form>
         </div>
 
     </div>

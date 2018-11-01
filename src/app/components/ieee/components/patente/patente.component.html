@@ -1,12 +1,12 @@
-<main class="container card mt-5">
-  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
-    <div class="col-12 mb-5">
-      <h3 class="text-center">IEEE</h3>
-      <h5 class="text-center">Patente</h5>
-      <div class="row justify-content-center">
-        <div class="col-md-4 pr-md-5 border-right">
+<main class="card">
+  <h3 class="text-center">IEEE</h3>
+  <h5 class="text-center">Patente</h5>
 
-          <div *ngFor="let item of nombres; let in=index">
+  <form (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="form-row justify-content-around">
+  
+      <div class="col-md-3">
+        <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
 
             <div class="form-group">
               <label for="title">Iniciales Nombres Inventor</label>
@@ -20,65 +20,81 @@
                 name="nameA{{in}}">
             </div>
 
-            <button *ngIf="in != 0" (click)="quitAuthor(in)">Quitar Inventor</button>
-          </div>
-          <button (click)="addAuthor()">Agregar Inventor</button>
+          <button class="btn btn-outline-danger btn-sm d-block mx-auto" *ngIf="in != 0" (click)="quitAuthor(in)">Quitar</button>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-block mx-auto" (click)="addAuthor()">Agregar Autor</button>
+      </div>
 
-          <div class="form-group">
+      <div class="col-md-7">
+        <div class="form-row">
+
+          <div class="form-group col-12">
             <label for="titulo">Titulo de la Patente</label>
             <input type="text" placeholder="Nonlinear resonant circuit devices" class="form-control" id="titulo"
               maxlength="100" [(ngModel)]="titulo" name="titulo">
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-lg-6">
             <label for="numero">Numero de la Patente</label>
             <input type="number" placeholder="3624125" class="form-control" id="numero" maxlength="100" [(ngModel)]="numero"
               name="numero">
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-lg-6">
             <label for="pais">Pais de la Patente</label>
             <input type="text" placeholder="U.S" class="form-control" id="pais" maxlength="100" [(ngModel)]="pais"
               name="pais">
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-12">
             <label for="title">Fecha de la publicación</label>
-            <select [(ngModel)]="fechaCitaDia" name="fechaCitaDia" class="form-control">
-              <option value="" disabled selected>Día</option>
-              <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
-            </select>
-
-            <select [(ngModel)]="fechaCitaMes" name="fechaCitaMes" class="form-control">
-              <option value="" disabled selected>Mes</option>
-              <option *ngFor="let mes of mes" value="{{mes}}">{{mes}}</option>
-            </select>
-
-            <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
-              <option value="" disabled selected>Año</option>
-              <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
-            </select>
-
+            <div class="form-row">
+              <div class="col-lg-4">
+                <select [(ngModel)]="fechaCitaDia" name="fechaCitaDia" class="form-control">
+                  <option value="" disabled selected>Día</option>
+                  <option *ngFor="let dia of dia" value="{{dia}}">{{dia}}</option>
+                </select>
+              </div>
+              <div class="col-lg-4">
+                <select [(ngModel)]="fechaCitaMes" name="fechaCitaMes" class="form-control">
+                  <option value="" disabled selected>Mes</option>
+                  <option *ngFor="let mes of mes" value="{{mes}}">{{mes}}</option>
+                </select>
+              </div>
+              <div class="col-lg-4">
+                <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
+                  <option value="" disabled selected>Año</option>
+                  <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+                </select>
+              </div>
+            </div>
           </div>
-
-          <button type="submit" class="btn btn-lg btn-success mx-auto">Agregar Referencia</button>
-          <button class="btn btn-outline-inf btn-space btn-lg" type="reset" (click)="resetForm(validForm)">
-            <i class="fas fa-sync-alt"></i> Limpiar
-          </button>
-
         </div>
       </div>
+
+    </div>
+
+    <div class="form-row w-100 mt-3 justify-content-end">
+      <button type="submit" class="btn btn-success mx-3">Agregar Referencia</button>
+      <button class="btn btn-warning mx-3" type="reset" (click)="resetForm(validForm)">Limpiar <i class="fa fa-undo"></i></button>
     </div>
   </form>
 
 
-  <div class="form-group">
-    <label for="title">Referencia Final</label>
+<div id="clipboard" class="border-top pt-2">
+
+  <label for="title">Referencia Final:</label>
+  <div class="input-group">
     <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
-    <button (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta papeles</button>
-    <button (click)="saveHistory()" *ngIf="userRegister">Guardar en historial</button>
-    <p>Ejemplo: {{ejemplo}}</p>
+    <div class="input-group-append">
+      <button class="btn btn-primary" (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta
+        papeles</button>
+    </div>
   </div>
+
+  <button *ngIf="userRegister">Guardar en historial</button>
+  <p class="text-monospace text-muted small">Ejemplo: {{ejemplo}}</p>
+</div>
 
 
 </main>

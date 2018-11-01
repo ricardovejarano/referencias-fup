@@ -1,11 +1,13 @@
 <main class="card">
   <h3 class="text-center">ICONTEC</h3>
   <h5 class="text-center">Artículo web o fuente electrónica</h5>
+
   <form (ngSubmit)="addReference()" #validForm="ngForm">
 
     <div class="form-row">
       <div class="col-md-3">
           <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
+
             <div class="form-group">
               <label for="title">Nombre</label>
               <input type="text" placeholder="José " class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
@@ -24,6 +26,7 @@
 
       <div class="col-md-8 offset-md-1">
         <div class="form-row">
+          
           <div class="form-group col-12">
             <label for="title">Titulo</label>
             <input type="text" placeholder="Comunicación e integración latinoamericana: El papel de ALAIC" class="form-control" id="title" maxlength="100" [(ngModel)]="titulo"

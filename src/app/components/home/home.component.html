@@ -1,47 +1,46 @@
 <main *ngIf="flag == true" class="container">
 
-  <div class="row justify-content-end mb-3">
-    <button *ngIf="flagLogged" (click)="logout()" class="btn btn-sm float-right bg-graycontent">Salir</button>
-    <button *ngIf="flagLogged" (click)="goToProfile()" class="btn btn-sm float-right bg-graycontent">Perfil</button>
-    <button *ngIf="flagLogged" (click)="goToHistory()" class="btn btn-sm float-right bg-graycontent">Historial</button>
-    <button *ngIf="flagLogged == false" (click)="goToLogin()" class="btn btn-sm float-right bg-graycontent">Iniciar Sesión</button>
+  <div class="row justify-content-end">
+    <button *ngIf="flagLogged" (click)="logout()" class="btn btn-sm btn-link text-white">Salir</button>
+    <button *ngIf="flagLogged == false" (click)="goToLogin()" class="btn btn-sm btn-link text-white">Iniciar Sesión</button>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-3"><img class="img-fluid" src="assets/images/logo-univida.png" alt="Univida, unidad académica virtual y a distancia"></div>
-    <h1 class="w-100 text-center mt-5">Bienvenido a UNIVIDA - FUP</h1>
-  </div>
     
-  <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-3 text-center">
-              <div class="ref img-thumbnail"><img class="img-fluid" src="assets/images/icontec.png" alt=""></div>
-              <a routerLink="/icontec/libros" class="text-primary">ICONTEC</a>
-            </div>
-            <div class="col-md-3 text-center">
-              <div class="ref img-thumbnail"><img class="img-fluid" src="assets/images/apa.png" alt=""></div>
-              <a routerLink="/apa/libros" class="text-primary">APA</a>
-            </div>
-            <div class="col-md-3 text-center">
-              <div class="ref img-thumbnail"><img class="img-fluid" src="assets/images/ieee.png" alt=""></div>
-              <a routerLink="/ieee/libro" class="text-primary">IEEE</a>
-            </div>
-            <div class="col-md-3 text-center">
-              <div class="ref img-thumbnail"><i class="fa fa-line-chart fa-5x text-primary"></i></div>
-              <a routerLink="/ranking" class="text-primary">RANKING</a>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <p class="text-center d-block">Selecciona la referencia que quieres usar</p>
-          </div>
-        </div>
+  <div id="content" class="row justify-content-center">
+        <div class="col-md-8 align-self-center">
+          
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <span></span>
+              </div>
+              <div class="content">
+                <div class="inner">
+                  <img src="../../../assets/images/logo.png" alt="">
+                  <h1>Bienvenido</h1>
+                  <p>En esta aplicación web podrás realizar de forma ágil y sencilla referencias<br />
+                    bibliográficas según las Normas ICONTEC, APA, IEEE para tus trabajos académicos.</p>
+                </div>
+              </div>
+              <nav>
+                <ul>
+                  <li><a routerLink="/icontec/libros">REFERENCIAS</a></li>
+                  <li>
+                    <a *ngIf="flagLogged" (click)="goToProfile()" class="text-uppercase">Perfil</a>
+                    <a *ngIf="flagLogged == false" class="text-uppercase" (click)="goToLogin()">Iniciar Sesión</a>
+                  </li>
+                  <li><a routerLink="/ranking">RANKING</a></li>
+                </ul>
+              </nav>
+            </header>
+            
+            <!-- Footer -->
+            <footer id="footer">
+              <p class="copyright">&copy; Unidad Académica Virtual y a Distancia - <a href="http://unividafup.edu.co/Portal/">UNIVIDA</a>.</p>
+            </footer>
+      </div> 
   </div>
 </main>
-<div id="footer" class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-lg-2">
-      <img class="img-fluid" src="assets/images/fup.png" alt="">
-    </div>
-  </div>
-</div>
+
+  
+

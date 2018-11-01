@@ -2,11 +2,12 @@
   <h5 class="text-center">Revistas</h5>
   <h3 class="text-center">ICONTEC</h3>
 
-  <form class="row mt-4" (ngSubmit)="addReference()" #validForm="ngForm">
-    <div class="form-row">
+  <form (ngSubmit)="addReference()" #validForm="ngForm">
+    <div class="form-row justify-content-around">
   
       <div class="col-md-3">
         <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
+
             <div class="form-group">
               <label for="title">Nombre</label>
               <input type="text" placeholder="FLECHA" class="form-control" id="title" maxlength="100" [(ngModel)]="nombres[in].value"
@@ -23,7 +24,7 @@
           <button class="btn btn-outline-primary btn-sm d-block mx-auto" (click)="addAuthor()">Agregar Autor</button>
       </div>
 
-      <div class="col-md-8 offset-md-1">
+      <div class="col-md-7">
         <div class="form-row">
 
           <div class="form-group col-12">
