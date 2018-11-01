@@ -66,10 +66,10 @@ export class ArticuloWebComponent implements OnInit {
           const x = element.payload.toJSON();
           if (element.key === this.keyAdmin) {
             this.rolUsuario = x.toString();
+            this.getCounterPerson();
             if (this.rolUsuario !== 'administrativo') {
               console.log('ROL', this.rolUsuario);
               this.getProgram();
-              this.getCounterPerson();
             }
           }
         });
@@ -177,6 +177,7 @@ export class ArticuloWebComponent implements OnInit {
   }
 
   addCountPerson() {
+    console.log(this.rolUsuario, this.keyAdmin, this.contadorPersona);
     this.rankingService.addCounterPerson(this.rolUsuario, this.keyAdmin, this.contadorPersona)
       .then(res => {
         console.log(res);
