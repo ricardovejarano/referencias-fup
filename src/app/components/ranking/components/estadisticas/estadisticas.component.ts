@@ -308,7 +308,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresAdministrativo.push(x['nombre']);
           this.arrayContadoresAdministrativo.push(Number(x['contador']));
-          this.arrayCorreoAdministrativo.push(x['correo']);
+          this.arrayCorreoAdministrativo.push(x['programa']);
         });
         this.mejorAdministrativo();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
@@ -322,7 +322,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEstudiante.push(x['nombre']);
           this.arrayContadoresEstudiante.push(Number(x['contador']));
-          this.arrayCorreoEstudiante.push(x['correo']);
+          this.arrayCorreoEstudiante.push(x['programa']);
         });
         this.mejorEstudiante();
         console.log('ARRAY DE Estudiantes', this.arrayNombresEstudiante, this.arrayContadoresEstudiante);
@@ -336,7 +336,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresDocente.push(x['nombre']);
           this.arrayContadoresDocente.push(Number(x['contador']));
-          this.arrayCorreoDocente.push(x['correo']);
+          this.arrayCorreoDocente.push(x['programa']);
         });
         this.mejorDocente();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresDocente, this.arrayContadoresDocente);
@@ -350,7 +350,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEgresado.push(x['nombre']);
           this.arrayContadoresEgresado.push(Number(x['contador']));
-          this.arrayCorreoEgresado.push(x['correo']);
+          this.arrayCorreoEgresado.push(x['programa']);
         });
         this.mejorEgresado();
         console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresEgresado, this.arrayContadoresEgresado);
