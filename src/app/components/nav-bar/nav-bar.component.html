@@ -66,6 +66,15 @@
         <a class="nav-link" routerLink="/historial">HISTORIAL</a>
       </li>
 
+      
+      <li class="nav-item" *ngIf="logged == 'true'">
+        <a class="nav-link" (click)="logout()">SALIR</a>
+      </li>
+
+      <li class="nav-item" *ngIf="logged != 'true'">
+        <a class="nav-link" routerLink="/login">INICIAR SESIÓN</a>
+      </li>
+
     </ul>
   </div>
 </nav>
