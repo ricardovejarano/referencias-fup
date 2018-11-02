@@ -94,6 +94,7 @@ export class EstadisticasComponent implements OnInit {
   arrayCorreoEgresado = [];
   correoDocente = '';
   arrayCorreoDocente = [];
+  usosNobody = 0;
 
 
   constructor(public profileService: PerfilService, public rankingService: RankingService,
@@ -108,9 +109,22 @@ export class EstadisticasComponent implements OnInit {
     this.rankingProgramas();
     this.rankingRefencias();
     this.listaAdministrativos();
+    this.getCounterNobody();
     setTimeout(() => {
       this.edadPromedio();
     }, 1000);
+  }
+
+  getCounterNobody() {
+    this.rankingService.getNobodyCounter()
+    .snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        const x = element.payload.toJSON();
+        if (element.key === 'contador') {
+          this.usosNobody = Number(x);
+        }
+      });
+    });
   }
 
   edadPromedio() {

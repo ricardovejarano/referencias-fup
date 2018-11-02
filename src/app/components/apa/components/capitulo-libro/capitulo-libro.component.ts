@@ -227,7 +227,6 @@ export class CapituloLibroComponent implements OnInit {
       item.forEach(element => {
         const x = element.payload.toJSON();
         if (element.key === 'contador') {
-          console.log('ENTRA A NOBODY');
           this.contadorNobody = Number(x);
         }
       });
