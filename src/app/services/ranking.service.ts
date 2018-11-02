@@ -43,6 +43,18 @@ export class RankingService {
     return myRefSale.push(referencia);
   }
 
+  addNobodyCounter(contadorActual) {
+    const contador = Number(contadorActual) + 1;
+    const myRefSale = this.afDatabase.object(`contador-no-registrado`);
+    return myRefSale.update({
+         contador
+    });
+  }
+
+  getNobodyCounter() {
+    return this.adminsList = this.afDatabase.list(`contador-no-registrado`);
+  }
+
   getContadorPersona(uid, rol) {
     return this.adminsList = this.afDatabase.list(`${rol}/${uid}`);
   }
