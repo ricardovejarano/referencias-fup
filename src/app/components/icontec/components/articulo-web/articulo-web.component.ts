@@ -48,6 +48,7 @@ export class ArticuloWebIcontecComponent implements OnInit {
   contadorPrograma = 0;
   contadorPersona = 0;
   contadorReferencia = 0;
+  contadorNobody = 0;
 
   constructor(public profileService: PerfilService, public rankingService: RankingService) {
     this.keyAdmin = localStorage.getItem('uid');
@@ -60,6 +61,7 @@ export class ArticuloWebIcontecComponent implements OnInit {
       this.userRegister = true;
       this.getRol();
     } else {
+      this.getCounterNobody();
       console.log('NO ENTRA');
     }
   }
@@ -235,12 +237,35 @@ export class ArticuloWebIcontecComponent implements OnInit {
     }
   }
 
+  getCounterNobody() {
+    this.rankingService.getNobodyCounter()
+    .snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        const x = element.payload.toJSON();
+        if (element.key === 'contador') {
+          this.contadorNobody = Number(x);
+        }
+      });
+    });
+  }
+
+  addCounterNobody() {
+    this.rankingService.addNobodyCounter(this.contadorNobody)
+    .then(res => {
+      console.log('Se registra evento');
+    }, err => {
+      console.log('Ocurrió un error', err);
+    });
+  }
+
   addReference() {
 
     this.addCounterReference();
     if (localStorage.getItem('logged') === 'true') {
       this.addCountProgram();
       this.addCountPerson();
+    } else {
+      this.addCounterNobody();
     }
 
     this.referenciaFinal = '';
