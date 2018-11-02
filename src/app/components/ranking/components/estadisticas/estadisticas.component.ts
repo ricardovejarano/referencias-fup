@@ -96,6 +96,23 @@ export class EstadisticasComponent implements OnInit {
   arrayCorreoDocente = [];
   usosNobody = 0;
 
+  // IMAGENES
+  // tslint:disable-next-line:max-line-length
+  // dataAdministrativo = '';
+  // tslint:disable-next-line:max-line-length
+  dataAdministrativo = 'https://firebasestorage.googleapis.com/v0/b/referencias-fup.appspot.com/o/unknown.png?alt=media&token=dc0e2e6e-05a5-47c6-bd65-026c81d69186';
+  // tslint:disable-next-line:max-line-length
+  dataEstudiante = 'https://firebasestorage.googleapis.com/v0/b/referencias-fup.appspot.com/o/unknown.png?alt=media&token=dc0e2e6e-05a5-47c6-bd65-026c81d69186';
+  // tslint:disable-next-line:max-line-length
+  dataEgresado = 'https://firebasestorage.googleapis.com/v0/b/referencias-fup.appspot.com/o/unknown.png?alt=media&token=dc0e2e6e-05a5-47c6-bd65-026c81d69186';
+  // tslint:disable-next-line:max-line-length
+  dataDocente = 'https://firebasestorage.googleapis.com/v0/b/referencias-fup.appspot.com/o/unknown.png?alt=media&token=dc0e2e6e-05a5-47c6-bd65-026c81d69186';
+
+  // ARRAY CORREOS
+  adminCorreoArray = [];
+  docenteCorreoArray = [];
+  egresadoCorreoArray = [];
+  estudianteCorreoArray = [];
 
   constructor(public profileService: PerfilService, public rankingService: RankingService,
     public referenciaService: ReferenciaService) { }
@@ -117,14 +134,14 @@ export class EstadisticasComponent implements OnInit {
 
   getCounterNobody() {
     this.rankingService.getNobodyCounter()
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        if (element.key === 'contador') {
-          this.usosNobody = Number(x);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.usosNobody = Number(x);
+          }
+        });
       });
-    });
   }
 
   edadPromedio() {
@@ -308,6 +325,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresAdministrativo.push(x['nombre']);
           this.arrayContadoresAdministrativo.push(Number(x['contador']));
+          this.adminCorreoArray.push(x['correo']);
           this.arrayCorreoAdministrativo.push(x['programa']);
         });
         this.mejorAdministrativo();
@@ -322,6 +340,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEstudiante.push(x['nombre']);
           this.arrayContadoresEstudiante.push(Number(x['contador']));
+          this.estudianteCorreoArray.push(Number(x['correo']));
           this.arrayCorreoEstudiante.push(x['programa']);
         });
         this.mejorEstudiante();
@@ -336,6 +355,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresDocente.push(x['nombre']);
           this.arrayContadoresDocente.push(Number(x['contador']));
+          this.docenteCorreoArray.push(Number(x['correo']));
           this.arrayCorreoDocente.push(x['programa']);
         });
         this.mejorDocente();
@@ -350,6 +370,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEgresado.push(x['nombre']);
           this.arrayContadoresEgresado.push(Number(x['contador']));
+          this.egresadoCorreoArray.push(Number(x['correo']));
           this.arrayCorreoEgresado.push(x['programa']);
         });
         this.mejorEgresado();
@@ -367,7 +388,28 @@ export class EstadisticasComponent implements OnInit {
     this.nombreAdministrativo = this.arrayNombresAdministrativo[pos];
     this.contadorAdministrativo = this.arrayContadoresAdministrativo[pos];
     this.correoAdministrativo = this.arrayCorreoAdministrativo[pos];
-    console.log('La posición ganadora es: ', pos);
+    const correo = this.adminCorreoArray[pos];
+    this.getAdministrativoImage(correo);
+    // console.log('La posición ganadora es: ', pos);
+  }
+
+  getAdministrativoImage(correo) {
+    let key = '';
+    console.log('SE BUSCA CON LA PERSONA', correo);
+    this.rankingService.getAdminstrativos()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          console.log(x['correo']);
+          if (x['correo'] === correo) {
+            key = element.key;
+          }
+        });
+        this.profileService.getProfileImage(key).then(url => {
+          this.dataAdministrativo = url;
+          console.log('IMAGEEEN', this.dataAdministrativo);
+        });
+      });
   }
 
   mejorEstudiante() {
@@ -381,6 +423,27 @@ export class EstadisticasComponent implements OnInit {
     this.estudianteUsos = this.arrayContadoresEstudiante[pos];
     console.log('La posición ganadora es: ', pos);
     this.correoEstudiante = this.arrayCorreoEstudiante[pos];
+    const correo = this.estudianteCorreoArray[pos];
+    this.getEstudianteImage(correo);
+  }
+
+  getEstudianteImage(correo) {
+    let key = '';
+    console.log('SE BUSCA CON LA PERSONA', correo);
+    this.rankingService.getAdminstrativos()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          console.log(x['correo']);
+          if (x['correo'] === correo) {
+            key = element.key;
+          }
+        });
+        this.profileService.getProfileImage(key).then(url => {
+          this.dataEstudiante = url;
+          console.log('IMAGEEEN', this.dataAdministrativo);
+        });
+      });
   }
 
   mejorDocente() {
@@ -393,7 +456,28 @@ export class EstadisticasComponent implements OnInit {
     this.docente = this.arrayNombresDocente[pos];
     this.docenteUsos = this.arrayContadoresDocente[pos];
     this.correoDocente = this.arrayCorreoDocente[pos];
+    const correo = this.docenteCorreoArray[pos];
+    this.getDocenteImage(correo);
     console.log('La posición ganadora es: ', pos);
+  }
+
+  getDocenteImage(correo) {
+    let key = '';
+    console.log('SE BUSCA CON LA PERSONA', correo);
+    this.rankingService.getAdminstrativos()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          console.log(x['correo']);
+          if (x['correo'] === correo) {
+            key = element.key;
+          }
+        });
+        this.profileService.getProfileImage(key).then(url => {
+          this.dataDocente = url;
+          console.log('IMAGEEEN', this.dataAdministrativo);
+        });
+      });
   }
 
   mejorEgresado() {
@@ -406,9 +490,29 @@ export class EstadisticasComponent implements OnInit {
     this.egresado = this.arrayNombresEgresado[pos];
     this.egresadoUsos = this.arrayContadoresEgresado[pos];
     this.correoEgresado = this.arrayCorreoEgresado[pos];
+    const correo = this.egresadoCorreoArray[pos];
+    this.getEgresadoImage(correo);
     console.log('La posición ganadora es: ', pos);
   }
 
+  getEgresadoImage(correo) {
+    let key = '';
+    console.log('SE BUSCA CON LA PERSONA', correo);
+    this.rankingService.getAdminstrativos()
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          console.log(x['correo']);
+          if (x['correo'] === correo) {
+            key = element.key;
+          }
+        });
+        this.profileService.getProfileImage(key).then(url => {
+          this.dataEgresado = url;
+          console.log('IMAGEEEN', this.dataAdministrativo);
+        });
+      });
+  }
 
   rankingRefencias() {
     // Refencias Normas ICONTEC

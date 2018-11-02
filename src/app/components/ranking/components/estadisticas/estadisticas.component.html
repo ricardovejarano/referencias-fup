@@ -40,10 +40,10 @@
           Personas que más usan la aplicación
         </div>
         <ul class="card-body list-unstyled">
-          <li>Estudiante: {{estudiante}} - {{estudianteUsos}} usos - Programa: {{correoEstudiante}}</li>
-          <li>Administrativo: {{nombreAdministrativo}} - {{contadorAdministrativo}} usos</li>
-          <li>Egresado: {{egresado}} - {{egresadoUsos}} usos - Programa: {{correoEgresado}}</li>
-          <li>Docente: {{docente}} - {{docenteUsos}} usos - Programa: {{correoDocente}}</li>
+          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataEstudiante">Estudiante: {{estudiante}} - {{estudianteUsos}} usos - Programa: {{correoEstudiante}}</li>
+          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataAdministrativo">Administrativo: {{nombreAdministrativo}} - {{contadorAdministrativo}} usos</li>
+          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataEgresado">Egresado: {{egresado}} - {{egresadoUsos}} usos - Programa: {{correoEgresado}}</li>
+          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataDocente">Docente: {{docente}} - {{docenteUsos}} usos - Programa: {{correoDocente}}</li>
           <li>Usuarios no registrados: {{usosNobody}} usos </li>
         </ul>
       </div>
