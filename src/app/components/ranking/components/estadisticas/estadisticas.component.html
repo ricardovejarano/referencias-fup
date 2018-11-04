@@ -1,28 +1,42 @@
 <main class="card">
-  <div class="row">
+  <div class="row mb-5">
       <div class="col">
         <app-graficas></app-graficas>
       </div>
   </div>
 
   <div class="row wrapper">
+
     <div class="col-md-6 mb-3">
-      <div class="card p-3">
+      <div class="card people p-3">
         <div class="card-header font-weight-bold text-info bg-white">
-          Promedio de Edad
+          Personas que más usan la aplicación
         </div>
         <ul class="card-body list-unstyled">
-          <li>General: {{promedioEdad}}</li>
-          <li>Estudiantes: {{averageEstuaidntes}}</li>
-          <li>Docentes: {{averageDocentes}}</li>
-          <li>Administrativos: {{averageAdminstrativos}}</li>
-          <li>Egresados: {{averageEgresados}}</li>
+          <li><img class="profile-img" alt="" [src]="dataEstudiante">
+            <div class="info"><span>Estudiante: </span>{{estudiante}} <br> <span>usos: </span>{{estudianteUsos}}<br><span>Programa:
+              </span>{{correoEstudiante}}</div>
+          </li>
+          <li><img class="profile-img" alt="" [src]="dataAdministrativo">
+            <div class="info"><span>Administrativo: </span>{{nombreAdministrativo}} <br> <span>usos: </span>{{contadorAdministrativo}}
+            </div>
+          </li>
+          <li><img class="profile-img" alt="" [src]="dataEgresado">
+            <div class="info"><span>Egresado: </span> {{egresado}} <br> <span>usos: </span>{{egresadoUsos}} <br> <span>Programa:
+              </span> {{correoEgresado}}</div>
+          </li>
+          <li><img class="profile-img" alt="" [src]="dataDocente">
+            <div class="info"><span>Docente: </span> {{docente}} <br> <span>usos: </span>{{docenteUsos}} <br> <span>Programa:
+              </span> {{correoDocente}}</div>
+          </li>
+          <li><div class="info"><span>Usuarios no registrados: </span> {{usosNobody}} usos</div></li>
         </ul>
       </div>
     </div>
+
     
     <div class="col-md-6 mb-3">
-      <div class="card p-3">
+      <div class="card programs p-3">
         <div class="card-header font-weight-bold text-info bg-white">
           Programas que más usan la aplicación
         </div>
@@ -37,18 +51,18 @@
     <div class="col-md-6 mb-3">
       <div class="card p-3">
         <div class="card-header font-weight-bold text-info bg-white">
-          Personas que más usan la aplicación
+          Promedio de Edad
         </div>
         <ul class="card-body list-unstyled">
-          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataEstudiante">Estudiante: {{estudiante}} - {{estudianteUsos}} usos - Programa: {{correoEstudiante}}</li>
-          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataAdministrativo">Administrativo: {{nombreAdministrativo}} - {{contadorAdministrativo}} usos</li>
-          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataEgresado">Egresado: {{egresado}} - {{egresadoUsos}} usos - Programa: {{correoEgresado}}</li>
-          <li><img style="width: 10%" class="profile-img" alt="" [src]="dataDocente">Docente: {{docente}} - {{docenteUsos}} usos - Programa: {{correoDocente}}</li>
-          <li>Usuarios no registrados: {{usosNobody}} usos </li>
+          <li>General: {{promedioEdad}}</li>
+          <li>Estudiantes: {{averageEstuaidntes}}</li>
+          <li>Docentes: {{averageDocentes}}</li>
+          <li>Administrativos: {{averageAdminstrativos}}</li>
+          <li>Egresados: {{averageEgresados}}</li>
         </ul>
       </div>
     </div>
-    
+
     <div class="col-md-6 mb-3">
       <div class="card p-3">
         <div class="card-header font-weight-bold text-info bg-white">

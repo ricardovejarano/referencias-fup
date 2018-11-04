@@ -20,6 +20,9 @@ $amarillo: rgb(255, 204, 0);
     .nav-link {
         color: $amarillo;
         font-weight: 700;
+        &:hover {
+            cursor: pointer;
+        }
     }
     background-color: $turquesa;
     .dropdown-item{
@@ -203,7 +206,8 @@ app-home {
                         color: #fff !important;
 
 						&:hover {
-							background-color: $amarillo;
+                            background-color: $amarillo;
+                            cursor: pointer;
 						}
 					}
 				}
@@ -232,13 +236,14 @@ app-home {
     }
 
 }
-app-login, app-registro, app-restore-pass{
+app-login, app-registro, app-restore-pass, app-image-profile {
     height: 100vh;
     background-image: radial-gradient(#32adc3, #104C83);
+    width: 100%;
 }
 
 app-ranking {
-    .card{
+    main.card{
         max-height: calc(100vh - 4rem);
         padding-bottom: 2rem;
         overflow-y: auto !important;
@@ -247,6 +252,49 @@ app-ranking {
     .wrapper .card-body {
         min-height: 10rem;
         margin-bottom: 0;
+    }
+    .people {
+        .card-body {
+            padding: 0;
+            li:last-child {
+                border-bottom: none !important;
+                text-align: center;
+                padding-bottom: 0;
+                .info {
+                    margin: 0 auto;
+                }
+                span {
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: .6rem;
+                    color: #707070;
+                }
+            }
+            li {
+                display: flex !important;
+                flex-direction: row !important;
+                padding: .75rem 0;
+                border-bottom: 1px solid #e4e4e4;
+                
+                .profile-img {
+                    width: 2.5rem;
+                    margin-right: 0.8rem;
+                    border-radius: 100%;
+                    align-self: center;
+                }
+    
+                .info {
+                    color: #468894;
+                    display: inline-grid;
+                    span {
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        font-size: .6rem;
+                        color: #707070;
+                    }
+                }
+            }
+        }
     }
 }
 app-update-info, app-historial {

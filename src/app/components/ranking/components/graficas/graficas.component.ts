@@ -56,6 +56,9 @@ export class GraficasComponent implements OnInit {
         ticks: {
           beginAtZero: true
         }
+      }],
+      xAxes: [{
+        display: false
       }]
     }
   };
