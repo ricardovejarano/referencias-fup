@@ -33,7 +33,10 @@
                 <img class="rounded-circle" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
               </span>
               
-              <button class="btn btn-outline-info" (click)="saveNewImage()">Guardar</button>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-warning" (click)="return()">Cancelar</button>
+                <button class="btn btn-info" (click)="saveNewImage()">Guardar</button>
+              </div>
             </div>
 
           </div>

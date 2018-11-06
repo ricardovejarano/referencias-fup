@@ -6,16 +6,15 @@
     <div class="wrapper">
         <div class="row justify-content-center">
 
-            <div class="col-lg-4 align-self-center">
+            <div class="col-xl-4 align-self-center">
                 <div class=" form-group text-center">
                     <img class="profile-img" alt="" [src]=" data ? data :  srcImage">
                     <button class="btn btn-outline-success" (click)="changeImageProfile()">
-                        <i class=""></i> Cambiar Imagen de Perfil
-                    </button>
+                        <i class=""></i> Cambiar Imágen</button>
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-6 col-xl-4">
     
                 <form (ngSubmit)="editProfile()" #orgForm="ngForm">
     
@@ -51,8 +50,7 @@
 
                     <div class="row mt-5">
                         <div class="col-md-6"><button class="btn btn-warning btn-block" (click)="returnOrganization()">Regresar</button></div>
-                        <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" [disabled]="!orgForm.form.valid">Guardar
-                                Cambios</button></div>
+                        <div class="col-md-6"><button class="btn btn-primary btn-block" type="submit" [disabled]="!orgForm.form.valid">Guardar</button></div>
                     </div>
                 </form>
             </div>

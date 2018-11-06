@@ -9,6 +9,7 @@
 
     <div class="col-md-6 mb-3">
       <div class="card people p-3">
+        <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
           Personas que más usan la aplicación
         </div>
@@ -37,19 +38,20 @@
     
     <div class="col-md-6 mb-3">
       <div class="card programs p-3">
+        <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
           Programas que más usan la aplicación
         </div>
-        <ul class="card-body list-unstyled">
-          <li>1. {{programa1Nombre}} - {{programa1cuenta}} veces </li>
-          <li>2. {{programa2Nombre}} - {{programa2cuenta}} veces</li>
-          <li>3. {{programa3Nombre}} - {{programa3cuenta}} veces</li>
+        <ul class="card-body list-unstyled d-inline-flex flex-row flex-wrap justify-content-around text-center">
+          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa1cuenta}}</p><p>veces</p></span><p>{{programa1Nombre}}</p></li>
+          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa2cuenta}}</p><p>veces</p></span><p>{{programa2Nombre}}</p></li>
+          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa3cuenta}}</p><p>veces</p></span><p>{{programa3Nombre}}</p></li>
         </ul>
       </div>
     </div> 
       
     <div class="col-md-6 mb-3">
-      <div class="card p-3">
+      <div class="card average p-3">
         <div class="card-header font-weight-bold text-info bg-white">
           Promedio de Edad
         </div>
@@ -64,14 +66,14 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <div class="card p-3">
+      <div class="card reference p-3">
         <div class="card-header font-weight-bold text-info bg-white">
           Referencia más usada
         </div>
-        <ul class="card-body list-unstyled">
-          <li>Icontec: {{referenciaIcontecTop}} - {{contadorIcontecTop}} usos</li>
-          <li>Apa: {{referenciaApaTop}} - {{contadorApaTop}} usos</li>
-          <li>IEEE: {{referenciaIeeeTop}} - {{contadorIeeeTop}} usos</li>
+        <ul class="card-body list-unstyled d-inline-flex flex-row justify-content-around text-center">
+          <li><span class="d-inline-block border rounded p-3"><p>Icontec</p><p class="h1">{{contadorIcontecTop}}</p><p>usos</p><p>{{referenciaIcontecTop}}</p></span></li>
+          <li><span class="d-inline-block border rounded p-3"><p>Apa</p><p class="h1">{{contadorApaTop}}</p><p>usos</p><p>{{referenciaApaTop}}</p></span></li>
+          <li><span class="d-inline-block border rounded p-3"><p>IEEE</p><p class="h1">{{contadorIeeeTop}}</p><p>usos</p><p>{{referenciaIeeeTop}}</p></span></li>
         </ul>
       </div>
     </div>

@@ -114,5 +114,9 @@ export class ImageProfileComponent implements OnInit {
     }
 
   }
+
+  return() {
+    this.router.navigate(['perfil']);
+  }
 }
 

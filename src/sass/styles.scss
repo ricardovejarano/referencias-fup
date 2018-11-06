@@ -17,6 +17,7 @@ $amarillo: rgb(255, 204, 0);
     min-width: 3.5rem;
     width: 100%;
     height: 100vh;
+    overflow-y: auto;
     .nav-link {
         color: $amarillo;
         font-weight: 700;
@@ -83,7 +84,12 @@ app-home {
     min-height: 100vh;
     background-color:  $turquesa;
     #content{
-        height: calc(100vh - 31px);
+        min-height: 100vh;
+    }
+    #sesionButtons {
+        top: -1px;
+        right: 0;
+        z-index: 1;
     }
     #header {
         text-align: center;
@@ -159,9 +165,6 @@ app-home {
                         padding: 3rem 2rem;
                     }
                 }
-                img {
-                    max-width: 300px;
-                }
                 > :last-child {
 					margin-bottom: 0;
 				}
@@ -178,7 +181,6 @@ app-home {
         }
         nav {
 			ul {
-				display: inline-flex;
                 margin-bottom: 0;
                 list-style: none;
                 padding-left: 0;
@@ -189,6 +191,10 @@ app-home {
 					padding-left: 0;
                     border-left: solid 1px #ffffff;
                     min-width: 10rem;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    flex-basis: -moz-available;
+
 					&:first-child {
 						border-left: 0;
 					}
@@ -203,11 +209,12 @@ app-home {
                         letter-spacing: 0.2rem;
                         font-size: 0.8rem;
                         border-bottom: 0;
-                        color: #fff !important;
+                        color: #fff;
 
 						&:hover {
                             background-color: $amarillo;
                             cursor: pointer;
+                            color: $turquesa;
 						}
 					}
 				}
@@ -249,13 +256,36 @@ app-ranking {
         overflow-y: auto !important;
         overflow-x: hidden !important;
     }
-    .wrapper .card-body {
-        min-height: 10rem;
-        margin-bottom: 0;
+    .wrapper {
+        .card-header {
+            text-align: center;
+        }
+        .card-body {
+            min-height: 10rem;
+            margin-bottom: 0;
+        }
+    }
+    .trophy {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        background-image: url(../assets/images/trophy.svg);
+        background-size: 65%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border: 2px solid #dfdfdf;
+        border-radius: 100%;
+        position: absolute;
+        top: -1.5rem;
+        left: calc(50% - 1.5rem);
+        background-color: #fff;
     }
     .people {
         .card-body {
             padding: 0;
+            overflow-y: auto;
+            max-height: 16.75rem;
+
             li:last-child {
                 border-bottom: none !important;
                 text-align: center;
@@ -296,6 +326,23 @@ app-ranking {
             }
         }
     }
+    .programs {
+        li {
+            &:first-child {
+                flex-basis: 100%;
+            }
+            span p {
+                line-height: 85%;
+                margin-bottom: 0;
+                &:first-child {
+                    color: $turquesa;
+                }
+            }
+            &:last-child {
+                align-self: flex-end;
+            }
+        }
+    }
 }
 app-update-info, app-historial {
     width: 100%;
@@ -320,6 +367,36 @@ app-update-info, app-historial {
             padding: 2rem;
             overflow-y: auto !important;
             overflow-x: hidden !important;
+        }
+    }
+}
+
+app-historial {
+    #historialList {
+        max-height: 100%;
+        overflow-y: auto;
+        height: 100%;
+        margin-bottom: 60px !important;
+    }
+    #pagination {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:"768px") {
+    app-home {
+        ul {
+            li {
+                border-left:  0 !important;
+                border-bottom: 1px solid #fff;
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
         }
     }
 }

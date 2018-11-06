@@ -1,7 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <main class="card">
     <h1 class="m-3 text-center">Historial de Citas</h1>
-    <div class="row mx-0">
-        <app-card-referencia *ngFor="let referencia of referencias" [referencia]="referencia" class="col-lg-4"></app-card-referencia>
+    <div id="historialList" class="row mx-0 my-3">
+        <app-card-referencia *ngFor="let referencia of referencias | paginate: { itemsPerPage: 9, currentPage: p }" [referencia]="referencia" class="col-lg-4"></app-card-referencia>   
+    </div>
+    <div id="pagination" class="position-absolute">
+        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
     </div>
 </main>

@@ -58,6 +58,8 @@ import { HistorialComponent } from './components/historial/historial.component';
 import { CardReferenciaComponent } from './components/historial/components/card-referencia/card-referencia.component';
 import { ChartsModule } from 'ng2-charts';
 import { RestorePassComponent } from './components/restore-pass/restore-pass.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -113,6 +115,7 @@ import { RestorePassComponent } from './components/restore-pass/restore-pass.com
     ImageCropperModule,
     CommonModule,
     ParticlesModule,
+    NgxPaginationModule
   ],
   providers: [AuthService, PerfilService, RankingService],
   bootstrap: [AppComponent]
