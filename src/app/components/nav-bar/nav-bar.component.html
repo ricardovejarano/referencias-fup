@@ -8,10 +8,10 @@
     <ul class="navbar-nav flex-column pl-0 pl-md-5">
       <li class="nav-item">
         <a class="nav-link dropdown-toggle" id="icontecMenuLink" data-toggle="collapse" data-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
+          aria-expanded="false" aria-controls="collapseOne">
           ICONTEC
         </a>
-        <div id="collapseOne" class="collapse show" data-parent="#mainMenuAccordion" aria-labelledby="icontecMenuLink">
+        <div id="collapseOne" class="collapse" data-parent="#mainMenuAccordion" aria-labelledby="icontecMenuLink">
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/libros">Libros</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/articulo-web">Artículo Web</a>
           <a class="dropdown-item" routerLinkActive="active" routerLink="/icontec/tesis">Tesis</a>
@@ -55,15 +55,15 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/ranking">RANKING</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/ranking">RANKING</a>
       </li>
 
       <li class="nav-item" *ngIf="logged == 'true'">
-        <a class="nav-link" routerLink="/perfil">PERFIL</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/perfil">PERFIL</a>
       </li>
 
       <li class="nav-item" *ngIf="logged == 'true'">
-        <a class="nav-link" routerLink="/historial">BIBLIOTECA</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/historial">BIBLIOTECA</a>
       </li>
 
       
