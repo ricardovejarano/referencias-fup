@@ -340,7 +340,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEstudiante.push(x['nombre']);
           this.arrayContadoresEstudiante.push(Number(x['contador']));
-          this.estudianteCorreoArray.push(Number(x['correo']));
+          this.estudianteCorreoArray.push(x['correo']);
           this.arrayCorreoEstudiante.push(x['programa']);
         });
         this.mejorEstudiante();
@@ -355,7 +355,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresDocente.push(x['nombre']);
           this.arrayContadoresDocente.push(Number(x['contador']));
-          this.docenteCorreoArray.push(Number(x['correo']));
+          this.docenteCorreoArray.push(x['correo']);
           this.arrayCorreoDocente.push(x['programa']);
         });
         this.mejorDocente();
@@ -370,7 +370,7 @@ export class EstadisticasComponent implements OnInit {
           const x = element.payload.toJSON();
           this.arrayNombresEgresado.push(x['nombre']);
           this.arrayContadoresEgresado.push(Number(x['contador']));
-          this.egresadoCorreoArray.push(Number(x['correo']));
+          this.egresadoCorreoArray.push(x['correo']);
           this.arrayCorreoEgresado.push(x['programa']);
         });
         this.mejorEgresado();
@@ -430,7 +430,7 @@ export class EstadisticasComponent implements OnInit {
   getEstudianteImage(correo) {
     let key = '';
     console.log('SE BUSCA CON LA PERSONA', correo);
-    this.rankingService.getAdminstrativos()
+    this.rankingService.getEstudiantes()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
@@ -464,7 +464,7 @@ export class EstadisticasComponent implements OnInit {
   getDocenteImage(correo) {
     let key = '';
     console.log('SE BUSCA CON LA PERSONA', correo);
-    this.rankingService.getAdminstrativos()
+    this.rankingService.getDocentes()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
@@ -498,7 +498,7 @@ export class EstadisticasComponent implements OnInit {
   getEgresadoImage(correo) {
     let key = '';
     console.log('SE BUSCA CON LA PERSONA', correo);
-    this.rankingService.getAdminstrativos()
+    this.rankingService.getEgresados()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
