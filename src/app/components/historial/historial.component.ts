@@ -14,6 +14,7 @@ export class HistorialComponent implements OnInit {
   keyUser = '';
   rolUsuario = '';
   referencias: ReferenciaWhitKey[];
+  p = '';
 
   constructor(
     public referenciaService: ReferenciaService,
