@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   // tslint:disable-next-line:use-host-property-decorator
   host: { 'id': 'sideBar' }
 })
-export class NavBarComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class NavBarComponent implements OnInit, AfterViewInit {
 
   flag = true;
   logged = 'false';
@@ -49,7 +49,7 @@ export class NavBarComponent implements OnInit, AfterViewInit, AfterViewChecked 
       accordeon.classList.add('show');
   }
 
-  ngAfterViewChecked() {
+  setFormHeight() {
 
     const mainCard = document.getElementById('Reference');
     const finalRef = document.getElementById('clipboard');
