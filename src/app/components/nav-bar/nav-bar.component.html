@@ -1,10 +1,11 @@
-<nav *ngIf="flag == true" class="flex-column h-100 px-3 py-5">
-  <a class="navbar-brand" routerLink="/"><img class="img-fluid" src="assets/images/logo.png" alt="Univida, unidad académica virtual y a distancia"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-    aria-expanded="false" aria-label="Toggle navigation">
+<nav *ngIf="flag == true" class="d-flex flex-column h-100 pt-2 pb-4">
+  <button class="navbar-toggler align-self-end" type="button" data-toggle="collapse" data-target="#mainMenuAccordion" aria-controls="mainMenuAccordion" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div id="mainMenuAccordion">
+  <div id="mainMenuAccordion" class="navbar-collapse px-3 collapse show">
+    
+    <a class="navbar-brand" routerLink="/"><img class="img-fluid" src="assets/images/logo.png" alt="Univida, unidad académica virtual y a distancia"></a>
+    
     <ul class="navbar-nav flex-column pl-0 pl-md-5">
       <li class="nav-item">
         <a class="nav-link dropdown-toggle" id="icontecMenuLink" data-toggle="collapse" data-target="#collapseOne"

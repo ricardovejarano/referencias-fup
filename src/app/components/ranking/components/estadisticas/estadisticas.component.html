@@ -7,7 +7,7 @@
 
   <div class="row wrapper">
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-5">
       <div class="card people p-3">
         <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
@@ -35,45 +35,46 @@
       </div>
     </div>
 
-    
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-5">
       <div class="card programs p-3">
         <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
           Programas que más usan la aplicación
         </div>
-        <ul class="card-body list-unstyled d-inline-flex flex-row flex-wrap justify-content-around text-center">
-          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa1cuenta}}</p><p>veces</p></span><p>{{programa1Nombre}}</p></li>
-          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa2cuenta}}</p><p>veces</p></span><p>{{programa2Nombre}}</p></li>
-          <li><span class="d-inline-block border rounded p-3"><p class="h1">{{programa3cuenta}}</p><p>veces</p></span><p>{{programa3Nombre}}</p></li>
+        <ul class="card-body list-unstyled d-inline-flex flex-row flex-wrap justify-content-around text-center pb-0">
+          <li><span class="border rounded-circle p-3"><p class="h1">{{programa1cuenta}}</p><p>veces</p></span><p>{{programa1Nombre}}</p></li>
+          <li><span class="border rounded-circle p-3"><p class="h1">{{programa2cuenta}}</p><p>veces</p></span><p>{{programa2Nombre}}</p></li>
+          <li><span class="border rounded-circle p-3"><p class="h1">{{programa3cuenta}}</p><p>veces</p></span><p>{{programa3Nombre}}</p></li>
         </ul>
       </div>
     </div> 
       
     <div class="col-md-6 mb-3">
       <div class="card average p-3">
+        <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
           Promedio de Edad
         </div>
-        <ul class="card-body list-unstyled">
-          <li>General: {{promedioEdad}}</li>
-          <li>Estudiantes: {{averageEstuaidntes}}</li>
-          <li>Docentes: {{averageDocentes}}</li>
-          <li>Administrativos: {{averageAdminstrativos}}</li>
-          <li>Egresados: {{averageEgresados}}</li>
+        <ul class="card-body list-unstyled d-inline-flex px-0 pb-0 flex-row flex-wrap justify-content-around text-center">
+          <li><span class="rounded p-3"><p>General</p><p class="h1">{{promedioEdad}}</p></span></li>
+          <li><span class="rounded p-3"><p>Estudiantes</p><p class="h1">{{averageEstuaidntes}}</p></span></li>
+          <li><span class="rounded p-3"><p>Docentes</p><p class="h1">{{averageDocentes}}</p></span></li>
+          <li><span class="rounded p-3"><p>Administrativos</p><p class="h1">{{averageAdminstrativos}}</p></span></li>
+          <li><span class="rounded p-3"><p>Egresados</p><p class="h1">{{averageEgresados}}</p></span></li>
         </ul>
       </div>
     </div>
 
     <div class="col-md-6 mb-3">
       <div class="card reference p-3">
+        <span class="trophy"></span>
         <div class="card-header font-weight-bold text-info bg-white">
           Referencia más usada
         </div>
-        <ul class="card-body list-unstyled d-inline-flex flex-row justify-content-around text-center">
-          <li><span class="d-inline-block border rounded p-3"><p>Icontec</p><p class="h1 mb-0">{{contadorIcontecTop}}</p><p>usos</p><p>{{referenciaIcontecTop}}</p></span></li>
-          <li><span class="d-inline-block border rounded p-3"><p>Apa</p><p class="h1 mb-0">{{contadorApaTop}}</p><p>usos</p><p>{{referenciaApaTop}}</p></span></li>
-          <li><span class="d-inline-block border rounded p-3"><p>IEEE</p><p class="h1 mb-0">{{contadorIeeeTop}}</p><p>usos</p><p>{{referenciaIeeeTop}}</p></span></li>
+        <ul class="card-body list-unstyled d-inline-flex px-0 flex-row justify-content-around text-center">
+          <li><span class="border rounded p-3"><p>Icontec</p><p class="h1 mb-0">{{contadorIcontecTop}}</p><p>usos</p><p>{{referenciaIcontecTop}}</p></span></li>
+          <li><span class="border rounded p-3"><p>Apa</p><p class="h1 mb-0">{{contadorApaTop}}</p><p>usos</p><p>{{referenciaApaTop}}</p></span></li>
+          <li><span class="border rounded p-3"><p>IEEE</p><p class="h1 mb-0">{{contadorIeeeTop}}</p><p>usos</p><p>{{referenciaIeeeTop}}</p></span></li>
         </ul>
       </div>
     </div>
