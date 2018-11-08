@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,24 +9,28 @@ import { AuthService } from 'src/app/services/auth.service';
   // tslint:disable-next-line:use-host-property-decorator
   host: { 'id': 'sideBar' }
 })
-export class NavBarComponent implements OnInit, AfterViewInit {
+export class NavBarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   flag = true;
   logged = 'false';
   navUrl;
+  formHeight = 0;
+  mainCard;
+  finalRef;
+  formRef;
 
   constructor(public router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute) {
     this.logged = localStorage.getItem('logged');
   }
 
   ngOnInit() {
-    this.activatedRoute.url
-      .subscribe(url => {
-        this.navUrl = String(url);
-      });
+    this.activatedRoute.url.subscribe(url => {
+      this.navUrl = String(url);
+    });
   }
 
   ngAfterViewInit() {
+
     switch (this.navUrl) {
       case 'icontec': this.activeReference('collapseOne'); break;
       case 'apa': this.activeReference('collapseTwo'); break;
@@ -49,14 +53,6 @@ export class NavBarComponent implements OnInit, AfterViewInit {
       accordeon.classList.add('show');
   }
 
-  setFormHeight() {
-
-    const mainCard = document.getElementById('Reference');
-    const finalRef = document.getElementById('clipboard');
-    const formRef = document.getElementById('formReference');
-
-    const formHeight = mainCard.offsetHeight - finalRef.offsetHeight;
-    formRef.style.height = 'calc(' + String(formHeight) + 'px - 7rem)';
-    console.log(formHeight);
+  ngOnDestroy() {
   }
 }
