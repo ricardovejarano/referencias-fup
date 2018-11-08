@@ -3,6 +3,7 @@
   <div id="sesionButtons" class="position-absolute">
     <button *ngIf="flagLogged" (click)="logout()" class="btn btn-sm btn-outline-light border-top-0">Salir</button>
     <button *ngIf="flagLogged == false" (click)="goToLogin()" class="btn btn-sm btn-outline-light border-top-0">Iniciar Sesión</button>
+    <a target="_self" href="assets/manual_de_usuario_fup.pdf" download="manual-de-usuario.pdf"  class="btn btn-sm btn-outline-light border-top-0">Manual de Usuario</a>
   </div>
   
   
