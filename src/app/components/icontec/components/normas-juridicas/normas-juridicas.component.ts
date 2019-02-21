@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { Referencia } from 'src/app/models/referencia.model';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { RankingService } from 'src/app/services/ranking.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-normas-juridicas',
@@ -47,7 +48,8 @@ export class NormasJuridicasComponent implements OnInit {
   contadorReferencia = 0;
   contadorNobody = 0;
 
-  constructor(public profileService: PerfilService, public rankingService: RankingService) {
+  constructor(public profileService: PerfilService, public rankingService: RankingService,
+    private toastr: ToastrService) {
     this.keyAdmin = localStorage.getItem('uid');
   }
 
@@ -247,14 +249,6 @@ export class NormasJuridicasComponent implements OnInit {
 
   addReference() {
 
-    this.addCounterReference();
-    if (localStorage.getItem('logged') === 'true') {
-      this.addCountProgram();
-      this.addCountPerson();
-    } else {
-      this.addCounterNobody();
-    }
-
     this.referenciaFinal = '';
 
 
@@ -308,6 +302,19 @@ export class NormasJuridicasComponent implements OnInit {
     } else {
       this.referenciaFinal += ' p.';
     }
+
+
+    if (this.referenciaFinal.length > 8 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
+      this.addCounterReference();
+      if (localStorage.getItem('logged') === 'true') {
+        this.addCountProgram();
+        this.addCountPerson();
+      } else {
+        this.addCounterNobody();
+      }
+      this.toastr.success('Referencia generada');
+    }
+    localStorage.setItem('prevReference', this.referenciaFinal);
   }
 
   resetForm(validForm?: NgForm) {

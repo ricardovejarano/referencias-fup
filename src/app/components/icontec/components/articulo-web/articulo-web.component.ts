@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { Referencia } from 'src/app/models/referencia.model';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { RankingService } from 'src/app/services/ranking.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulo-web',
@@ -50,7 +51,7 @@ export class ArticuloWebIcontecComponent implements OnInit {
   contadorReferencia = 0;
   contadorNobody = 0;
 
-  constructor(public profileService: PerfilService, public rankingService: RankingService) {
+  constructor(public profileService: PerfilService, public rankingService: RankingService, private toastr: ToastrService) {
     this.keyAdmin = localStorage.getItem('uid');
   }
 
@@ -239,34 +240,26 @@ export class ArticuloWebIcontecComponent implements OnInit {
 
   getCounterNobody() {
     this.rankingService.getNobodyCounter()
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        if (element.key === 'contador') {
-          this.contadorNobody = Number(x);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.contadorNobody = Number(x);
+          }
+        });
       });
-    });
   }
 
   addCounterNobody() {
     this.rankingService.addNobodyCounter(this.contadorNobody)
-    .then(res => {
-      console.log('Se registra evento');
-    }, err => {
-      console.log('Ocurrió un error', err);
-    });
+      .then(res => {
+        console.log('Se registra evento');
+      }, err => {
+        console.log('Ocurrió un error', err);
+      });
   }
 
   addReference() {
-
-    this.addCounterReference();
-    if (localStorage.getItem('logged') === 'true') {
-      this.addCountProgram();
-      this.addCountPerson();
-    } else {
-      this.addCounterNobody();
-    }
 
     this.referenciaFinal = '';
 
@@ -324,6 +317,19 @@ export class ArticuloWebIcontecComponent implements OnInit {
     }
 
     this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
+
+    if (this.referenciaFinal.length > 25 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
+      this.addCounterReference();
+      if (localStorage.getItem('logged') === 'true') {
+        this.addCountProgram();
+        this.addCountPerson();
+      } else {
+        this.addCounterNobody();
+      }
+      this.toastr.success('Referencia generada');
+    }
+    localStorage.setItem('prevReference', this.referenciaFinal);
+
   }
 
   resetForm(validForm?: NgForm) {

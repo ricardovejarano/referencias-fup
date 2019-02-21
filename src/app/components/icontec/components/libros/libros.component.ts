@@ -303,7 +303,6 @@ export class LibrosIcontecComponent implements OnInit {
       this.toastr.success('Referencia generada');
     }
     localStorage.setItem('prevReference', this.referenciaFinal);
-
   }
 
   copyInputMessage(inputElement) {

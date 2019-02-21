@@ -4,6 +4,7 @@ import { PerfilService } from 'src/app/services/perfil.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { RankingService } from 'src/app/services/ranking.service';
 import { Referencia } from 'src/app/models/referencia.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulo-revista',
@@ -52,7 +53,8 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
   contadorReferencia = 0;
   contadorNobody = 0;
 
-  constructor(public profileService: PerfilService, public rankingService: RankingService) {
+  constructor(public profileService: PerfilService, public rankingService: RankingService,
+    private toastr: ToastrService) {
     this.keyAdmin = localStorage.getItem('uid');
   }
 
@@ -259,14 +261,6 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
 
   addReference() {
 
-    this.addCounterReference();
-    if (localStorage.getItem('logged') === 'true') {
-      this.addCountProgram();
-      this.addCountPerson();
-    } else {
-      this.addCounterNobody();
-    }
-
     this.referenciaFinal = '';
 
     for (let z = 0; z < this.nombres.length; z++) {
@@ -326,6 +320,19 @@ export class ArticuloRevistaIcontecComponent implements OnInit {
     } else {
       this.referenciaFinal += '.';
     }
+
+
+    if (this.referenciaFinal.length > 8 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
+      this.addCounterReference();
+      if (localStorage.getItem('logged') === 'true') {
+        this.addCountProgram();
+        this.addCountPerson();
+      } else {
+        this.addCounterNobody();
+      }
+      this.toastr.success('Referencia generada');
+    }
+    localStorage.setItem('prevReference', this.referenciaFinal);
   }
 
   resetForm(validForm?: NgForm) {
