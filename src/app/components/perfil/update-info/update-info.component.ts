@@ -75,13 +75,16 @@ export class UpdateInfoComponent implements OnInit {
   }
 
   editProfile() {
-    this.profileService.updateProfileUser(this.UsuarioPerfil, this.rolUsuario, this.keyUser)
-      .then((res) => {
-        this.toastr.success('Perfil Actualizado');
-      }).catch((err) => {
-        this.toastr.warning('No se ha Podido actualizar el perfil');
-      });
-
+    if (this.UsuarioPerfil.edad > '15' && this.UsuarioPerfil.edad < '90') {
+      this.profileService.updateProfileUser(this.UsuarioPerfil, this.rolUsuario, this.keyUser)
+        .then((res) => {
+          this.toastr.success('Perfil Actualizado');
+        }).catch((err) => {
+          this.toastr.warning('No se ha Podido actualizar el perfil');
+        });
+    } else {
+      this.toastr.warning('Ingrese un valor de edad válido');
+    }
   }
 
   changeImageProfile() {

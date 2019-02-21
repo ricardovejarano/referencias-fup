@@ -39,7 +39,8 @@
                         
                         <div class="form-group col-lg-6">
                             <label for="edad">Edad</label>
-                            <input class="form-control" [(ngModel)]="UsuarioPerfil.edad" id="edad" name="edad" #edad="ngModel" input>
+                            <input class="form-control" type="number" [(ngModel)]="UsuarioPerfil.edad" id="edad" name="edad"
+                             #edad="ngModel" min="0" max="99" input>
                         </div>
                         <div *ngIf="rolUsuario == 'estudiante'" class="form-group col-lg-6">
                             <label for="alterEgo">Semestre</label>
