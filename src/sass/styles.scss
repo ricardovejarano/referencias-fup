@@ -61,6 +61,7 @@ app-root {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
 app-root > *:nth-child(2){
     display: flex;
     margin-right: auto;
@@ -100,6 +101,7 @@ app-root > *:nth-child(2){
         }
     }
 }
+
 main {
     > h3 {
         color: #6d8a91;
@@ -147,12 +149,12 @@ app-home {
             }
         }
         > :first-child {
-			margin-top: 0;
+            margin-top: 0;
 
-			&:before {
-				display: none;
-			}
-		}
+            &:before {
+                display: none;
+            }
+        }
         .logo{
             width: 8.5rem;
             height: 8.5rem;
@@ -194,8 +196,8 @@ app-home {
                     }
                 }
                 > :last-child {
-					margin-bottom: 0;
-				}
+                    margin-bottom: 0;
+                }
                 h1,p{
                     color: #fff;
                 }
@@ -207,15 +209,15 @@ app-home {
             }
         }
         nav {
-			ul {
+            ul {
                 margin-bottom: 0;
                 list-style: none;
                 padding-left: 0;
                 border: solid 1px #ffffff;
                 border-radius: 4px;
 
-				li {
-					padding-left: 0;
+                li {
+                    padding-left: 0;
                     border-left: solid 1px #ffffff;
                     min-width: 10rem;
                     flex-grow: 1;
@@ -223,12 +225,12 @@ app-home {
                     flex-basis: -moz-available;
                     white-space: nowrap;
 
-					&:first-child {
-						border-left: 0;
-					}
+                    &:first-child {
+                        border-left: 0;
+                    }
 
-					a {
-						display: block;
+                    a {
+                        display: block;
                         min-width: 7.5rem;
                         height: 2.75rem;
                         line-height: 2.75rem;
@@ -239,13 +241,13 @@ app-home {
                         border-bottom: 0;
                         color: #fff;
 
-						&:hover {
+                        &:hover {
                             background-color: $amarillo;
                             cursor: pointer;
                             color: $turquesa;
-						}
-					}
-				}
+                        }
+                    }
+                }
             }
         }
     }
@@ -486,7 +488,7 @@ app-historial {
     }
 }
 
-@media only screen and (max-width:"768px") {
+@media only screen and (max-width:768px) {
     app-home {
         ul {
             li {
@@ -495,6 +497,78 @@ app-historial {
                 &:last-child {
                     border-bottom: 0;
                 }
+            }
+        }
+    }
+    app-root > *:nth-child(2){
+        & > *:nth-child(3){
+            margin: 0.5rem;
+            min-height: 100vh;
+            overflow-y: visible;
+
+            main.card{
+                padding: 1rem 0.5rem 0;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: visible;
+                max-height: none !important; 
+                
+                form{
+                    overflow: visible;
+                }
+                #clipboard{
+                    margin-top: 1rem;
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    .input-group-append{
+                        display: block;
+                        margin: 1rem 0;
+                        width: 100%;
+                        text-align: center;
+
+                        button {
+                            border-radius: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #sideBar{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        max-width: 100vw;
+        min-width: 3.5rem;
+        z-index: 100;
+        height: auto;
+        border-bottom-right-radius: 1.5rem;
+
+        nav:first-child{
+            padding-bottom: 0.5rem !important;
+        }
+
+        #mainMenuAccordion {
+            width: 100%;
+            height: 0;
+            &.show{
+                height: auto;
+            }
+        }
+    }
+    app-ranking {
+        padding-top: 3rem;
+        .card.programs {
+            .rounded-circle{
+                padding: 1rem 0.5rem !important;
+                .h1 { font-size: 1.9rem !important; }
+            }
+        }
+        .card.reference {
+            .card-body {
+                flex-direction: column !important;
             }
         }
     }
