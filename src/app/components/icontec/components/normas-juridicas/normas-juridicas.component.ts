@@ -35,7 +35,7 @@ export class NormasJuridicasComponent implements OnInit {
     'noviembre', 'diciembre'];
   dia = [];
   anio = [];
-  anioCita = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
+  anioCita = [];
 
   keyAdmin = '';
   rolUsuario = '';
@@ -220,6 +220,7 @@ export class NormasJuridicasComponent implements OnInit {
 
     for (let x = 1940; x < 2020; x++) {
       this.anio.push(x);
+      this.anioCita.push(x);
     }
   }
 

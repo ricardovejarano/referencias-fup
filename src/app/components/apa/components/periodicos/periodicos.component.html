@@ -48,7 +48,7 @@
                   <div class="col-md-4">
                     <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
                       <option value="" disabled selected>Año</option>
-                      <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+                      <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
                     </select>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
     <div class="input-group">
       <div *ngIf="userRegister" class="input-group-prepend"><button class="btn btn-outline-info" (click)="saveHistory()">Guardar
           en biblioteca</button></div>
-      <input type="text" class="form-control" id="title" maxlength="100" #userinput [(ngModel)]="referenciaFinal" name="title">
+      <input type="text" class="form-control" id="title" maxlength="100" #userinput disabled [(ngModel)]="referenciaFinal" name="title">
       <div class="input-group-append">
         <button class="btn btn-primary" (click)="copyInputMessage(userinput)" value="click to copy">Copiar al porta
           papeles</button>

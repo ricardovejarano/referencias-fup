@@ -35,8 +35,8 @@ export class CongresoReunionComponent implements OnInit {
     'noviembre', 'diciembre'];
   dia = [];
   anio = [];
-  anioCita = [2015, 2016, 2017, 2018, 2019, 2020, 2021];
-
+  anioCita = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+    2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021];
 
   nombres = [{ value: '' }];
   apellidos = [{ value: '' }];
@@ -237,23 +237,23 @@ export class CongresoReunionComponent implements OnInit {
 
   getCounterNobody() {
     this.rankingService.getNobodyCounter()
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        if (element.key === 'contador') {
-          this.contadorNobody = Number(x);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.contadorNobody = Number(x);
+          }
+        });
       });
-    });
   }
 
   addCounterNobody() {
     this.rankingService.addNobodyCounter(this.contadorNobody)
-    .then(res => {
-      console.log('Se registra evento');
-    }, err => {
-      console.log('Ocurrió un error', err);
-    });
+      .then(res => {
+        console.log('Se registra evento');
+      }, err => {
+        console.log('Ocurrió un error', err);
+      });
   }
 
   addReference() {
@@ -284,7 +284,7 @@ export class CongresoReunionComponent implements OnInit {
     }
 
     if (this.fechaCitaMes) {
-      this.referenciaFinal +=  this.fechaCitaMes + ', ';
+      this.referenciaFinal += this.fechaCitaMes + ', ';
     }
 
     if (this.fechaCitaAnio) {
