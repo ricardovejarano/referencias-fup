@@ -316,9 +316,11 @@ export class ArticuloWebIcontecComponent implements OnInit {
       this.referenciaFinal += ' ' + this.fechaCitaAnio + '}';
     }
 
-    this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
+    if (this.disponibilidad) {
+      this.referenciaFinal += ' disponiible en: ' + '(' + this.disponibilidad + ')';
+    }
 
-    if (this.referenciaFinal.length > 25 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
+    if (this.referenciaFinal.length > 5 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
       this.addCounterReference();
       if (localStorage.getItem('logged') === 'true') {
         this.addCountProgram();
