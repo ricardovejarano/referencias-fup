@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { Referencia } from 'src/app/models/referencia.model';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { RankingService } from 'src/app/services/ranking.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulo-revista',
@@ -53,7 +54,8 @@ export class ArticuloRevistaComponent implements OnInit {
   contadorReferencia = 0;
   contadorNobody = 0;
 
-  constructor(public profileService: PerfilService, public rankingService: RankingService) {
+  constructor(public profileService: PerfilService, public rankingService: RankingService,
+    private toastr: ToastrService) {
     this.keyAdmin = localStorage.getItem('uid');
   }
 
@@ -256,13 +258,6 @@ export class ArticuloRevistaComponent implements OnInit {
   }
 
   addReference() {
-    this.addCounterReference();
-    if (localStorage.getItem('logged') === 'true') {
-      this.addCountProgram();
-      this.addCountPerson();
-    } else {
-      this.addCounterNobody();
-    }
     this.referenciaFinal = '';
 
     for (let z = 0; z < this.nombres.length; z++) {
@@ -317,6 +312,17 @@ export class ArticuloRevistaComponent implements OnInit {
     if (this.fechaAcessoAnio) {
       this.referenciaFinal += this.fechaAcessoAnio + '.';
     }
+    if (this.referenciaFinal.length > 5 && this.referenciaFinal !== localStorage.getItem('prevReference')) {
+      this.addCounterReference();
+      if (localStorage.getItem('logged') === 'true') {
+        this.addCountProgram();
+        this.addCountPerson();
+      } else {
+        this.addCounterNobody();
+      }
+      this.toastr.success('Referencia generada');
+    }
+    localStorage.setItem('prevReference', this.referenciaFinal);
 
   }
 
