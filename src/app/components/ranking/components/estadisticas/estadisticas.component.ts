@@ -39,7 +39,7 @@ export class EstadisticasComponent implements OnInit {
 
 
   // Usuario que más usa la aplicación
-  flagRanking = true;
+  flagRanking = false;
   estudiante = 'No aplica';
   estudianteUsos = 0;
   administrativo = 'No aplica';
@@ -128,8 +128,8 @@ export class EstadisticasComponent implements OnInit {
     this.rankingRefencias();
     this.listaAdministrativos();
     this.getCounterNobody();
-    if (localStorage.getItem('logged') === 'false') {
-      this.flagRanking = false;
+    if (localStorage.getItem('logged') === 'true') {
+      this.flagRanking = true;
     }
     setTimeout(() => {
       this.edadPromedio();
