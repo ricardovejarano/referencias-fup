@@ -5,13 +5,15 @@ import { Usuario } from '../models/usuario.model';
 import * as firebase from 'firebase';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth, private toastr: ToastrService, public router: Router) { }
+  constructor(public afAuth: AngularFireAuth, private toastr: ToastrService, public router: Router,
+    private afDatabase: AngularFireDatabase) { }
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
@@ -44,6 +46,63 @@ export class AuthService {
             console.log('err', err);
           });
     });
+  }
+
+
+  writeVerifyUser(email, uid) {
+    // first read info from temporal user
+    this.afDatabase.list('user-temporal')
+    .snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        const x = element.payload.toJSON();
+        x['$key'] = element.key;
+        if (x['correo'] === email) {
+          const user: Usuario = new Usuario();
+          user.correo = x['correo'];
+          user.contador = x['contador'];
+          user.edad = x['edad'];
+          user.historial = x['historial'];
+          user.nombre = x['nombre'];
+          user.programa = x['programa'];
+          user.rol = x['rol'];
+          user.semestre = x['semestre'];
+          console.log('USUARIO EN LA CONSULTA');
+          this.write(user.rol, uid, user, x['$key']);
+        }
+      });
+    });
+  }
+
+  write(rol, uid, usuario, keyToDell) {
+    const usersRefRol = firebase.database().ref('rol');
+    usersRefRol.child(uid).set(rol);
+    const usersRef = firebase.database().ref(rol);
+    usersRef.child(uid).set(usuario)
+    .then(res => {
+      console.log('res de write', res);
+      this.afDatabase.list(`user-temporal`).remove(keyToDell)
+      .then( res2 => {
+        console.log('Temporal eliminada');
+        window.alert('Ya puede iniciar sesión');
+        this.router.navigate(['/login']);
+      }, err2 => {
+        console.log('Error al eliminar usuario temporal', err2);
+      });
+    }, err => {
+      console.log('error', err);
+    });
+  }
+
+
+
+  registerTemporalUser(usuario: Usuario) {
+    const usersRef = firebase.database().ref(`user-temporal`);
+    return usersRef.push(usuario);
+  }
+
+
+  sendEmailConfirmation(email, actionCodeSettings) {
+    return firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
   }
 
 

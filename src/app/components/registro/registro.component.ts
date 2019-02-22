@@ -30,6 +30,7 @@ export class RegistroComponent implements OnInit {
   myParams: object = {};
   width = 100;
   height = 100;
+  actionCodeSettings = {};
 
   constructor(public router: Router, public authService: AuthService) { }
 
@@ -103,10 +104,26 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmitRegister() {
+
+    if (this.edad > '15' && this.edad < '90') {
+
+    this.actionCodeSettings = {
+      url: 'http://unividafup.edu.co/demo_referencias/validation',
+      handleCodeInApp: true,
+      iOS: {
+      },
+      android: {
+      },
+      dynamicLinkDomain: 'http://unividafup.edu.co/demo_referencias'
+    };
     // Agregar nuevo dominio:
     // && this.email.split('@')[1].toLowerCase()  !== <X-dominio>
     console.log('Dominio', this.email.split('@')[1].toLowerCase());
-    if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co' && this.email.split('@')[1].toLowerCase() !== 'unividafup.edu.co') {
+    if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co' &&
+      this.email.split('@')[1].toLowerCase() !== 'unividafup.edu.co'
+      // &&
+      // this.email.split('@')[1].toLowerCase() !== 'gmail.com'
+      ) {
       window.alert('El Dominio debe ser @fup.edu.co o @unividafup.edu.co');
     } else {
       if (this.password !== this.password2) {
@@ -116,6 +133,7 @@ export class RegistroComponent implements OnInit {
         this.usuario.correo = this.email;
         this.usuario.edad = this.edad;
         this.usuario.contador = 0;
+        this.usuario.rol = this.rol;
         switch (this.rol) {
           case 'estudiante':
             this.usuario.programa = this.programa;
@@ -131,24 +149,47 @@ export class RegistroComponent implements OnInit {
             break;
         }
         console.log('EL USUARIO', this.usuario);
-        this.authService.registerAdmin(this.email, this.password, this.usuario, this.rol)
-          .then((res) => {
-            window.alert('Operación Exitosa');
-            this.authService.loginEmail(this.email, this.password)
-              .then((res2) => {
-                this.router.navigate(['/']);
-                localStorage.setItem('logged', 'true');
-                localStorage.setItem('uid', firebase.auth().currentUser.uid);
-              }).catch((err) => {
-                console.log('Error en Login', err);
-                window.alert('Datos incorrectos');
+
+        this.authService.sendEmailConfirmation(this.email, this.actionCodeSettings)
+          .then(res => {
+            window.alert('Revise su bandeja de entrada para validar correo');
+            this.authService.registerTemporalUser(this.usuario)
+              .then(res2 => {
+                console.log('Información temporal subida');
+                this.router.navigate(['/login']);
+              }, err => {
+                console.log('Error al subir información temporal', err);
               });
-            console.log('creado exitoso:', res);
-          }).catch((err1) => {
-            console.log('creado error:', err1);
+          }, err => {
+            window.alert('Error al enviar mensaje ' + err);
+            console.log(err);
           });
+
+        /*
+                this.authService.registerAdmin(this.email, this.password, this.usuario, this.rol)
+                  .then((res) => {
+                    window.alert('Operación Exitosa');
+                    this.authService.loginEmail(this.email, this.password)
+                      .then((res2) => {
+                        this.router.navigate(['/']);
+                        localStorage.setItem('logged', 'true');
+                        localStorage.setItem('uid', firebase.auth().currentUser.uid);
+                      }).catch((err) => {
+                        console.log('Error en Login', err);
+                        window.alert('Datos incorrectos');
+                      });
+                    console.log('creado exitoso:', res);
+                  }).catch((err1) => {
+                    console.log('creado error:', err1);
+                  });
+        */
+
       }
     }
+  } else {
+    window.alert('Inserta una edad valida');
+  }
+
   }
 
 }

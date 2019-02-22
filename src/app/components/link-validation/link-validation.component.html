@@ -1,0 +1,51 @@
+<main class="container">
+  <div class="row h-100 justify-content-center" style="padding-top: 80px;">
+    <div class="col-lg-4 align-self-center">
+  
+        <div class="card bg-white text-center p-2 p-md-5" >
+          <form class="login100-form validate-form" #validateForm="ngForm" (submit)="onSubmitValidate()">
+            <span class="login100-form-title">
+              INGRESE SU CORREO ELECTRÓNICO 
+            </span>
+            
+            <div class="input-group mb-3 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="form-control" type="email" required email name="email2" id="email2" [(ngModel)]="email" placeholder="Email">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="form-control" type="password" required minlength="7"  name="password1" id="password1" [(ngModel)]="password1" placeholder="Password">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="form-control" type="password" required  name="password2" id="password2" [(ngModel)]="password2" placeholder="Confirme Password">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+            
+            <div class="d-flex flex-column">
+              <button  [disabled]="!validateForm.form.valid" class="btn btn-success mb-3" type="submit">
+                Validar
+              </button>
+             
+            </div>
+          </form>
+        </div>
+  
+  
+    </div>
+  </div>
+  
+  </main>

@@ -8,6 +8,7 @@ export class Usuario {
         semestre = '',
         historial = '',
         contador = 0,
+        rol = ''
     ) {
         this.nombre = nombre;
         this.correo = correo;
@@ -16,6 +17,7 @@ export class Usuario {
         this.semestre = semestre;
         this.historial = historial;
         this.contador = contador;
+        this.rol = rol;
     }
     nombre?: string;
     correo?: string;
@@ -24,4 +26,5 @@ export class Usuario {
     semestre?: string;
     historial?: string;
     contador?: number;
+    rol?: string;
 }

@@ -10,6 +10,7 @@ import { registronRoute } from './components/registro/registro.routing';
 import { perfilRoute } from './components/perfil/perfil.routing';
 import { historialRoute } from './components/historial/historial.routing';
 import { restoreRoute } from './components/restore-pass/restore.routing';
+import { LinkRoutes } from './components/link-validation/link-validation.routing';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     ...registronRoute,
     ...perfilRoute,
     ...historialRoute,
+    ...LinkRoutes,
     ...restoreRoute
 ];
 

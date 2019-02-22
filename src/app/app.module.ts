@@ -59,6 +59,7 @@ import { CardReferenciaComponent } from './components/historial/components/card-
 import { ChartsModule } from 'ng2-charts';
 import { RestorePassComponent } from './components/restore-pass/restore-pass.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LinkValidationComponent } from './components/link-validation/link-validation.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HistorialComponent,
     CardReferenciaComponent,
     RestorePassComponent,
+    LinkValidationComponent,
   ],
   imports: [
     FormsModule,
