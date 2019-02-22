@@ -219,8 +219,10 @@ export class ArticuloWebIcontecComponent implements OnInit {
   }
 
   addAuthor() {
-    this.nombres.push({ value: '' });
-    this.apellidos.push({ value: '' });
+    if (this.nombres[this.nombres.length - 1].value !== '') {
+      this.nombres.push({ value: '' });
+      this.apellidos.push({ value: '' });
+    }
   }
 
   quitAuthor(index) {

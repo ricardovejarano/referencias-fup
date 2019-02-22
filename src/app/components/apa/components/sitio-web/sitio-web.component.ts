@@ -214,8 +214,10 @@ export class SitioWebComponent implements OnInit {
 
 
   addAuthor() {
-    this.nombres.push({ value: '' });
-    this.apellidos.push({ value: '' });
+    if (this.apellidos[this.nombres.length - 1].value !== '') {
+      this.nombres.push({ value: '' });
+      this.apellidos.push({ value: '' });
+    }
   }
 
   quitAuthor(index) {
@@ -235,23 +237,23 @@ export class SitioWebComponent implements OnInit {
 
   getCounterNobody() {
     this.rankingService.getNobodyCounter()
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        if (element.key === 'contador') {
-          this.contadorNobody = Number(x);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.contadorNobody = Number(x);
+          }
+        });
       });
-    });
   }
 
   addCounterNobody() {
     this.rankingService.addNobodyCounter(this.contadorNobody)
-    .then(res => {
-      console.log('Se registra evento');
-    }, err => {
-      console.log('Ocurrió un error', err);
-    });
+      .then(res => {
+        console.log('Se registra evento');
+      }, err => {
+        console.log('Ocurrió un error', err);
+      });
   }
 
   addReference() {

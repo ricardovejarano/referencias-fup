@@ -206,8 +206,10 @@ export class TesisComponent implements OnInit {
   }
 
   addAuthor() {
-    this.nombres.push({ value: '' });
-    this.apellidos.push({ value: '' });
+    if (this.apellidos[this.nombres.length - 1].value !== '') {
+      this.nombres.push({ value: '' });
+      this.apellidos.push({ value: '' });
+    }
   }
 
   quitAuthor(index) {

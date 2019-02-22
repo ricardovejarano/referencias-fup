@@ -214,8 +214,10 @@ export class ArticuloWebComponent implements OnInit {
   }
 
   addAuthor() {
-    this.nombres.push({ value: '' });
-    this.apellidos.push({ value: '' });
+    if (this.nombres[this.nombres.length - 1].value !== '') {
+      this.nombres.push({ value: '' });
+      this.apellidos.push({ value: '' });
+    }
   }
 
   quitAuthor(index) {
@@ -235,23 +237,23 @@ export class ArticuloWebComponent implements OnInit {
 
   getCounterNobody() {
     this.rankingService.getNobodyCounter()
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        if (element.key === 'contador') {
-          this.contadorNobody = Number(x);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          if (element.key === 'contador') {
+            this.contadorNobody = Number(x);
+          }
+        });
       });
-    });
   }
 
   addCounterNobody() {
     this.rankingService.addNobodyCounter(this.contadorNobody)
-    .then(res => {
-      console.log('Se registra evento');
-    }, err => {
-      console.log('Ocurrió un error', err);
-    });
+      .then(res => {
+        console.log('Se registra evento');
+      }, err => {
+        console.log('Ocurrió un error', err);
+      });
   }
 
   addReference() {
@@ -259,10 +261,10 @@ export class ArticuloWebComponent implements OnInit {
 
     for (let z = 0; z < this.nombres.length; z++) {
       if (this.nombres[z].value) {
-          this.referenciaFinal += this.nombres[z].value.toUpperCase() + '. ';
+        this.referenciaFinal += this.nombres[z].value.toUpperCase() + '. ';
       }
       if (this.apellidos[z].value) {
-          this.referenciaFinal += this.apellidos[z].value[0].toUpperCase() + this.apellidos[z].value.substr(1).toLocaleLowerCase() + ', ';
+        this.referenciaFinal += this.apellidos[z].value[0].toUpperCase() + this.apellidos[z].value.substr(1).toLocaleLowerCase() + ', ';
       }
     }
 
