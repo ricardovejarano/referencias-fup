@@ -120,8 +120,8 @@ export class RegistroComponent implements OnInit {
     // && this.email.split('@')[1].toLowerCase()  !== <X-dominio>
     if (this.email.split('@')[1].toLowerCase() !== 'fup.edu.co' &&
       this.email.split('@')[1].toLowerCase() !== 'unividafup.edu.co'
-      // &&
-      // this.email.split('@')[1].toLowerCase() !== 'gmail.com'
+      &&
+      this.email.split('@')[1].toLowerCase() !== 'gmail.com'
       ) {
       window.alert('El Dominio debe ser @fup.edu.co o @unividafup.edu.co');
     } else {
