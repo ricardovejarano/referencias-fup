@@ -60,6 +60,7 @@ import { ChartsModule } from 'ng2-charts';
 import { RestorePassComponent } from './components/restore-pass/restore-pass.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LinkValidationComponent } from './components/link-validation/link-validation.component';
+import { ProfileGuard } from './guards/profile.guard';
 
 
 @NgModule({
@@ -119,7 +120,7 @@ import { LinkValidationComponent } from './components/link-validation/link-valid
     ParticlesModule,
     NgxPaginationModule
   ],
-  providers: [AuthService, PerfilService, RankingService],
+  providers: [AuthService, PerfilService, RankingService, ProfileGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
