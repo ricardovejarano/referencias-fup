@@ -57,7 +57,10 @@ export class RestorePassComponent implements OnInit {
   }
 
   onSubmitRestore() {
-    this.authService.restorePass(this.email);
+    this.authService.restorePass(this.email).then((res) => {
+      this.toastr.success('Correo para restablecer contraseña enviado');
+      this.router.navigate(['login']);
+    });
   }
 
   return() {

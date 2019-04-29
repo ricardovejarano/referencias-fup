@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    console.log('CIERRA SESIÓN');
     this.router.navigate(['/']);
     localStorage.setItem('logged', 'false');
     this.authService.logout();

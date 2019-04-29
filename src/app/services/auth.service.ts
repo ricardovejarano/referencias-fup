@@ -43,7 +43,6 @@ export class AuthService {
         },
           err => {
             reject(err);
-            console.log('err', err);
           });
     });
   }
@@ -66,7 +65,6 @@ export class AuthService {
           user.programa = x['programa'];
           user.rol = x['rol'];
           user.semestre = x['semestre'];
-          console.log('USUARIO EN LA CONSULTA');
           this.write(user.rol, uid, user, x['$key']);
         }
       });
@@ -79,14 +77,11 @@ export class AuthService {
     const usersRef = firebase.database().ref(rol);
     usersRef.child(uid).set(usuario)
     .then(res => {
-      console.log('res de write', res);
       this.afDatabase.list(`user-temporal`).remove(keyToDell)
       .then( res2 => {
-        console.log('Temporal eliminada');
         window.alert('Ya puede iniciar sesión');
         this.router.navigate(['/login']);
       }, err2 => {
-        console.log('Error al eliminar usuario temporal', err2);
       });
     }, err => {
       console.log('error', err);

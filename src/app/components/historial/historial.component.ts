@@ -54,7 +54,7 @@ export class HistorialComponent implements OnInit {
           x['$key'] = element.key;
           this.referencias.push(x as ReferenciaWhitKey);
         });
-        console.log('Todas las Referencias del Usuario:', this.referencias);
+
       });
   }
 

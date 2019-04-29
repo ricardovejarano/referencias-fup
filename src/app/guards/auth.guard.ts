@@ -9,12 +9,9 @@ export class AuthGuard implements CanActivate {
         private router: Router,
     ) { }
     canActivate() {
-        console.log('VARIABLE LOGGED EN CANACTIVE', localStorage.getItem('logged'));
         if (localStorage.getItem('logged') === 'true') {
-            console.log('Verificar si está registrado');
             return true;
         } else {
-            console.log('REDIRIGE AL LOGIN');
             this.router.navigate(['/login']);
         }
     }

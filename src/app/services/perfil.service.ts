@@ -67,8 +67,6 @@ export class PerfilService {
   }
 
   updateProfileUser(user: Usuario, rolUsuario, keyUser) {
-    console.log(rolUsuario);
-    console.log(keyUser);
     return this.afDatabase.list(`${rolUsuario}`).update(keyUser, {
       edad: user.edad,
       nombre: user.nombre,

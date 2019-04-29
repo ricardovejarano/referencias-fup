@@ -52,7 +52,6 @@ export class UpdateInfoComponent implements OnInit {
           if (element.key === this.keyUser) {
             this.rolUsuario = x.toString();
             this.profileInfo();
-            console.log(x);
           }
         });
       });
@@ -70,7 +69,6 @@ export class UpdateInfoComponent implements OnInit {
           }
         });
         this.UsuarioPerfil = this.usuarios[0];
-        console.log('Usuario:', this.UsuarioPerfil);
       });
   }
 

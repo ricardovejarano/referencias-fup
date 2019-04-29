@@ -43,7 +43,7 @@ export class IcontecComponent implements OnInit, AfterViewChecked {
 
       this.formHeight = this.mainCard.offsetHeight - this.finalRef.offsetHeight;
       this.formRef.style.height = 'calc(' + String(this.formHeight) + 'px - 7rem)';
-      console.log('Form: ' + this.formHeight);
+
     }
   }
 }

@@ -75,7 +75,7 @@ export class GraficasComponent implements OnInit {
   }
 
   getValueConunterProgram() {
-      // console.log('ÉNTRA!!!');
+
       this.profileService.getContadorProgramas()
         .snapshotChanges().subscribe(item => {
           this.arrayProgramas = [];
@@ -90,7 +90,6 @@ export class GraficasComponent implements OnInit {
           setTimeout(() => {
             this.barChartData = this.barChartDataFunct();
             this.barChartLabels = this.barChartLabelsFunct();
-            // console.log(this.barChartData);
             this.flag = true;
           }, 500);
         });
@@ -112,7 +111,6 @@ export class GraficasComponent implements OnInit {
         pos3 = x;
       }
     }
-    // console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
   }
 
   barChartDataFunct(): any {

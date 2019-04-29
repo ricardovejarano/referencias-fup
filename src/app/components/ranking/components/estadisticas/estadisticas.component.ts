@@ -195,7 +195,6 @@ export class EstadisticasComponent implements OnInit {
           this.averageEstuaidntes = sum / this.arrayEstudiantes.length;
           this.averageEstuaidntes = Math.floor(this.averageEstuaidntes);
         }
-        // console.log(this.arrayEstudiantes, 'Promedio', this.averageEstuaidntes);
       });
   }
 
@@ -220,7 +219,6 @@ export class EstadisticasComponent implements OnInit {
           this.averageDocentes = sum / this.arrayDocentes.length;
           this.averageDocentes = Math.floor(this.averageDocentes);
         }
-        // console.log(this.arrayDocentes, 'Promedio', this.averageDocentes);
       });
   }
 
@@ -245,8 +243,6 @@ export class EstadisticasComponent implements OnInit {
           this.averageAdminstrativos = sum / this.arrayAdministrativos.length;
           this.averageAdminstrativos = Math.floor(this.averageAdminstrativos);
         }
-
-        // console.log(this.arrayAdministrativos, 'Promedio', this.averageAdminstrativos);
       });
   }
 
@@ -271,12 +267,10 @@ export class EstadisticasComponent implements OnInit {
           this.averageEgresados = sum / this.arrayEgresados.length;
           this.averageEgresados = Math.floor(this.averageEgresados);
         }
-        // console.log(this.arrayEgresados, 'Promedio', this.averageEgresados);
       });
   }
 
   rankingProgramas() {
-    // console.log('ÉNTRA!!!');
     this.profileService.getContadorProgramas()
       .snapshotChanges().subscribe(item => {
         this.arrayProgramas = [];
@@ -317,7 +311,6 @@ export class EstadisticasComponent implements OnInit {
     this.posición1Programa = pos1;
     this.posición2Programa = pos2;
     this.posición3Programa = pos3;
-    // console.log('POSICION 1 => ', pos1, 'POSICION 2 => ', pos2, 'POSICION 3 => ', pos3);
   }
 
   listaAdministrativos() {
@@ -333,7 +326,6 @@ export class EstadisticasComponent implements OnInit {
           this.arrayCorreoAdministrativo.push(x['programa']);
         });
         this.mejorAdministrativo();
-        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresAdministrativo, this.arrayContadoresAdministrativo);
       });
 
     this.rankingService.getEstudiantes()
@@ -348,7 +340,6 @@ export class EstadisticasComponent implements OnInit {
           this.arrayCorreoEstudiante.push(x['programa']);
         });
         this.mejorEstudiante();
-        console.log('ARRAY DE Estudiantes', this.arrayNombresEstudiante, this.arrayContadoresEstudiante);
       });
 
     this.rankingService.getDocentes()
@@ -363,7 +354,6 @@ export class EstadisticasComponent implements OnInit {
           this.arrayCorreoDocente.push(x['programa']);
         });
         this.mejorDocente();
-        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresDocente, this.arrayContadoresDocente);
       });
 
     this.rankingService.getEgresados()
@@ -378,7 +368,6 @@ export class EstadisticasComponent implements OnInit {
           this.arrayCorreoEgresado.push(x['programa']);
         });
         this.mejorEgresado();
-        console.log('ARRAY DE ADMINISTRATIVOS', this.arrayNombresEgresado, this.arrayContadoresEgresado);
       });
   }
 
@@ -394,24 +383,20 @@ export class EstadisticasComponent implements OnInit {
     this.correoAdministrativo = this.arrayCorreoAdministrativo[pos];
     const correo = this.adminCorreoArray[pos];
     this.getAdministrativoImage(correo);
-    // console.log('La posición ganadora es: ', pos);
   }
 
   getAdministrativoImage(correo) {
     let key = '';
-    console.log('SE BUSCA CON LA PERSONA', correo);
     this.rankingService.getAdminstrativos()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
-          console.log(x['correo']);
           if (x['correo'] === correo) {
             key = element.key;
           }
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataAdministrativo = url;
-          console.log('IMAGEEEN', this.dataAdministrativo);
         });
       });
   }
@@ -425,7 +410,6 @@ export class EstadisticasComponent implements OnInit {
     }
     this.estudiante = this.arrayNombresEstudiante[pos];
     this.estudianteUsos = this.arrayContadoresEstudiante[pos];
-    console.log('La posición ganadora es: ', pos);
     this.correoEstudiante = this.arrayCorreoEstudiante[pos];
     const correo = this.estudianteCorreoArray[pos];
     this.getEstudianteImage(correo);
@@ -433,19 +417,16 @@ export class EstadisticasComponent implements OnInit {
 
   getEstudianteImage(correo) {
     let key = '';
-    console.log('SE BUSCA CON LA PERSONA', correo);
     this.rankingService.getEstudiantes()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
-          console.log(x['correo']);
           if (x['correo'] === correo) {
             key = element.key;
           }
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataEstudiante = url;
-          console.log('IMAGEEEN', this.dataAdministrativo);
         });
       });
   }
@@ -462,24 +443,20 @@ export class EstadisticasComponent implements OnInit {
     this.correoDocente = this.arrayCorreoDocente[pos];
     const correo = this.docenteCorreoArray[pos];
     this.getDocenteImage(correo);
-    console.log('La posición ganadora es: ', pos);
   }
 
   getDocenteImage(correo) {
     let key = '';
-    console.log('SE BUSCA CON LA PERSONA', correo);
     this.rankingService.getDocentes()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
-          console.log(x['correo']);
           if (x['correo'] === correo) {
             key = element.key;
           }
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataDocente = url;
-          console.log('IMAGEEEN', this.dataAdministrativo);
         });
       });
   }
@@ -496,24 +473,20 @@ export class EstadisticasComponent implements OnInit {
     this.correoEgresado = this.arrayCorreoEgresado[pos];
     const correo = this.egresadoCorreoArray[pos];
     this.getEgresadoImage(correo);
-    console.log('La posición ganadora es: ', pos);
   }
 
   getEgresadoImage(correo) {
     let key = '';
-    console.log('SE BUSCA CON LA PERSONA', correo);
     this.rankingService.getEgresados()
       .snapshotChanges().subscribe(item => {
         item.forEach(element => {
           const x = element.payload.toJSON();
-          console.log(x['correo']);
           if (x['correo'] === correo) {
             key = element.key;
           }
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataEgresado = url;
-          console.log('IMAGEEEN', this.dataAdministrativo);
         });
       });
   }
@@ -569,7 +542,6 @@ export class EstadisticasComponent implements OnInit {
     }
     this.referenciaIcontecTop = this.arrayRefenciaIcontec[pos1];
     this.contadorIcontecTop = this.arrayRefenciaContadorIcontec[pos1];
-    console.log('Icontec Top1 => ', this.referenciaIcontecTop, 'Cont: ', this.contadorIcontecTop);
   }
 
   topReferenceApa() {
@@ -581,7 +553,7 @@ export class EstadisticasComponent implements OnInit {
     }
     this.referenciaApaTop = this.arrayRefenciaApa[pos1];
     this.contadorApaTop = this.arrayRefenciaContadorApa[pos1];
-    console.log('APA Top1 => ', this.referenciaApaTop, 'Cont: ', this.contadorApaTop);
+
   }
 
   topReferenceIeee() {
@@ -593,7 +565,6 @@ export class EstadisticasComponent implements OnInit {
     }
     this.referenciaIeeeTop = this.arrayRefenciaIeee[pos1];
     this.contadorIeeeTop = this.arrayRefenciaContadorIeee[pos1];
-    console.log('IEEE Top1 => ', this.referenciaIeeeTop, 'Cont: ', this.contadorIeeeTop);
   }
 
 }

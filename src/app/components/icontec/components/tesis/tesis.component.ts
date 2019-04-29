@@ -57,7 +57,7 @@ export class TesisIcontecComponent implements OnInit {
       this.getRol();
     } else {
       this.getCounterNobody();
-      console.log('NO ENTRA');
+
     }
   }
 
@@ -70,7 +70,6 @@ export class TesisIcontecComponent implements OnInit {
             this.rolUsuario = x.toString();
             this.getCounterPerson();
             if (this.rolUsuario !== 'administrativo') {
-              console.log('ROL', this.rolUsuario);
               this.getProgram();
             }
           }
@@ -93,7 +92,6 @@ export class TesisIcontecComponent implements OnInit {
                 }
               }
             });
-            console.log('Programa', this.programa);
             this.getValueConunterProgram();
           });
         break;
@@ -108,7 +106,6 @@ export class TesisIcontecComponent implements OnInit {
                 this.programa = x['programa'];
               }
             });
-            console.log('Programa', this.programa);
             this.getValueConunterProgram();
           });
         break;
@@ -123,7 +120,6 @@ export class TesisIcontecComponent implements OnInit {
                 this.programa = x['programa'];
               }
             });
-            console.log('Programa', this.programa);
             this.getValueConunterProgram();
           });
         break;
@@ -132,14 +128,12 @@ export class TesisIcontecComponent implements OnInit {
 
   getValueConunterProgram() {
     if (localStorage.getItem('logged') === 'true') {
-      console.log('ÉNTRA!!!');
       this.profileService.getContadorProgramas()
         .snapshotChanges().subscribe(item => {
           item.forEach(element => {
             const x = element.payload.toJSON();
             if (element.key === this.programa) {
               this.contadorPrograma = Number(x['contadorActualizado']);
-              console.log('VALOR', this.contadorPrograma);
             }
           });
         });
@@ -172,7 +166,7 @@ export class TesisIcontecComponent implements OnInit {
 
     this.rankingService.addCounterProgram(this.programa, this.contadorPrograma)
       .then(res => {
-        console.log(res);
+
       }, err => {
         console.log('Error', err);
       });
@@ -181,7 +175,7 @@ export class TesisIcontecComponent implements OnInit {
   addCountPerson() {
     this.rankingService.addCounterPerson(this.rolUsuario, this.keyAdmin, this.contadorPersona)
       .then(res => {
-        console.log(res);
+
       }, err => {
         console.log('Error', err);
       });
@@ -190,7 +184,7 @@ export class TesisIcontecComponent implements OnInit {
   addCounterReference() {
     this.rankingService.addCounterReference('icontec', 'tesis', this.contadorReferencia)
       .then(res => {
-        console.log(res);
+
       }, err => {
         console.log('Error', err);
       });
@@ -202,7 +196,7 @@ export class TesisIcontecComponent implements OnInit {
     this.referencia.subReferencia = 'Tesis';
     this.rankingService.addReference(this.rolUsuario, this.keyAdmin, this.referencia)
       .then(res => {
-        console.log(res);
+
         window.alert('Cita guardada');
       }, err => {
         console.log('Error', err);
@@ -244,7 +238,6 @@ export class TesisIcontecComponent implements OnInit {
   addCounterNobody() {
     this.rankingService.addNobodyCounter(this.contadorNobody)
       .then(res => {
-        console.log('Se registra evento');
       }, err => {
         console.log('Ocurrió un error', err);
       });
