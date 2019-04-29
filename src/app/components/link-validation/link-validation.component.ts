@@ -15,9 +15,13 @@ export class LinkValidationComponent implements OnInit {
   password1 = '';
   password2 = '';
 
+  myStyle: object = {};
+  myParams: object = {};
+  width = 100;
+  height = 100;
+
   constructor(public router: Router, public authService: AuthService) {
   }
-
   ngOnInit() {
     firebase.initializeApp(environment.firebaseConfig);
   }
@@ -47,6 +51,10 @@ export class LinkValidationComponent implements OnInit {
 
   writeInDatabase(email, uid) {
     this.authService.writeVerifyUser(email, uid);
+  }
+
+  return() {
+    this.router.navigate(['/']);
   }
 
 }

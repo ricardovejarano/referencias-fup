@@ -76,7 +76,7 @@
                 <div class="col-lg-6">
                   <select [(ngModel)]="fechaCitaAnio" name="fechaCitaAnio" class="form-control">
                     <option value="" disabled selected>Año</option>
-                    <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+                    <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
                   </select>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                 <div class="col-lg-6">
                   <select [(ngModel)]="fechaAcessoAnio" name="fechaAcessoAnio" class="form-control">
                     <option value="" disabled selected>Año</option>
-                    <option *ngFor="let anio of anioCita" value="{{anio}}">{{anio}}</option>
+                    <option *ngFor="let anio of anio" value="{{anio}}">{{anio}}</option>
                   </select>
                 </div>
               </div>
