@@ -153,7 +153,6 @@ export class RegistroComponent implements OnInit {
             window.alert('Revise su bandeja de entrada para validar correo');
             this.authService.registerTemporalUser(this.usuario)
               .then(res2 => {
-
                 this.router.navigate(['/login']);
               }, err => {
                 console.log('Error al subir información temporal', err);
