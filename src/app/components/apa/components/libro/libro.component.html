@@ -9,7 +9,7 @@
         <div *ngFor="let item of nombres; let in=index" class="border rounded mb-2 p-2">
             <div class="form-group">
               <label for="title">Apellidos Autor</label>
-              <input type="text" placeholder="Mankiw" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
+              <input type="text" placeholder="Apellidos Autor" class="form-control" id="title" maxlength="100" [(ngModel)]="apellidos[in].value"
                 name="nameA{{in}}">
             </div>
 
@@ -26,7 +26,6 @@
 
       <div class="col-md-8 offset-md-1">
         <div class="form-row">
-
               <div class="form-group col-md-6">
                 <label for="anioPublicacion">Año de publicación</label>
                 <select [(ngModel)]="anioPublicacion" name="anioPublicacion" class="form-control">
@@ -51,7 +50,6 @@
                 <input type="text" placeholder="Antoni Bosch" class="form-control" id="editorial" maxlength="100" [(ngModel)]="editorial"
                   name="editorial">
               </div>
-
         </div>
       </div>
 
