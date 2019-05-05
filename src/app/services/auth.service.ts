@@ -51,24 +51,24 @@ export class AuthService {
   writeVerifyUser(email, uid) {
     // first read info from temporal user
     this.afDatabase.list('user-temporal')
-    .snapshotChanges().subscribe(item => {
-      item.forEach(element => {
-        const x = element.payload.toJSON();
-        x['$key'] = element.key;
-        if (x['correo'] === email) {
-          const user: Usuario = new Usuario();
-          user.correo = x['correo'];
-          user.contador = x['contador'];
-          user.edad = x['edad'];
-          user.historial = x['historial'];
-          user.nombre = x['nombre'];
-          user.programa = x['programa'];
-          user.rol = x['rol'];
-          user.semestre = x['semestre'];
-          this.write(user.rol, uid, user, x['$key']);
-        }
+      .snapshotChanges().subscribe(item => {
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          x['$key'] = element.key;
+          if (x['correo'] === email) {
+            const user: Usuario = new Usuario();
+            user.correo = x['correo'];
+            user.contador = x['contador'];
+            user.edad = x['edad'];
+            user.historial = x['historial'];
+            user.nombre = x['nombre'];
+            user.programa = x['programa'];
+            user.rol = x['rol'];
+            user.semestre = x['semestre'];
+            this.write(user.rol, uid, user, x['$key']);
+          }
+        });
       });
-    });
   }
 
   write(rol, uid, usuario, keyToDell) {
@@ -76,16 +76,16 @@ export class AuthService {
     usersRefRol.child(uid).set(rol);
     const usersRef = firebase.database().ref(rol);
     usersRef.child(uid).set(usuario)
-    .then(res => {
-      this.afDatabase.list(`user-temporal`).remove(keyToDell)
-      .then( res2 => {
-        window.alert('Ya puede iniciar sesión');
-        this.router.navigate(['/login']);
-      }, err2 => {
+      .then(res => {
+        this.afDatabase.list(`user-temporal`).remove(keyToDell)
+          .then(res2 => {
+            window.alert('Ya puede iniciar sesión');
+            this.router.navigate(['/login']);
+          }, err2 => {
+          });
+      }, err => {
+        console.log('error', err);
       });
-    }, err => {
-      console.log('error', err);
-    });
   }
 
 
@@ -103,7 +103,11 @@ export class AuthService {
 
   restorePass(email) {
     const auth = firebase.auth();
-    return auth.sendPasswordResetEmail(email)
+    const actionCodeSettings = {
+      url: 'https://unividafup.edu.co/demo_referencias/login',
+      handleCodeInApp: false
+    };
+    return auth.sendPasswordResetEmail(email, actionCodeSettings)
       .then(() => {
         console.log('email sent');
         this.toastr.success('Revise su bandeja de entrada', 'Operación exitosa');
