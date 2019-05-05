@@ -4,6 +4,7 @@ import { PerfilService } from '../../../services/perfil.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { AutoLogoutService } from 'src/app/services/auto-logout.service';
 
 @Component({
   selector: 'app-image-profile',
@@ -30,7 +31,8 @@ export class ImageProfileComponent implements OnInit {
   constructor(
     private profileService: PerfilService,
     private toastr: ToastrService,
-    public router: Router, public authService: AuthService
+    public router: Router, public authService: AuthService,
+    public autoLogout: AutoLogoutService
   ) {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 100;
@@ -45,6 +47,7 @@ export class ImageProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.autoLogout.check();
     this.keyAdmin = this.profileService.getkeyAdmin();
     this.profileService.getProfileImage(this.keyAdmin).then(url => {
       this.dataI =  url;

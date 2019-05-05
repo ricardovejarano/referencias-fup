@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AutoLogoutService } from 'src/app/services/auto-logout.service';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,12 @@ export class HomeComponent implements OnInit {
   flag = true;
   flagLogged = false;
 
-  constructor(private router: Router, public authService: AuthService) {
+  constructor(private router: Router, public authService: AuthService, public autoLogout: AutoLogoutService) {
   }
 
   ngOnInit() {
     this.seeIfIsLogged();
+    this.autoLogout.check();
   }
 
   goToProfile() {
