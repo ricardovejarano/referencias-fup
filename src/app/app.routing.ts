@@ -11,6 +11,7 @@ import { perfilRoute } from './components/perfil/perfil.routing';
 import { historialRoute } from './components/historial/historial.routing';
 import { restoreRoute } from './components/restore-pass/restore.routing';
 import { LinkRoutes } from './components/link-validation/link-validation.routing';
+import { notFoundRoute } from './components/not-found/not-found.routing';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     ...perfilRoute,
     ...historialRoute,
     ...LinkRoutes,
-    ...restoreRoute
+    ...restoreRoute,
+    ...notFoundRoute
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@ import { ProfileGuard } from 'src/app/guards/profile.guard';
 export const perfilRoute: Routes = [
     {
         path: 'perfil', component: PerfilComponent, children: [
-            {path: '', component: UpdateInfoComponent, canActivate: [ProfileGuard] },
+            { path: '', component: UpdateInfoComponent, canActivate: [ProfileGuard] },
             { path: 'cambiar-imagen', component: ImageProfileComponent, canActivate: [ProfileGuard] },
         ]
     }

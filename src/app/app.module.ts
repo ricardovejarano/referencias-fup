@@ -61,6 +61,7 @@ import { RestorePassComponent } from './components/restore-pass/restore-pass.com
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LinkValidationComponent } from './components/link-validation/link-validation.component';
 import { ProfileGuard } from './guards/profile.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { ProfileGuard } from './guards/profile.guard';
     CardReferenciaComponent,
     RestorePassComponent,
     LinkValidationComponent,
+    NotFoundComponent,
   ],
   imports: [
     FormsModule,
