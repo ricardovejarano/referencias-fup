@@ -3,6 +3,7 @@ import { ReferenciaService } from 'src/app/services/referencia.service';
 import { ReferenciaWhitKey } from 'src/app/models/referenciaWithKey.model';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { ToastrService } from 'ngx-toastr';
+import { AutoLogoutService } from 'src/app/services/auto-logout.service';
 
 @Component({
   selector: 'app-historial',
@@ -20,12 +21,14 @@ export class HistorialComponent implements OnInit {
     public referenciaService: ReferenciaService,
     public profileService: PerfilService,
     private toastr: ToastrService,
+    public autoLogout: AutoLogoutService
   ) {
     this.getKey();
   }
 
   ngOnInit() {
     this.getRol();
+    this.autoLogout.check();
   }
 
   getKey() {
