@@ -62,6 +62,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LinkValidationComponent } from './components/link-validation/link-validation.component';
 import { ProfileGuard } from './guards/profile.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AutoLogoutService } from './services/auto-logout.service';
 
 
 @NgModule({
@@ -122,7 +123,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ParticlesModule,
     NgxPaginationModule
   ],
-  providers: [AuthService, PerfilService, RankingService, ProfileGuard],
+  providers: [AuthService, PerfilService, RankingService, ProfileGuard, AutoLogoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
