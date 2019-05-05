@@ -8,7 +8,7 @@ export const perfilRoute: Routes = [
     {
         path: 'perfil', component: PerfilComponent, children: [
             {path: '', component: UpdateInfoComponent, canActivate: [ProfileGuard] },
-            { path: 'cambiar-imagen', component: ImageProfileComponent },
+            { path: 'cambiar-imagen', component: ImageProfileComponent, canActivate: [ProfileGuard] },
         ]
     }
 ];
