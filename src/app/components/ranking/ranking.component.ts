@@ -7,22 +7,23 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 })
 export class RankingComponent implements OnInit {
 
-	deviceWidth= window.innerWidth;
-	timer:any;
+  deviceWidth = window.innerWidth;
+  timer: any;
 
   constructor() { }
 
   ngOnInit() {
   }
-  ngAfterViewChecked(){
-  	    if(this.deviceWidth < 768){
-      const menu = document.getElementById("mainMenuAccordion");
-      if(menu.classList.contains('show')){
-        this.timer = setTimeout (() => {
-          menu.classList.remove('show');         
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewChecked() {
+    if (this.deviceWidth < 768) {
+      const menu = document.getElementById('mainMenuAccordion');
+      if (menu.classList.contains('show')) {
+        this.timer = setTimeout(() => {
+          menu.classList.remove('show');
         }, 1200);
-      }else{
-        clearTimeout(this.timer);        
+      } else {
+        clearTimeout(this.timer);
       }
     }
   }

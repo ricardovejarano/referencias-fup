@@ -12,6 +12,5 @@ export const perfilRoute: Routes = [
             { path: 'cambiar-imagen', component: ImageProfileComponent, canActivate: [ProfileGuard] },
             { path: ':id', component: NotFoundComponent }
         ]
-    },
-    { path: '**', redirectTo: '' }
+    }
 ];

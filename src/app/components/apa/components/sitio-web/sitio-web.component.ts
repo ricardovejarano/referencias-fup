@@ -194,16 +194,18 @@ export class SitioWebComponent implements OnInit {
   }
 
   saveHistory() {
+    if (localStorage.getItem('referenciaHistorial') !== this.referenciaFinal) {
     this.referencia.cita = this.referenciaFinal;
     this.referencia.referencia = 'APA';
     this.referencia.subReferencia = 'Sitio web';
     this.rankingService.addReference(this.rolUsuario, this.keyAdmin, this.referencia)
       .then(res => {
-
         window.alert('Cita guardada');
+        localStorage.setItem('referenciaHistorial', this.referenciaFinal);
       }, err => {
         console.log('Error', err);
       });
+    }
   }
 
 
