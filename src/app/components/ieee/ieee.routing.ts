@@ -7,6 +7,7 @@ import { NormaTecnicaIeeeComponent } from './components/norma-tecnica-ieee/norma
 import { LibroComponent } from './components/libro/libro.component';
 import { PatenteComponent } from './components/patente/patente.component';
 import { InformeTecnicoComponent } from './components/informe-tecnico/informe-tecnico.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 
 export const ieeeRoutes: Routes = [
@@ -19,6 +20,7 @@ export const ieeeRoutes: Routes = [
             { path: 'libro', component: LibroComponent },
             { path: 'patente', component: PatenteComponent },
             { path: 'informe-tecnico', component: InformeTecnicoComponent },
+            {path: ':id', component: NotFoundComponent}
         ]
     }
 

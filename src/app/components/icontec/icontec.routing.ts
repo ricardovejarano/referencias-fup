@@ -7,6 +7,7 @@ import { LibrosIcontecComponent } from './components/libros/libros.component';
 import { NormasJuridicasComponent } from './components/normas-juridicas/normas-juridicas.component';
 import { NormasTecnicasComponent } from './components/normas-tecnicas/normas-tecnicas.component';
 import { TesisIcontecComponent } from './components/tesis/tesis.component';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 
 export const icontecRoutes: Routes = [
@@ -19,7 +20,8 @@ export const icontecRoutes: Routes = [
             { path: 'normas-juridicas', component: NormasJuridicasComponent },
             { path: 'normas-tecnicas', component: NormasTecnicasComponent },
             { path: 'tesis', component: TesisIcontecComponent },
+            { path: ':id', component: NotFoundComponent }
         ]
-    }
+    },
 
 ];
