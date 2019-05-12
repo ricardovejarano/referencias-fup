@@ -399,7 +399,7 @@ export class EstadisticasComponent implements OnInit {
           this.dataAdministrativo = url;
         }).catch(
           (err) => {
-            console.log('Entra al error');
+           //  console.log('Entra al error');
             // console.log(err);
           }
         );

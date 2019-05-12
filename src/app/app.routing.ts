@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     ...LinkRoutes,
     ...restoreRoute,
     ...notFoundRoute,
-    {path: ':id', component: NotFoundComponent}
+    // {path: ':id', component: NotFoundComponent}
 ];
 
 @NgModule({
