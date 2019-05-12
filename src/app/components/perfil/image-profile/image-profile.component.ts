@@ -50,7 +50,7 @@ export class ImageProfileComponent implements OnInit {
     this.autoLogout.check();
     this.keyAdmin = this.profileService.getkeyAdmin();
     this.profileService.getProfileImage(this.keyAdmin).then(url => {
-      this.dataI =  url;
+      this.dataI = url;
     });
 
     // background particles

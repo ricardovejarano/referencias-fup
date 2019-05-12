@@ -397,7 +397,12 @@ export class EstadisticasComponent implements OnInit {
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataAdministrativo = url;
-        });
+        }).catch(
+          (err) => {
+            console.log('Entra al error');
+            // console.log(err);
+          }
+        );
       });
   }
 
@@ -427,7 +432,12 @@ export class EstadisticasComponent implements OnInit {
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataEstudiante = url;
-        });
+        }).catch(
+          (err) => {
+            console.log('Entra al error');
+            // console.log(err);
+          }
+        );
       });
   }
 
@@ -457,7 +467,12 @@ export class EstadisticasComponent implements OnInit {
         });
         this.profileService.getProfileImage(key).then(url => {
           this.dataDocente = url;
-        });
+        }).catch(
+          (err) => {
+            console.log('Entra al error');
+            // console.log(err);
+          }
+        );
       });
   }
 
@@ -486,8 +501,13 @@ export class EstadisticasComponent implements OnInit {
           }
         });
         this.profileService.getProfileImage(key).then(url => {
+          console.log('Entra');
           this.dataEgresado = url;
-        });
+        }).catch(
+          (err) => {
+
+          }
+        );
       });
   }
 
