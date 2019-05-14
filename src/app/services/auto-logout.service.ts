@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-const MINUTES_UNITL_AUTO_LOGOUT = 15; // in mins
+const MINUTES_UNITL_AUTO_LOGOUT = 1; // in mins
 const CHECK_INTERVAL = 15000; // in ms
 const STORE_KEY = 'lastAction';
 
@@ -12,6 +12,7 @@ export class AutoLogoutService {
 
   flagCheck = false;
   logged = '';
+  intervalVariable;
 
   public getLastAction() {
     return parseInt(localStorage.getItem(STORE_KEY), 10);
@@ -54,13 +55,19 @@ export class AutoLogoutService {
   }
 
   initInterval() {
-    setInterval(() => {
+    this.intervalVariable =  setInterval(() => {
       this.logged = localStorage.getItem('logged');
       if (this.logged === 'true') {
         this.check();
       }
     }, CHECK_INTERVAL);
   }
+
+  stopInterval() {
+    clearInterval(this.intervalVariable);
+    localStorage.removeItem('lastAction');
+  }
+
 
   check(flag?) {
     const now = Date.now();

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AutoLogoutService } from 'src/app/services/auto-logout.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,7 +20,8 @@ export class NavBarComponent implements OnInit, AfterViewInit, OnDestroy {
   finalRef;
   formRef;
 
-  constructor(public router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute) {
+  constructor(public router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute, 
+    public autoLogout: AutoLogoutService) {
     this.logged = localStorage.getItem('logged');
   }
 
@@ -41,6 +43,7 @@ export class NavBarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   logout() {
+    this.autoLogout.stopInterval();
     this.router.navigate(['/']);
     localStorage.setItem('logged', 'false');
     this.authService.logout();

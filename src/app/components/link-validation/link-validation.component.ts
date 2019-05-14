@@ -23,7 +23,7 @@ export class LinkValidationComponent implements OnInit {
   constructor(public router: Router, public authService: AuthService) {
   }
   ngOnInit() {
-    firebase.initializeApp(environment.firebaseConfig);
+    // firebase.initializeApp(environment.firebaseConfig);
   }
 
   onSubmitValidate() {
